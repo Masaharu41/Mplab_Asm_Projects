@@ -1,4 +1,4 @@
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  1
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[310]: Superseding current maximum RAM and RAM map.
                       00026 ;******************************************             
                       00027 ;Define Variable Registers
                       00028 ;******************************************
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  2
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -99,7 +99,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000C   008C           00062                 MOVWF PIE1
                       00063 ;***** SET PIE2 REG: *****
 000D   1683 1303      00064                 BANKSEL PIE2
-000F   3080           00065                 MOVLW H'80'                             ; INIT OSFIE CLEAR OTHERS
+000F   3000           00065                 MOVLW H'00'                             ; INIT OSFIE CLEAR OTHERS
 0010   008D           00066                 MOVWF PIE2
                       00067 ;*** SET CCP1CON REG: **
 0011   1283 1303      00068                 BANKSEL CCP1CON
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 001E   3000           00079                 MOVLW   H'000'                          ;
 001F   0090           00080                 MOVWF   T1CON                           ;DISABLE TIMER 1
                       00081 
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  3
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -169,106 +169,265 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00126 ;******************************************
 004A                  00127 MAIN    
 004A   1283 1303      00128         BANKSEL PORTC 
-004C   3001           00129             MOVLW H'01'
-004D   0087           00130             MOVWF PORTC
-                      00131             
-004E                  00132 KEYPAD
-004E   3011           00133                 MOVLW H'11'
-004F   0087           00134                 MOVWF PORTC
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  4
+004C   0187           00129             CLRF PORTC
+                      00130             
+004D                  00131 KEYPAD
+004D   1607           00132                 BSF PORTC, 4
+004E   1A06           00133                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF FIRST ROW
+004F   2???           00134                 GOTO CTHREE
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0050   1A06           00135                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF FIRST ROW
-0051   2???           00136                 GOTO ONETONE
-0052   1A86           00137                 BTFSC PORTB,RB5
-0053   2???           00138                 GOTO KEYPAD
-0054   1B06           00139                 BTFSC PORTB,RB6
-0055   2???           00140                 GOTO KEYPAD
-0056   1B86           00141                 BTFSC PORTB,RB7
-0057   2???           00142                 GOTO KEYPAD                                ; FINISH CHECK OF M ASSOCIATED BITS
-0058   3021           00143                 MOVLW H'21'
-0059   0087           00144                 MOVWF PORTC             ; CLEAR RB0 AS A HIGH
-                      00145                 
-                      00146                 
-                      00147                                           ; SET RB1 TO A OUTPUT HIGH
-005A   1A06           00148                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF SECOND ROW
-005B   2???           00149                 GOTO KEYPAD
-005C   1A86           00150                 BTFSC PORTB,RB5
-005D   2???           00151                 GOTO KEYPAD
-005E   1B06           00152                 BTFSC PORTB,RB6
-005F   2???           00153                 GOTO KEYPAD
-0060   1B86           00154                 BTFSC PORTB,RB7
-0061   2???           00155                 GOTO KEYPAD                               ; FINISH CHECK OF L ASSOCIATED BITS   
-0062   3041           00156                 MOVLW H'41'                             ; CLEAR PIN RB1 AS AN OUTPUT HIGH
-0063   0087           00157                 MOVWF PORTC
-                      00158                 
-                      00159                                           ; SET RB2 AS AN OUTPUT HIGH
-0064   1A06           00160                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR KEYPRESS OF THIRD ROW
-0065   2???           00161                 GOTO KEYPAD
-0066   1A86           00162                 BTFSC PORTB,RB5
-0067   2???           00163                 GOTO KEYPAD
-0068   1B06           00164                 BTFSC PORTB,RB6
-0069   2???           00165                 GOTO KEYPAD
-006A   1B86           00166                 BTFSC PORTB,RB7
-006B   2???           00167                 GOTO KEYPAD                               ; FINISH CHECK OF K ASSOCIATED BITS
-                      00168                                                 ; CLEAR RB2 OF OUTPUT HIGH
-006C   3081           00169                 MOVLW H'81'
-006D   0087           00170                 MOVWF PORTC
-                      00171                 ; SET RB3 AS AN OUTPUT HIGH 
-006E   1A06           00172                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR A KEYPRESS OF THIRD ROW
-006F   2???           00173                 GOTO KEYPAD     
-0070   1A86           00174                 BTFSC PORTB,RB5
-0071   2???           00175                 GOTO KEYPAD
-0072   1B06           00176                 BTFSC PORTB,RB6
-0073   2???           00177                 GOTO KEYPAD
-0074   1B86           00178                 BTFSC PORTB,RB7
-0075   2???           00179                 GOTO KEYPAD                             ; FINISH CHECK OF J ASSOCIATED BITS
-0076   2???           00180                 GOTO KEYPAD
-                      00181                 
-                      00182             
-                      00183                
-                      00184             
-0077                  00185 ONETONE
-0077   1283 1303      00186         BANKSEL PORTC 
-0079   3001           00187             MOVLW H'01'
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  5
+0050   1A86           00135                 BTFSC PORTB,RB5
+0051   2???           00136                 GOTO DTHREE
+0052   1B06           00137                 BTFSC PORTB,RB6
+0053   2???           00138                 GOTO ETHREE
+0054   1B86           00139                 BTFSC PORTB,RB7
+0055   2???           00140                 GOTO FTHREE                               ; FINISH CHECK OF M ASSOCIATED BITS
+0056   1207           00141                 BCF PORTC, 4
+                      00142                 ;GOTO KEYPAD; CLEAR RB0 AS A HIGH
+                      00143                 
+                      00144                 
+0057   1687           00145                 BSF PORTC, 5                         ; SET RB1 TO A OUTPUT HIGH
+0058   1A06           00146                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF SECOND ROW
+0059   2???           00147                 GOTO GTHREE
+005A   1A86           00148                 BTFSC PORTB,RB5
+005B   2???           00149                 GOTO ATHREE
+005C   1B06           00150                 BTFSC PORTB,RB6
+005D   2???           00151                 GOTO BTHREE
+005E   1B86           00152                 BTFSC PORTB,RB7
+005F   2???           00153                 GOTO CFOUR                               ; FINISH CHECK OF L ASSOCIATED BITS   
+0060   1287           00154                 BCF PORTC, 5
+                      00155                 
+0061   1707           00156                 BSF PORTC, 6                       ; SET RB2 AS AN OUTPUT HIGH
+0062   1A06           00157                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR KEYPRESS OF THIRD ROW
+0063   2???           00158                 GOTO DFOUR
+0064   1A86           00159                 BTFSC PORTB,RB5
+0065   2???           00160                 GOTO EFOUR
+0066   1B06           00161                 BTFSC PORTB,RB6
+0067   2???           00162                 GOTO FFOUR
+0068   1B86           00163                 BTFSC PORTB,RB7
+0069   2???           00164                 GOTO GFOUR                              ; FINISH CHECK OF K ASSOCIATED BITS
+006A   1307           00165                 BCF PORTC, 6                    ; CLEAR RB2 OF OUTPUT HIGH
+                      00166                 
+                      00167                 
+                      00168                 
+006B   1787           00169                 BSF PORTC, 7
+006C   1A06           00170                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR A KEYPRESS OF THIRD ROW
+006D   2???           00171                 GOTO AFOUR      
+006E   1A86           00172                 BTFSC PORTB,RB5
+006F   2???           00173                 GOTO BFOUR
+0070   1B06           00174                 BTFSC PORTB,RB6
+0071   2???           00175                 GOTO CFIVE
+0072   1B86           00176                 BTFSC PORTB,RB7
+0073   2???           00177                 GOTO DFIVE                            ; FINISH CHECK OF J ASSOCIATED BITS
+0074   1387           00178                 BCF PORTC, 7
+0075   2???           00179                 GOTO KEYPAD
+                      00180                 
+0076                  00181 CTHREE
+0076   01A1           00182                 CLRF H'21'
+0077   3000           00183                 MOVLW H'00'
+0078   00A1           00184                 MOVWF H'21'
+0079   2???           00185                 GOTO ONETONE
+                      00186                 
+007A                  00187 DTHREE
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-007A   0087           00188             MOVWF PORTC
-007B   2???           00189             CALL DELAY    
-007C   3001           00190             MOVLW H'01'
-007D   0606           00191             XORWF PORTB,0
-007E   0087           00192             MOVWF PORTC
-007F   0085           00193             MOVWF PORTA
-0080   2???           00194             CALL DELAY    
-0081   3001           00195             MOVLW H'01'
-0082   0606           00196             XORWF PORTB,0
-0083   0087           00197             MOVWF PORTC
-0084   0085           00198             MOVWF PORTA
-0085   2???           00199             GOTO KEYPAD     
-                      00200             
-                      00201            
-0086                  00202 DELAY
-0086   3051           00203             MOVLW H'51'
-0087   0091           00204             MOVWF TMR2
-                      00205             
-0088                  00206 LOOP
-0088   0000           00207             NOP
-0089   0000           00208             NOP
-008A   0000           00209             NOP
-008B   0B91           00210             DECFSZ TMR2
-008C   2???           00211             GOTO LOOP
-008D   0008           00212             RETURN
-                      00213             
+007A   01A1           00188                 CLRF H'21'
+007B   3001           00189                 MOVLW H'01'
+007C   00A1           00190                 MOVWF H'21'
+007D   2???           00191                 GOTO ONETONE
+                      00192                 
+007E                  00193 ETHREE
+007E   01A1           00194                 CLRF H'21'
+007F   3002           00195                 MOVLW H'02'
+0080   00A1           00196                 MOVWF H'21'
+0081   2???           00197                 GOTO ONETONE
+                      00198 
+0082                  00199 FTHREE
+0082   01A1           00200                 CLRF H'21'
+0083   3003           00201                 MOVLW H'03'
+0084   00A1           00202                 MOVWF H'21'
+0085   2???           00203                 GOTO ONETONE
+                      00204                 
+0086                  00205 GTHREE
+0086   01A1           00206                 CLRF H'21'
+0087   3004           00207                 MOVLW H'04'
+0088   00A1           00208                 MOVWF H'21'
+0089   2???           00209                 GOTO ONETONE
+                      00210 
+008A                  00211 ATHREE
+008A   01A1           00212                 CLRF H'21'
+008B   3005           00213                 MOVLW H'05'
+008C   00A1           00214                 MOVWF H'21'
+008D   2???           00215                 GOTO ONETONE
+                      00216                 
+008E                  00217 BTHREE
+008E   01A1           00218                 CLRF H'21'
+008F   3006           00219                 MOVLW H'06'
+0090   00A1           00220                 MOVWF H'21'
+0091   2???           00221                 GOTO ONETONE    
+                      00222                 
+0092                  00223 CFOUR
+0092   01A1           00224                 CLRF H'21'
+0093   3007           00225                 MOVLW H'07'
+0094   00A1           00226                 MOVWF H'21'
+0095   2???           00227                 GOTO ONETONE     
+                      00228                 
+0096                  00229 DFOUR
+0096   01A1           00230                 CLRF H'21'
+0097   3008           00231                 MOVLW H'08'
+0098   00A1           00232                 MOVWF H'21'
+0099   2???           00233                 GOTO ONETONE
+                      00234                 
+009A                  00235 EFOUR
+009A   01A1           00236                 CLRF H'21'
+009B   3009           00237                 MOVLW H'09'
+009C   00A1           00238                 MOVWF H'21'
+009D   2???           00239                 GOTO ONETONE
+                      00240                 
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+009E                  00241 FFOUR
+009E   01A1           00242                 CLRF H'21'
+009F   300A           00243                 MOVLW H'0A'
+00A0   00A1           00244                 MOVWF H'21'
+00A1   2???           00245                 GOTO ONETONE
+                      00246                 
+00A2                  00247 GFOUR
+00A2   01A1           00248                 CLRF H'21'
+00A3   300B           00249                 MOVLW H'0B'
+00A4   00A1           00250                 MOVWF H'21'
+00A5   2???           00251                 GOTO ONETONE
+                      00252                 
+00A6                  00253 AFOUR
+00A6   01A1           00254                 CLRF H'21'
+00A7   300C           00255                 MOVLW H'0C'
+00A8   00A1           00256                 MOVWF H'21'
+00A9   2???           00257                 GOTO ONETONE
+                      00258                 
+00AA                  00259 BFOUR
+00AA   01A1           00260                 CLRF H'21'
+00AB   300D           00261                 MOVLW H'0D'
+00AC   00A1           00262                 MOVWF H'21'
+00AD   2???           00263                 GOTO ONETONE
+                      00264                 
+00AE                  00265 CFIVE
+00AE   01A1           00266                 CLRF H'21'
+00AF   300E           00267                 MOVLW H'0E'
+00B0   00A1           00268                 MOVWF H'21'
+00B1   2???           00269                 GOTO ONETONE
+                      00270                 
+00B2                  00271 DFIVE
+00B2   01A1           00272                 CLRF H'21'
+00B3   300F           00273                 MOVLW H'0F'
+00B4   00A1           00274                 MOVWF H'21'
+00B5   2???           00275                 GOTO ONETONE
+                      00276             
+00B6                  00277 ONETONE
+00B6   3001           00278             MOVLW H'01'
+00B7   0087           00279             MOVWF PORTC
+00B8   2???           00280             CALL DELAY    
+00B9   3001           00281             MOVLW H'01'
+00BA   0606           00282             XORWF PORTB,0
+00BB   0087           00283             MOVWF PORTC
+00BC   0085           00284             MOVWF PORTA
+00BD   2???           00285             CALL DELAY    
+00BE   3001           00286             MOVLW H'01'
+00BF   0606           00287             XORWF PORTB,0
+00C0   0087           00288             MOVWF PORTC
+00C1   0085           00289             MOVWF PORTA
+00C2   2???           00290             GOTO KEYPAD     
+                      00291             
+                      00292            
+00C3                  00293 DELAY
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00C3   0821           00294             MOVF H'21',0
+00C4   2???           00295             CALL TABLE
+00C5   0091           00296             MOVWF TMR2
+00C6                  00297 LOOP2
+00C6   0181           00298             CLRF TMR0
+00C7                  00299 LOOP1
+00C7   0B81           00300             DECFSZ TMR0
+00C8   2???           00301             GOTO LOOP1
+00C9   0B91           00302             DECFSZ TMR2
+00CA   2???           00303             GOTO LOOP2
+00CB   0821           00304             MOVF H'21',0
+00CC   2???           00305             CALL TABLETWO
+00CD   0081           00306             MOVWF TMR0
+00CE                  00307 LOOP3
+00CE   0B81           00308             DECFSZ TMR0
+00CF   2???           00309             GOTO LOOP3
+00D0   0008           00310             RETURN
+                      00311             
+                      00312            
+00D1                  00313 TABLE
+00D1   0782           00314             ADDWF PCL,1
+00D2   3404           00315             RETLW H'04' ;C3
+00D3   3404           00316             RETLW H'04' ;D3
+00D4   3403           00317             RETLW H'03' ;E3
+00D5   3403           00318             RETLW H'03' ;F3
+00D6   3403           00319             RETLW H'03' ;G3
+00D7   3402           00320             RETLW H'02' ;A3
+00D8   3402           00321             RETLW H'02' ;B3
+00D9   3402           00322             RETLW H'02' ;C4
+00DA   3402           00323             RETLW H'02' ;D4
+00DB   3401           00324             RETLW H'01' ;E4
+00DC   3401           00325             RETLW H'01' ;F4
+00DD   3401           00326             RETLW H'01' ;G4
+00DE   3401           00327             RETLW H'01' ;A4
+00DF   3401           00328             RETLW H'01' ;B4
+00E0   3401           00329             RETLW H'01' ;C5
+00E1   3401           00330             RETLW H'01' ;D5
+                      00331             
+00E2                  00332 TABLETWO
+00E2   0782           00333             ADDWF PCL,1
+00E3   34F9           00334             RETLW H'F9' ;C3 0
+00E4   3463           00335             RETLW H'63' ;D3 1
+00E5   34F1           00336             RETLW H'F1' ;E3 2
+00E6   34AC           00337             RETLW H'AC' ;F3 3
+00E7   3443           00338             RETLW H'43' ;G3 4
+00E8   34E8           00339             RETLW H'E8' ;A3 5
+00E9   3496           00340             RETLW H'96' ;B3 6
+00EA   346D           00341             RETLW H'6D' ;C4 7
+00EB   3429           00342             RETLW H'29' ;D4 8
+00EC   34EC           00343             RETLW H'EC' ;E4 9
+00ED   34CF           00344             RETLW H'CF' ;F4 A
+00EE   349A           00345             RETLW H'9A' ;G4 B
+00EF   346B           00346             RETLW H'6B' ;A4 C
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00F0   3442           00347             RETLW H'42' ;B4 D 
+00F1   342E           00348             RETLW H'2E' ;C5 E
+00F2   340B           00349             RETLW H'0B' ;D5 F
+                      00350             
+                      00351             
+                      00352             
+                      00353             
+                      00354             
 Warning[205]: Found directive in column 1. (END)
-20D1 3FFF             00214 END
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  6
+20D1 3FFF             00355 END
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE  9
 
 
 SYMBOL TABLE
@@ -290,6 +449,7 @@ ADIF                              00000006
 ADON                              00000000
 ADRESH                            0000001E
 ADRESL                            0000009E
+AFOUR                             000000A6
 ANS0                              00000000
 ANS1                              00000001
 ANS10                             00000002
@@ -303,11 +463,13 @@ ANS8                              00000000
 ANS9                              00000001
 ANSEL                             00000188
 ANSELH                            00000189
+ATHREE                            0000008A
 BAUD                              D'100'
 BAUDCTL                           00000187
 BCLIE                             00000003
 BCLIF                             00000003
 BF                                00000000
+BFOUR                             000000AA
 BRG0                              00000000
 BRG1                              00000001
 BRG10                             00000002
@@ -324,15 +486,16 @@ BRG5                              00000005
 BRG6                              00000006
 BRG7                              00000007
 BRG8                              00000000
-BRG9                              00000001
-BRGH                              00000002
-C                                 00000000
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  7
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 10
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+BRG9                              00000001
+BRGH                              00000002
+BTHREE                            0000008E
+C                                 00000000
 C1CH0                             00000000
 C1CH1                             00000001
 C1IE                              00000005
@@ -380,18 +543,20 @@ CCPR1L                            00000015
 CCPR2                             0000001B
 CCPR2H                            0000001C
 CCPR2L                            0000001B
+CFIVE                             000000AE
+CFOUR                             00000092
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 CHS0                              00000002
 CHS1                              00000003
 CHS2                              00000004
 CHS3                              00000005
 CKE                               00000006
 CKP                               00000004
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  8
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 CM1CON0                           00000107
 CM2CON0                           00000108
 CM2CON1                           00000109
@@ -402,6 +567,7 @@ COUNT4                            00000023
 COUNT5                            00000024
 CREN                              00000004
 CSRC                              00000007
+CTHREE                            00000076
 D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
@@ -409,7 +575,10 @@ DC1B0                             00000004
 DC1B1                             00000005
 DC2B0                             00000004
 DC2B1                             00000005
-DELAY                             00000086
+DELAY                             000000C3
+DFIVE                             000000B2
+DFOUR                             00000096
+DTHREE                            0000007A
 D_A                               00000005
 D_NOT_A                           00000005
 ECCPAS                            0000009C
@@ -427,16 +596,28 @@ EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
 EEPGD                             00000007
+EFOUR                             0000009A
+ETHREE                            0000007E
 F                                 00000001
 FERR                              00000002
+FFOUR                             0000009E
 FOSC                              D'16000'
 FSR                               00000004
+FTHREE                            00000082
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 FVREN                             00000000
 GCEN                              00000007
+GFOUR                             000000A2
 GIE                               00000007
 GO                                00000001
 GO_DONE                           00000001
 GO_NOT_DONE                       00000001
+GTHREE                            00000086
 HTS                               00000002
 I2C_DATA                          00000005
 I2C_READ                          00000002
@@ -445,12 +626,6 @@ I2C_STOP                          00000004
 INDF                              00000000
 INTCON                            0000000B
 INTE                              00000004
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE  9
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 INTEDG                            00000006
 INTF                              00000001
 IOCB                              00000096
@@ -466,9 +641,11 @@ IRCF0                             00000004
 IRCF1                             00000005
 IRCF2                             00000006
 IRP                               00000007
-KEYPAD                            0000004E
+KEYPAD                            0000004D
 LEG_1                             00000026
-LOOP                              00000088
+LOOP1                             000000C7
+LOOP2                             000000C6
+LOOP3                             000000CE
 LTS                               00000001
 MAIN                              0000004A
 MC1OUT                            00000007
@@ -486,6 +663,12 @@ NOT_A                             00000005
 NOT_ADDRESS                       00000005
 NOT_BO                            00000000
 NOT_BOR                           00000000
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 NOT_DONE                          00000001
 NOT_PD                            00000003
 NOT_POR                           00000001
@@ -497,19 +680,13 @@ NOT_TX8                           00000006
 NOT_W                             00000002
 NOT_WRITE                         00000002
 OERR                              00000001
-ONETONE                           00000077
+ONETONE                           000000B6
 OPTION_REG                        00000081
 OSCCON                            0000008F
 OSCTUNE                           00000090
 OSFIE                             00000007
 OSFIF                             00000007
 OSTS                              00000003
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE 10
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 P                                 00000004
 P1M0                              00000006
 P1M1                              00000007
@@ -545,6 +722,12 @@ PSSBD0                            00000000
 PSSBD1                            00000001
 PSTRCON                           0000009D
 PULSR                             00000002
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 PULSS                             00000003
 PWM1CON                           0000009B
 R                                 00000002
@@ -563,12 +746,6 @@ RB3                               00000003
 RB4                               00000004
 RB5                               00000005
 RB6                               00000006
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE 11
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 RB7                               00000007
 RBIE                              00000003
 RBIF                              00000000
@@ -604,6 +781,12 @@ SBOREN                            00000004
 SCKP                              00000004
 SCS                               00000000
 SEN                               00000000
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 SENDB                             00000003
 SETUP                             00000001
 SMP                               00000007
@@ -622,12 +805,6 @@ SSPEN                             00000005
 SSPIE                             00000003
 SSPIF                             00000003
 SSPM0                             00000000
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE 12
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 SSPM1                             00000001
 SSPM2                             00000002
 SSPM3                             00000003
@@ -659,8 +836,16 @@ T1SYNC                            00000002
 T2CKPS0                           00000000
 T2CKPS1                           00000001
 T2CON                             00000012
+TABLE                             000000D1
+TABLETWO                          000000E2
 TMR0                              00000001
 TMR0IE                            00000005
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 TMR0IF                            00000002
 TMR1                              0000000E
 TMR1CS                            00000001
@@ -681,12 +866,6 @@ TOUTPS3                           00000006
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE 13
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 TRISA2                            00000002
 TRISA3                            00000003
 TRISA4                            00000004
@@ -720,6 +899,12 @@ TUN2                              00000002
 TUN3                              00000003
 TUN4                              00000004
 TX8_9                             00000006
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 TX9                               00000006
 TX9D                              00000000
 TXD8                              00000000
@@ -740,12 +925,6 @@ VR2                               00000002
 VR3                               00000003
 VRCON                             00000097
 VREN                              00000007
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE 14
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 VROE                              00000006
 VRR                               00000005
 VRSS                              00000004
@@ -779,6 +958,12 @@ _BOREN_OFF                        00003CFF
 _BOREN_ON                         00003FFF
 _BOREN_SBODEN                     00003DFF
 _BOR_NSLEEP                       00003EFF
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 _BOR_OFF                          00003CFF
 _BOR_ON                           00003FFF
 _BOR_SBODEN                       00003DFF
@@ -799,12 +984,6 @@ _EXTRC_OSC_NOCLKOUT               00003FFE
 _FCMEN_OFF                        000037FF
 _FCMEN_ON                         00003FFF
 _FOSC_EC                          00003FFB
-MPASM 5.86                    FUNKYMUZAK.ASM   9-18-2024  11:44:01         PAGE 15
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 _FOSC_EXTRC_CLKOUT                00003FFF
 _FOSC_EXTRC_NOCLKOUT              00003FFE
 _FOSC_HS                          00003FFA
@@ -838,11 +1017,17 @@ _WRT_1FOURTH                      00003BFF
 _WRT_256                          00003DFF
 _WRT_HALF                         000039FF
 _WRT_OFF                          00003FFF
+MPASM 5.86            FUNKYFUNKYKEYBOARD.ASM   9-20-2024  13:44:28         PAGE 19
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 _XT_OSC                           00003FF9
 __16F883                          00000001
 
 Errors   :     0
 Warnings :     1 reported,     7 suppressed
-Messages :     1 reported,    14 suppressed
+Messages :     1 reported,    16 suppressed
 
 

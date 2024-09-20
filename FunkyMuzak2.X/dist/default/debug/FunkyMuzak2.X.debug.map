@@ -1,0 +1,104 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Fri Sep 20 13:27:14 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x000262
+                    dbgP0       code   0x000f00    program   0x0001fe
+.config_2007_BUILD/DEFAULT/DEBUG/FUNKYFUNKY.O       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/DEBUG/FUNKYFUNKY.O       code   0x002008    program   0x000002
+                    dbgD0      udata   0x000070       data   0x000001
+                    dbgD1      udata   0x0000f0       data   0x000001
+                    dbgD2      udata   0x000165       data   0x00000b
+                    dbgD3      udata   0x000170       data   0x000001
+                    dbgD4      udata   0x0001f0       data   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000134      
+                            0x000f00    0x000ffe      
+                            0x002007    0x002008      
+            565 out of 4359 program addresses used, program memory utilization is 12%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    AFOUR   0x0000aa    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   ATHREE   0x00008e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    BFOUR   0x0000ae    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                      BPM   0x0000df    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   BTHREE   0x000092    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    CFIVE   0x0000b2    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    CFOUR   0x000096    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   CTHREE   0x00007a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                CYCLETONE   0x0000d2    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    DELAY   0x0000c4    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    DFIVE   0x0000b6    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    DFOUR   0x00009a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   DTHREE   0x00007e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    EFOUR   0x00009e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   ETHREE   0x000082    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    FFOUR   0x0000a2    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   FTHREE   0x000086    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    GFOUR   0x0000a6    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   GTHREE   0x00008a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    INTER   0x000130    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   KEYPAD   0x000051    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    LOOP1   0x0000c8    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    LOOP2   0x0000c7    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    LOOP3   0x0000cf    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                     MAIN   0x00004e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    MARIO   0x0000f0    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                  ONETONE   0x0000b7    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    SETUP   0x000005    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                  SONGEND   0x000100    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    TABLE   0x000108    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                 TABLETWO   0x00011c    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    SETUP   0x000005    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                     MAIN   0x00004e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   KEYPAD   0x000051    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   CTHREE   0x00007a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   DTHREE   0x00007e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   ETHREE   0x000082    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   FTHREE   0x000086    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   GTHREE   0x00008a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   ATHREE   0x00008e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                   BTHREE   0x000092    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    CFOUR   0x000096    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    DFOUR   0x00009a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    EFOUR   0x00009e    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    FFOUR   0x0000a2    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    GFOUR   0x0000a6    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    AFOUR   0x0000aa    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    BFOUR   0x0000ae    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    CFIVE   0x0000b2    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    DFIVE   0x0000b6    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                  ONETONE   0x0000b7    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    DELAY   0x0000c4    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    LOOP2   0x0000c7    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    LOOP1   0x0000c8    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    LOOP3   0x0000cf    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                CYCLETONE   0x0000d2    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                      BPM   0x0000df    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    MARIO   0x0000f0    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                  SONGEND   0x000100    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    TABLE   0x000108    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                 TABLETWO   0x00011c    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+                    INTER   0x000130    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak2.X\FunkyFunky.asm
+
+

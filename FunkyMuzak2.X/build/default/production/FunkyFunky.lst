@@ -1,4 +1,4 @@
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  1
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[310]: Superseding current maximum RAM and RAM map.
                       00026 ;******************************************             
                       00027 ;Define Variable Registers
                       00028 ;******************************************
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  2
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -77,357 +77,432 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00040 ;******************************************
                       00041                 ORG H'000'                                      
 0000   2???           00042                 GOTO SETUP                                      ;RESET CONDITION GOTO SETUP
-                      00043 
-                      00044 ;******************************************
-                      00045 ;SETUP ROUTINE
+                      00043                 ORG H'004'
+0004   2???           00044                 GOTO INTER
+                      00045 
                       00046 ;******************************************
-0001                  00047 SETUP
-                      00048 ;*** SFR SETUP **********
-                      00049  
-                      00050                 
-                      00051 ;*** SET OPTION_REG: ****
-0001   1683 1303      00052                 BANKSEL OPTION_REG
-0003   30F4           00053                 MOVLW H'F4'                             ; INITIALIZE SET OF RBPU INTEDG T0SE 
-0004   0081           00054                 MOVWF OPTION_REG
-                      00055 ;*** SET INTCON REG: ****
-0005   1283 1303      00056                 BANKSEL INTCON
-0007   3040           00057                 MOVLW H'40'
-0008   008B           00058                 MOVWF INTCON                            ; INIT PEIE
-                      00059 ;*** SET PIE1 REG: *****
-0009   1683 1303      00060                 BANKSEL PIE1
-000B   3000           00061                 MOVLW H'00'                             ; INIT PIE1 CLEAR
-000C   008C           00062                 MOVWF PIE1
-                      00063 ;***** SET PIE2 REG: *****
-000D   1683 1303      00064                 BANKSEL PIE2
-000F   3000           00065                 MOVLW H'00'                             ; INIT OSFIE CLEAR OTHERS
-0010   008D           00066                 MOVWF PIE2
-                      00067 ;*** SET CCP1CON REG: **
-0011   1283 1303      00068                 BANKSEL CCP1CON
-0013   3000           00069                 MOVLW   H'000'                          ;DISABLE PWM & CCP
-0014   0097           00070                 MOVWF   CCP1CON
-0015   1283 1303      00071                 BANKSEL CCP2CON
-0017   019D           00072                 CLRF CCP2CON
-0018   1283 1703      00073                 BANKSEL CM2CON1
-001A   3000           00074                 MOVLW   H'000'
-001B   0089           00075                 MOVWF   CM2CON1
-                      00076 
-                      00077 ;*** TIMER 1 SETUP *****
-001C   1283 1303      00078                 BANKSEL T1CON
-001E   3000           00079                 MOVLW   H'000'                          ;
-001F   0090           00080                 MOVWF   T1CON                           ;DISABLE TIMER 1
-                      00081 
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  3
+                      00047 ;SETUP ROUTINE
+                      00048 ;******************************************
+0005                  00049 SETUP
+                      00050 ;*** SFR SETUP **********
+                      00051  
+                      00052                 
+                      00053 ;*** SET OPTION_REG: ****
+0005   1683 1303      00054                 BANKSEL OPTION_REG
+0007   30F4           00055                 MOVLW H'F4'                             ; INITIALIZE SET OF RBPU INTEDG T0SE 
+0008   0081           00056                 MOVWF OPTION_REG
+                      00057 ;*** SET INTCON REG: ****
+0009   1283 1303      00058                 BANKSEL INTCON
+000B   30C0           00059                 MOVLW H'C0'
+000C   008B           00060                 MOVWF INTCON                            ; INIT PEIE
+                      00061 ;*** SET PIE1 REG: *****
+000D   1683 1303      00062                 BANKSEL PIE1
+000F   3001           00063                 MOVLW H'01'                             ; INIT PIE1 CLEAR
+0010   008C           00064                 MOVWF PIE1
+                      00065 ;***** SET PIE2 REG: *****
+0011   1683 1303      00066                 BANKSEL PIE2
+0013   3000           00067                 MOVLW H'00'                             ; INIT OSFIE CLEAR OTHERS
+0014   008D           00068                 MOVWF PIE2
+                      00069 ;*** SET CCP1CON REG: **
+0015   1283 1303      00070                 BANKSEL CCP1CON
+0017   3000           00071                 MOVLW   H'000'                          ;DISABLE PWM & CCP
+0018   0097           00072                 MOVWF   CCP1CON
+0019   1283 1303      00073                 BANKSEL CCP2CON
+001B   019D           00074                 CLRF CCP2CON
+001C   1283 1703      00075                 BANKSEL CM2CON1
+001E   3000           00076                 MOVLW   H'000'
+001F   0089           00077                 MOVWF   CM2CON1
+                      00078 
+                      00079 ;*** TIMER 1 SETUP *****
+0020   1283 1303      00080                 BANKSEL T1CON
+0022   3000           00081                 MOVLW   H'000'                          ;
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00082 ;*** TIMER 2 SETUP *****
+0023   0090           00082                 MOVWF   T1CON                           ;DISABLE TIMER 1
                       00083 
-0020   1283 1303      00084                 BANKSEL T2CON
-0022   0192           00085                 CLRF    T2CON                           ;DISABLE TIMER 2, 1:1 POST SCALE, PRESCALER 1
-0023   3000           00086                 MOVLW   H'000'                          ;SET PR2 FOR FULL COUNT 
-0024   1683 1303      00087                 BANKSEL PR2                             ;
-0026   0092           00088                 MOVWF   PR2                             ;PR2 IS SETS OUTPUT OF PWM HIGH WHEN = TMR2
-                      00089  
-                      00090 ;*** PORT A SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
-                      00091 
-0027   1683 1303      00092                 BANKSEL ADCON1
-0029   139F           00093                 BCF     ADCON1,7
-002A   169F           00094                 BSF     ADCON1,5
-002B   171F           00095                 BSF     ADCON1,6
-002C   1283 1303      00096                 BANKSEL PORTA
-002E   0185           00097                 CLRF    PORTA                           ; CLEAR PORTA
-002F   1683 1303      00098                 BANKSEL TRISA
-0031   30FE           00099                 MOVLW   H'FE'                           ;SET PORT A INPUT EXEPT RA0
-0032   0085           00100                 MOVWF   TRISA
-                      00101                 
-                      00102 ;*** PORT B SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
-0033   1283 1303      00103                 BANKSEL PORTB
-0035   0186           00104                 CLRF    PORTB                           ; CLEAR PORTB 
-0036   1683 1303      00105                 BANKSEL TRISB
-0038   30FF           00106                 MOVLW   H'FF'                           ;SET PORT B AS INPUT
-0039   0086           00107                 MOVWF   TRISB
-003A   1683 1703      00108                 BANKSEL ANSELH
-003C   3000           00109                 MOVLW H'000'                            ; DISABLE ADC INPUTS BANK B
-003D   0089           00110                 MOVWF ANSELH                            
-003E   1683 1303      00111                 BANKSEL WPUB                            ; DISABLE ALL WEAK PULL UPS PORT B
-0040   3000           00112                 MOVLW   H'00'
-0041   0095           00113                 MOVWF   WPUB
-                      00114                 
-                      00115 
-                      00116 ;*** PORT C SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
-0042   1283 1303      00117                 BANKSEL PORTC
-0044   0187           00118                 CLRF    PORTC                           ; CLEAR PORTC
-0045   1683 1303      00119                 BANKSEL TRISC
-0047   3000           00120                 MOVLW   H'000'                          ;SET PORT C AS OUTPUT
-0048   0087           00121                 MOVWF   TRISC
-0049   2???           00122                 GOTO    MAIN                            ;END OF SETUP ROUTINE
-                      00123 
-                      00124 ;******************************************
-                      00125 ;Main Code
+                      00084 ;*** TIMER 2 SETUP *****
+                      00085 
+0024   1283 1303      00086                 BANKSEL T2CON
+0026   0192           00087                 CLRF    T2CON                           ;DISABLE TIMER 2, 1:1 POST SCALE, PRESCALER 1
+0027   3000           00088                 MOVLW   H'000'                          ;SET PR2 FOR FULL COUNT 
+0028   1683 1303      00089                 BANKSEL PR2                             ;
+002A   0092           00090                 MOVWF   PR2                             ;PR2 IS SETS OUTPUT OF PWM HIGH WHEN = TMR2
+                      00091  
+                      00092 ;*** PORT A SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
+                      00093 
+002B   1683 1303      00094                 BANKSEL ADCON1
+002D   139F           00095                 BCF     ADCON1,7
+002E   169F           00096                 BSF     ADCON1,5
+002F   171F           00097                 BSF     ADCON1,6
+0030   1283 1303      00098                 BANKSEL PORTA
+0032   0185           00099                 CLRF    PORTA                           ; CLEAR PORTA
+0033   1683 1303      00100                 BANKSEL TRISA
+0035   30FE           00101                 MOVLW   H'FE'                           ;SET PORT A INPUT EXEPT RA0
+0036   0085           00102                 MOVWF   TRISA
+                      00103                 
+                      00104 ;*** PORT B SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
+0037   1283 1303      00105                 BANKSEL PORTB
+0039   0186           00106                 CLRF    PORTB                           ; CLEAR PORTB 
+003A   1683 1303      00107                 BANKSEL TRISB
+003C   30FF           00108                 MOVLW   H'FF'                           ;SET PORT B AS INPUT
+003D   0086           00109                 MOVWF   TRISB
+003E   1683 1703      00110                 BANKSEL ANSELH
+0040   3000           00111                 MOVLW H'000'                            ; DISABLE ADC INPUTS BANK B
+0041   0089           00112                 MOVWF ANSELH                            
+0042   1683 1303      00113                 BANKSEL WPUB                            ; DISABLE ALL WEAK PULL UPS PORT B
+0044   3000           00114                 MOVLW   H'00'
+0045   0095           00115                 MOVWF   WPUB
+                      00116                 
+                      00117 
+                      00118 ;*** PORT C SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
+0046   1283 1303      00119                 BANKSEL PORTC
+0048   0187           00120                 CLRF    PORTC                           ; CLEAR PORTC
+0049   1683 1303      00121                 BANKSEL TRISC
+004B   3000           00122                 MOVLW   H'000'                          ;SET PORT C AS OUTPUT
+004C   0087           00123                 MOVWF   TRISC
+004D   2???           00124                 GOTO    MAIN                            ;END OF SETUP ROUTINE
+                      00125 
                       00126 ;******************************************
-004A                  00127 MAIN    
-004A   1283 1303      00128         BANKSEL PORTC 
-004C   0187           00129             CLRF PORTC
-                      00130             
-004D                  00131 KEYPAD
-004D   1607           00132                 BSF PORTC, 4
-004E   1A06           00133                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF FIRST ROW
-004F   2???           00134                 GOTO CTHREE
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  4
+                      00127 ;Main Code
+                      00128 ;******************************************
+004E                  00129 MAIN    
+004E   1283 1303      00130         BANKSEL PORTC 
+0050   0187           00131             CLRF PORTC
+                      00132             
+0051                  00133 KEYPAD
+0051   1607           00134                 BSF PORTC, 4
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0050   1A86           00135                 BTFSC PORTB,RB5
-0051   2???           00136                 GOTO DTHREE
-0052   1B06           00137                 BTFSC PORTB,RB6
-0053   2???           00138                 GOTO ETHREE
-0054   1B86           00139                 BTFSC PORTB,RB7
-0055   2???           00140                 GOTO FTHREE                               ; FINISH CHECK OF M ASSOCIATED BITS
-0056   1207           00141                 BCF PORTC, 4
-                      00142                 ;GOTO KEYPAD; CLEAR RB0 AS A HIGH
-                      00143                 
-                      00144                 
-0057   1687           00145                 BSF PORTC, 5                         ; SET RB1 TO A OUTPUT HIGH
-0058   1A06           00146                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF SECOND ROW
-0059   2???           00147                 GOTO GTHREE
-005A   1A86           00148                 BTFSC PORTB,RB5
-005B   2???           00149                 GOTO ATHREE
-005C   1B06           00150                 BTFSC PORTB,RB6
-005D   2???           00151                 GOTO BTHREE
-005E   1B86           00152                 BTFSC PORTB,RB7
-005F   2???           00153                 GOTO CFOUR                               ; FINISH CHECK OF L ASSOCIATED BITS   
-0060   1287           00154                 BCF PORTC, 5
-                      00155                 
-0061   1707           00156                 BSF PORTC, 6                       ; SET RB2 AS AN OUTPUT HIGH
-0062   1A06           00157                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR KEYPRESS OF THIRD ROW
-0063   2???           00158                 GOTO DFOUR
-0064   1A86           00159                 BTFSC PORTB,RB5
-0065   2???           00160                 GOTO EFOUR
-0066   1B06           00161                 BTFSC PORTB,RB6
-0067   2???           00162                 GOTO FFOUR
-0068   1B86           00163                 BTFSC PORTB,RB7
-0069   2???           00164                 GOTO GFOUR                              ; FINISH CHECK OF K ASSOCIATED BITS
-006A   1307           00165                 BCF PORTC, 6                    ; CLEAR RB2 OF OUTPUT HIGH
-                      00166                 
-                      00167                 
+0052   1A06           00135                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF FIRST ROW
+0053   2???           00136                 GOTO CTHREE
+0054   1A86           00137                 BTFSC PORTB,RB5
+0055   2???           00138                 GOTO DTHREE
+0056   1B06           00139                 BTFSC PORTB,RB6
+0057   2???           00140                 GOTO ETHREE
+0058   1B86           00141                 BTFSC PORTB,RB7
+0059   2???           00142                 GOTO FTHREE                               ; FINISH CHECK OF M ASSOCIATED BITS
+005A   1207           00143                 BCF PORTC, 4
+                      00144                 ;GOTO KEYPAD; CLEAR RB0 AS A HIGH
+                      00145                 
+                      00146                 
+005B   1687           00147                 BSF PORTC, 5                         ; SET RB1 TO A OUTPUT HIGH
+005C   1A06           00148                 BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF SECOND ROW
+005D   2???           00149                 GOTO GTHREE
+005E   1A86           00150                 BTFSC PORTB,RB5
+005F   2???           00151                 GOTO ATHREE
+0060   1B06           00152                 BTFSC PORTB,RB6
+0061   2???           00153                 GOTO BTHREE
+0062   1B86           00154                 BTFSC PORTB,RB7
+0063   2???           00155                 GOTO CFOUR                               ; FINISH CHECK OF L ASSOCIATED BITS   
+0064   1287           00156                 BCF PORTC, 5
+                      00157                 
+0065   1707           00158                 BSF PORTC, 6                       ; SET RB2 AS AN OUTPUT HIGH
+0066   1A06           00159                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR KEYPRESS OF THIRD ROW
+0067   2???           00160                 GOTO DFOUR
+0068   1A86           00161                 BTFSC PORTB,RB5
+0069   2???           00162                 GOTO EFOUR
+006A   1B06           00163                 BTFSC PORTB,RB6
+006B   2???           00164                 GOTO FFOUR
+006C   1B86           00165                 BTFSC PORTB,RB7
+006D   2???           00166                 GOTO GFOUR                              ; FINISH CHECK OF K ASSOCIATED BITS
+006E   1307           00167                 BCF PORTC, 6                    ; CLEAR RB2 OF OUTPUT HIGH
                       00168                 
-006B   1787           00169                 BSF PORTC, 7
-006C   1A06           00170                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR A KEYPRESS OF THIRD ROW
-006D   2???           00171                 GOTO AFOUR      
-006E   1A86           00172                 BTFSC PORTB,RB5
-006F   2???           00173                 GOTO BFOUR
-0070   1B06           00174                 BTFSC PORTB,RB6
-0071   2???           00175                 GOTO CFIVE
-0072   1B86           00176                 BTFSC PORTB,RB7
-0073   2???           00177                 GOTO DFIVE                            ; FINISH CHECK OF J ASSOCIATED BITS
-0074   1387           00178                 BCF PORTC, 7
-0075   2???           00179                 GOTO KEYPAD
-                      00180                 
-0076                  00181 CTHREE
-0076   01A1           00182                 CLRF H'21'
-0077   3000           00183                 MOVLW H'00'
-0078   00A1           00184                 MOVWF H'21'
-0079   2???           00185                 CALL ONETONE
-                      00186                 
-007A                  00187 DTHREE
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  5
+                      00169                 
+                      00170                 
+006F   1787           00171                 BSF PORTC, 7
+0070   1A06           00172                 BTFSC PORTB,RB4                         ; CHECK INPUTS FOR A KEYPRESS OF THIRD ROW
+0071   2???           00173                 GOTO AFOUR      
+0072   1A86           00174                 BTFSC PORTB,RB5
+0073   2???           00175                 GOTO BFOUR
+0074   1B06           00176                 BTFSC PORTB,RB6
+0075   2???           00177                 GOTO CFIVE
+0076   1B86           00178                 BTFSC PORTB,RB7
+0077   2???           00179                 GOTO DFIVE                            ; FINISH CHECK OF J ASSOCIATED BITS
+0078   1387           00180                 BCF PORTC, 7
+0079   2???           00181                 GOTO KEYPAD
+                      00182                 
+007A                  00183 CTHREE
+007A   01A1           00184                 CLRF H'21'
+007B   3000           00185                 MOVLW H'00'
+007C   00A1           00186                 MOVWF H'21'
+007D   2???           00187                 GOTO ONETONE
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-007A   01A1           00188                 CLRF H'21'
-007B   3001           00189                 MOVLW H'01'
-007C   00A1           00190                 MOVWF H'21'
-007D   2???           00191                 CALL ONETONE
-                      00192                 
-007E                  00193 ETHREE
-007E   01A1           00194                 CLRF H'21'
-007F   3002           00195                 MOVLW H'02'
-0080   00A1           00196                 MOVWF H'21'
-0081   2???           00197                 CALL ONETONE
-                      00198 
-0082                  00199 FTHREE
-0082   01A1           00200                 CLRF H'21'
-0083   3003           00201                 MOVLW H'03'
-0084   00A1           00202                 MOVWF H'21'
-0085   2???           00203                 CALL ONETONE
-                      00204                 
-0086                  00205 GTHREE
-0086   01A1           00206                 CLRF H'21'
-0087   3004           00207                 MOVLW H'04'
-0088   00A1           00208                 MOVWF H'21'
-0089   2???           00209                 CALL ONETONE
-                      00210 
-008A                  00211 ATHREE
-008A   01A1           00212                 CLRF H'21'
-008B   3005           00213                 MOVLW H'05'
-008C   00A1           00214                 MOVWF H'21'
-008D   2???           00215                 CALL ONETONE
-                      00216                 
-008E                  00217 BTHREE
-008E   01A1           00218                 CLRF H'21'
-008F   3006           00219                 MOVLW H'06'
-0090   00A1           00220                 MOVWF H'21'
-0091   2???           00221                 CALL ONETONE    
-                      00222                 
-0092                  00223 CFOUR
-0092   01A1           00224                 CLRF H'21'
-0093   3007           00225                 MOVLW H'07'
-0094   00A1           00226                 MOVWF H'21'
-0095   2???           00227                 CALL ONETONE     
-                      00228                 
-0096                  00229 DFOUR
-0096   01A1           00230                 CLRF H'21'
-0097   3008           00231                 MOVLW H'08'
-0098   00A1           00232                 MOVWF H'21'
-0099   2???           00233                 CALL ONETONE
-                      00234                 
-009A                  00235 EFOUR
-009A   01A1           00236                 CLRF H'21'
-009B   3009           00237                 MOVLW H'09'
-009C   00A1           00238                 MOVWF H'21'
-009D   2???           00239                 CALL ONETONE
-                      00240                 
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  6
+                      00188                 
+007E                  00189 DTHREE
+007E   01A1           00190                 CLRF H'21'
+007F   3001           00191                 MOVLW H'01'
+0080   00A1           00192                 MOVWF H'21'
+0081   2???           00193                 GOTO ONETONE
+                      00194                 
+0082                  00195 ETHREE
+0082   01A1           00196                 CLRF H'21'
+0083   3002           00197                 MOVLW H'02'
+0084   00A1           00198                 MOVWF H'21'
+0085   2???           00199                 GOTO ONETONE
+                      00200 
+0086                  00201 FTHREE
+0086   01A1           00202                 CLRF H'21'
+0087   3003           00203                 MOVLW H'03'
+0088   00A1           00204                 MOVWF H'21'
+0089   2???           00205                 GOTO ONETONE
+                      00206                 
+008A                  00207 GTHREE
+008A   01A1           00208                 CLRF H'21'
+008B   3004           00209                 MOVLW H'04'
+008C   00A1           00210                 MOVWF H'21'
+008D   2???           00211                 GOTO ONETONE
+                      00212 
+008E                  00213 ATHREE
+008E   01A1           00214                 CLRF H'21'
+008F   3005           00215                 MOVLW H'05'
+0090   00A1           00216                 MOVWF H'21'
+0091   2???           00217                 GOTO ONETONE
+                      00218                 
+0092                  00219 BTHREE
+0092   01A1           00220                 CLRF H'21'
+0093   3006           00221                 MOVLW H'06'
+0094   00A1           00222                 MOVWF H'21'
+0095   2???           00223                 GOTO ONETONE    
+                      00224                 
+0096                  00225 CFOUR
+0096   01A1           00226                 CLRF H'21'
+0097   3007           00227                 MOVLW H'07'
+0098   00A1           00228                 MOVWF H'21'
+0099   2???           00229                 GOTO ONETONE     
+                      00230                 
+009A                  00231 DFOUR
+009A   01A1           00232                 CLRF H'21'
+009B   3008           00233                 MOVLW H'08'
+009C   00A1           00234                 MOVWF H'21'
+009D   2???           00235                 GOTO ONETONE
+                      00236                 
+009E                  00237 EFOUR
+009E   01A1           00238                 CLRF H'21'
+009F   3009           00239                 MOVLW H'09'
+00A0   00A1           00240                 MOVWF H'21'
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-009E                  00241 FFOUR
-009E   01A1           00242                 CLRF H'21'
-009F   300A           00243                 MOVLW H'0A'
-00A0   00A1           00244                 MOVWF H'21'
-00A1   2???           00245                 CALL ONETONE
-                      00246                 
-00A2                  00247 GFOUR
-00A2   01A1           00248                 CLRF H'21'
-00A3   300B           00249                 MOVLW H'0B'
-00A4   00A1           00250                 MOVWF H'21'
-00A5   2???           00251                 CALL ONETONE
-                      00252                 
-00A6                  00253 AFOUR
-00A6   01A1           00254                 CLRF H'21'
-00A7   300C           00255                 MOVLW H'0C'
-00A8   00A1           00256                 MOVWF H'21'
-00A9   2???           00257                 CALL ONETONE
-                      00258                 
-00AA                  00259 BFOUR
-00AA   01A1           00260                 CLRF H'21'
-00AB   300D           00261                 MOVLW H'0D'
-00AC   00A1           00262                 MOVWF H'21'
-00AD   2???           00263                 CALL ONETONE
-                      00264                 
-00AE                  00265 CFIVE
-00AE   01A1           00266                 CLRF H'21'
-00AF   300E           00267                 MOVLW H'0E'
-00B0   00A1           00268                 MOVWF H'21'
-00B1   2???           00269                 CALL ONETONE
-                      00270                 
-00B2                  00271 DFIVE
-00B2   01A1           00272                 CLRF H'21'
-00B3   300F           00273                 MOVLW H'0F'
-00B4   00A1           00274                 MOVWF H'21'
-00B5   2???           00275                 CALL ONETONE
-                      00276             
-00B6                  00277 ONETONE
-00B6   3001           00278             MOVLW H'01'
-00B7   0087           00279             MOVWF PORTC
-00B8   2???           00280             CALL DELAY    
-00B9   3001           00281             MOVLW H'01'
-00BA   0606           00282             XORWF PORTB,0
-00BB   0087           00283             MOVWF PORTC
-00BC   0085           00284             MOVWF PORTA
-00BD   2???           00285             CALL DELAY    
-00BE   3001           00286             MOVLW H'01'
-00BF   0606           00287             XORWF PORTB,0
-00C0   0087           00288             MOVWF PORTC
-00C1   0085           00289             MOVWF PORTA
-00C2   2???           00290             GOTO KEYPAD     
-                      00291             
-                      00292            
-00C3                  00293 DELAY
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  7
+00A1   2???           00241                 GOTO ONETONE
+                      00242                 
+00A2                  00243 FFOUR
+00A2   01A1           00244                 CLRF H'21'
+00A3   300A           00245                 MOVLW H'0A'
+00A4   00A1           00246                 MOVWF H'21'
+00A5   2???           00247                 GOTO ONETONE
+                      00248                 
+00A6                  00249 GFOUR
+00A6   01A1           00250                 CLRF H'21'
+00A7   300B           00251                 MOVLW H'0B'
+00A8   00A1           00252                 MOVWF H'21'
+00A9   2???           00253                 GOTO ONETONE
+                      00254                 
+00AA                  00255 AFOUR
+00AA   01A1           00256                 CLRF H'21'
+00AB   300C           00257                 MOVLW H'0C'
+00AC   00A1           00258                 MOVWF H'21'
+00AD   2???           00259                 GOTO ONETONE
+                      00260                 
+00AE                  00261 BFOUR
+00AE   01A1           00262                 CLRF H'21'
+00AF   300D           00263                 MOVLW H'0D'
+00B0   00A1           00264                 MOVWF H'21'
+00B1   2???           00265                 GOTO ONETONE
+                      00266                 
+00B2                  00267 CFIVE
+00B2   01A1           00268                 CLRF H'21'
+00B3   300E           00269                 MOVLW H'0E'
+00B4   00A1           00270                 MOVWF H'21'
+00B5   2???           00271                 GOTO ONETONE
+                      00272                 
+00B6                  00273 DFIVE
+00B6   2???           00274                 GOTO BPM
+                      00275                 
+                      00276                 
+                      00277             
+00B7                  00278 ONETONE
+00B7   3001           00279             MOVLW H'01'
+00B8   0087           00280             MOVWF PORTC
+00B9   2???           00281             CALL DELAY    
+00BA   3001           00282             MOVLW H'01'
+00BB   0606           00283             XORWF PORTB,0
+00BC   0087           00284             MOVWF PORTC
+00BD   0085           00285             MOVWF PORTA
+00BE   2???           00286             CALL DELAY    
+00BF   3001           00287             MOVLW H'01'
+00C0   0606           00288             XORWF PORTB,0
+00C1   0087           00289             MOVWF PORTC
+00C2   0085           00290             MOVWF PORTA
+00C3   2???           00291             GOTO KEYPAD     
+                      00292             
+                      00293            
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00C3   0821           00294             MOVF H'21',0
-00C4   2???           00295             CALL TABLE
-00C5   0091           00296             MOVWF TMR2
-00C6                  00297 LOOP2
-00C6   0181           00298             CLRF TMR0
-00C7                  00299 LOOP1
-00C7   0B81           00300             DECFSZ TMR0
-00C8   2???           00301             GOTO LOOP1
-00C9   0B91           00302             DECFSZ TMR2
-00CA   2???           00303             GOTO LOOP2
-00CB   0821           00304             MOVF H'21',0
-00CC   2???           00305             CALL TABLETWO
-00CD   0081           00306             MOVWF TMR0
-00CE                  00307 LOOP3
-00CE   0B81           00308             DECFSZ TMR0
-00CF   2???           00309             GOTO LOOP3
-00D0   0008           00310             RETURN
-                      00311             
-                      00312            
-00D1                  00313 TABLE
-00D1   0782           00314             ADDWF PCL,1
-00D2   3404           00315             RETLW H'04' ;C3
-00D3   3404           00316             RETLW H'04' ;D3
-00D4   3403           00317             RETLW H'03' ;E3
-00D5   3403           00318             RETLW H'03' ;F3
-00D6   3403           00319             RETLW H'03' ;G3
-00D7   3402           00320             RETLW H'02' ;A3
-00D8   3402           00321             RETLW H'02' ;B3
-00D9   3402           00322             RETLW H'02' ;C4
-00DA   3402           00323             RETLW H'02' ;D4
-00DB   3401           00324             RETLW H'01' ;E4
-00DC   3401           00325             RETLW H'01' ;F4
-00DD   3401           00326             RETLW H'01' ;G4
-00DE   3401           00327             RETLW H'01' ;A4
-00DF   3401           00328             RETLW H'01' ;B4
-00E0   3401           00329             RETLW H'01' ;C5
-00E1   3401           00330             RETLW H'01' ;D5
-                      00331             
-00E2                  00332 TABLETWO
-00E2   0782           00333             ADDWF PCL,1
-00E3   34F9           00334             RETLW H'F9' ;C3 0
-00E4   3463           00335             RETLW H'63' ;D3 1
-00E5   34F1           00336             RETLW H'F1' ;E3 2
-00E6   34AC           00337             RETLW H'AC' ;F3 3
-00E7   3443           00338             RETLW H'43' ;G3 4
-00E8   34E8           00339             RETLW H'E8' ;A3 5
-00E9   3496           00340             RETLW H'96' ;B3 6
-00EA   346D           00341             RETLW H'6D' ;C4 7
-00EB   3429           00342             RETLW H'29' ;D4 8
-00EC   34EC           00343             RETLW H'EC' ;E4 9
-00ED   34CF           00344             RETLW H'CF' ;F4 A
-00EE   349A           00345             RETLW H'9A' ;G4 B
-00EF   346B           00346             RETLW H'6B' ;A4 C
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  8
+00C4                  00294 DELAY
+00C4   0821           00295             MOVF H'21',0
+00C5   2???           00296             CALL TABLE
+00C6   0091           00297             MOVWF TMR2
+00C7                  00298 LOOP2
+00C7   0181           00299             CLRF TMR0
+00C8                  00300 LOOP1
+00C8   0B81           00301             DECFSZ TMR0
+00C9   2???           00302             GOTO LOOP1
+00CA   0B91           00303             DECFSZ TMR2
+00CB   2???           00304             GOTO LOOP2
+00CC   0821           00305             MOVF H'21',0
+00CD   2???           00306             CALL TABLETWO
+00CE   0081           00307             MOVWF TMR0
+00CF                  00308 LOOP3
+00CF   0B81           00309             DECFSZ TMR0
+00D0   2???           00310             GOTO LOOP3
+00D1   0008           00311             RETURN
+                      00312             
+                      00313             
+00D2                  00314 CYCLETONE
+00D2   3001           00315             MOVLW H'01'
+00D3   0087           00316             MOVWF PORTC
+00D4   2???           00317             CALL DELAY    
+00D5   3001           00318             MOVLW H'01'
+00D6   0606           00319             XORWF PORTB,0
+00D7   0087           00320             MOVWF PORTC
+00D8   0085           00321             MOVWF PORTA
+00D9   2???           00322             CALL DELAY    
+00DA   3001           00323             MOVLW H'01'
+00DB   0606           00324             XORWF PORTB,0
+00DC   0087           00325             MOVWF PORTC
+00DD   0085           00326             MOVWF PORTA
+00DE   2???           00327             GOTO CYCLETONE        
+                      00328             
+                      00329             
+                      00330             
+00DF                  00331 BPM
+00DF   1283 1303      00332         BANKSEL TMR1L
+00E1   30D8           00333             MOVLW H'D8'
+00E2   008E           00334             MOVWF TMR1L
+00E3   1283 1303      00335         BANKSEL TMR1H
+00E5   300B           00336             MOVLW H'0B'
+00E6   008F           00337             MOVWF TMR1H
+00E7   1283 1303      00338         BANKSEL T1CON
+00E9   3035           00339             MOVLW H'35' 
+00EA   0090           00340             MOVWF T1CON
+00EB   1283 1303      00341             BANKSEL PORTA
+00ED   3004           00342             MOVLW H'04'
+00EE   00A2           00343             MOVWF H'22'
+00EF   2???           00344             GOTO MARIO
+                      00345             
+                      00346             
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00F0   3442           00347             RETLW H'42' ;B4 D 
-00F1   342E           00348             RETLW H'2E' ;C5 E
-00F2   340B           00349             RETLW H'0B' ;D5 F
-                      00350             
-                      00351             
-                      00352             
-                      00353             
-                      00354             
+00F0                  00347 MARIO
+00F0   1283 1303      00348         BANKSEL TMR1L
+00F2   30D8           00349             MOVLW H'D8'
+00F3   008E           00350             MOVWF TMR1L
+00F4   1283 1303      00351             BANKSEL TMR1H
+00F6   300B           00352             MOVLW H'0B'
+00F7   008F           00353             MOVWF TMR1H
+00F8   1283 1303      00354         BANKSEL PORTA
+00FA   0AA1           00355             INCF H'21',1
+00FB   0822           00356             MOVF H'22',0
+00FC   05A1           00357             ANDWF H'21',1
+00FD   19A1           00358             BTFSC H'21',3
+00FE   2???           00359             GOTO SONGEND
+00FF   2???           00360             GOTO ONETONE
+                      00361             
+0100                  00362 SONGEND
+0100   1283 1303      00363             BANKSEL T1CON
+0102   3000           00364                 MOVLW   H'000'                          ;
+0103   0090           00365                 MOVWF   T1CON
+0104   1283 1303      00366             BANKSEL PIR1
+0106   100C           00367                 BCF PIR1,0
+0107   0009           00368                  RETFIE
+                      00369             
+                      00370             
+                      00371            
+0108                  00372 TABLE
+0108   0782           00373             ADDWF PCL,1
+0109   3404           00374             RETLW H'04' ;C3
+010A   3404           00375             RETLW H'04' ;D3
+010B   3403           00376             RETLW H'03' ;E3
+010C   3403           00377             RETLW H'03' ;F3
+010D   3403           00378             RETLW H'03' ;G3
+010E   3402           00379             RETLW H'02' ;A3
+010F   3402           00380             RETLW H'02' ;B3
+0110   3402           00381             RETLW H'02' ;C4
+0111   3402           00382             RETLW H'02' ;D4
+0112   3401           00383             RETLW H'01' ;E4
+0113   3401           00384             RETLW H'01' ;F4
+0114   3401           00385             RETLW H'01' ;G4
+0115   3401           00386             RETLW H'01' ;A4
+0116   3401           00387             RETLW H'01' ;B4
+0117   3401           00388             RETLW H'01' ;C5
+0118   3401           00389             RETLW H'01' ;D5
+0119   3401           00390             RETLW H'01' ;E5
+011A   3401           00391             RETLW H'01' ;F5
+011B   3401           00392             RETLW H'01' ;G5
+                      00393             
+011C                  00394 TABLETWO
+011C   0782           00395             ADDWF PCL,1
+011D   34F9           00396             RETLW H'F9' ;C3 0
+011E   3463           00397             RETLW H'63' ;D3 1
+011F   34F1           00398             RETLW H'F1' ;E3 2
+0120   34AC           00399             RETLW H'AC' ;F3 3
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0121   3443           00400             RETLW H'43' ;G3 4
+0122   34E8           00401             RETLW H'E8' ;A3 5
+0123   3496           00402             RETLW H'96' ;B3 6
+0124   346D           00403             RETLW H'6D' ;C4 7
+0125   3429           00404             RETLW H'29' ;D4 8
+0126   34EC           00405             RETLW H'EC' ;E4 9
+0127   34CF           00406             RETLW H'CF' ;F4 A
+0128   349A           00407             RETLW H'9A' ;G4 B
+0129   346B           00408             RETLW H'6B' ;A4 C
+012A   3442           00409             RETLW H'42' ;B4 D 
+012B   342E           00410             RETLW H'2E' ;C5 E
+012C   340B           00411             RETLW H'0B' ;D5 F
+012D   3400           00412             RETLW H'00' ;E5
+012E   3400           00413             RETLW H'00' ;F5
+012F   3400           00414             RETLW H'00' ;G5
+                      00415             
+                      00416             
+0130                  00417 INTER
+0130   1283 1303      00418         BANKSEL PIR1
+0132   180C           00419             BTFSC PIR1,0
+0133   2???           00420             GOTO MARIO
+0134   2???           00421             GOTO KEYPAD
+                      00422             
+                      00423             
 Warning[205]: Found directive in column 1. (END)
-20D1 3FFF             00355 END
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE  9
+20D1 3FFF             00424 END
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 10
 
 
 SYMBOL TABLE
@@ -449,7 +524,7 @@ ADIF                              00000006
 ADON                              00000000
 ADRESH                            0000001E
 ADRESL                            0000009E
-AFOUR                             000000A6
+AFOUR                             000000AA
 ANS0                              00000000
 ANS1                              00000001
 ANS10                             00000002
@@ -463,13 +538,14 @@ ANS8                              00000000
 ANS9                              00000001
 ANSEL                             00000188
 ANSELH                            00000189
-ATHREE                            0000008A
+ATHREE                            0000008E
 BAUD                              D'100'
 BAUDCTL                           00000187
 BCLIE                             00000003
 BCLIF                             00000003
 BF                                00000000
-BFOUR                             000000AA
+BFOUR                             000000AE
+BPM                               000000DF
 BRG0                              00000000
 BRG1                              00000001
 BRG10                             00000002
@@ -485,16 +561,16 @@ BRG4                              00000004
 BRG5                              00000005
 BRG6                              00000006
 BRG7                              00000007
-BRG8                              00000000
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 10
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 11
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+BRG8                              00000000
 BRG9                              00000001
 BRGH                              00000002
-BTHREE                            0000008E
+BTHREE                            00000092
 C                                 00000000
 C1CH0                             00000000
 C1CH1                             00000001
@@ -543,14 +619,14 @@ CCPR1L                            00000015
 CCPR2                             0000001B
 CCPR2H                            0000001C
 CCPR2L                            0000001B
-CFIVE                             000000AE
-CFOUR                             00000092
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 11
+CFIVE                             000000B2
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 12
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+CFOUR                             00000096
 CHS0                              00000002
 CHS1                              00000003
 CHS2                              00000004
@@ -567,7 +643,8 @@ COUNT4                            00000023
 COUNT5                            00000024
 CREN                              00000004
 CSRC                              00000007
-CTHREE                            00000076
+CTHREE                            0000007A
+CYCLETONE                         000000D2
 D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
@@ -575,10 +652,10 @@ DC1B0                             00000004
 DC1B1                             00000005
 DC2B0                             00000004
 DC2B1                             00000005
-DELAY                             000000C3
-DFIVE                             000000B2
-DFOUR                             00000096
-DTHREE                            0000007A
+DELAY                             000000C4
+DFIVE                             000000B6
+DFOUR                             0000009A
+DTHREE                            0000007E
 D_A                               00000005
 D_NOT_A                           00000005
 ECCPAS                            0000009C
@@ -596,28 +673,28 @@ EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
 EEPGD                             00000007
-EFOUR                             0000009A
-ETHREE                            0000007E
+EFOUR                             0000009E
+ETHREE                            00000082
 F                                 00000001
 FERR                              00000002
-FFOUR                             0000009E
+FFOUR                             000000A2
 FOSC                              D'16000'
-FSR                               00000004
-FTHREE                            00000082
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 12
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 13
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+FSR                               00000004
+FTHREE                            00000086
 FVREN                             00000000
 GCEN                              00000007
-GFOUR                             000000A2
+GFOUR                             000000A6
 GIE                               00000007
 GO                                00000001
 GO_DONE                           00000001
 GO_NOT_DONE                       00000001
-GTHREE                            00000086
+GTHREE                            0000008A
 HTS                               00000002
 I2C_DATA                          00000005
 I2C_READ                          00000002
@@ -627,6 +704,7 @@ INDF                              00000000
 INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
+INTER                             00000130
 INTF                              00000001
 IOCB                              00000096
 IOCB0                             00000000
@@ -641,13 +719,14 @@ IRCF0                             00000004
 IRCF1                             00000005
 IRCF2                             00000006
 IRP                               00000007
-KEYPAD                            0000004D
+KEYPAD                            00000051
 LEG_1                             00000026
-LOOP1                             000000C7
-LOOP2                             000000C6
-LOOP3                             000000CE
+LOOP1                             000000C8
+LOOP2                             000000C7
+LOOP3                             000000CF
 LTS                               00000001
-MAIN                              0000004A
+MAIN                              0000004E
+MARIO                             000000F0
 MC1OUT                            00000007
 MC2OUT                            00000006
 MSK                               00000093
@@ -659,16 +738,16 @@ MSK4                              00000004
 MSK5                              00000005
 MSK6                              00000006
 MSK7                              00000007
-NOT_A                             00000005
-NOT_ADDRESS                       00000005
-NOT_BO                            00000000
-NOT_BOR                           00000000
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 13
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 14
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
 NOT_DONE                          00000001
 NOT_PD                            00000003
 NOT_POR                           00000001
@@ -680,7 +759,7 @@ NOT_TX8                           00000006
 NOT_W                             00000002
 NOT_WRITE                         00000002
 OERR                              00000001
-ONETONE                           000000B6
+ONETONE                           000000B7
 OPTION_REG                        00000081
 OSCCON                            0000008F
 OSCTUNE                           00000090
@@ -718,16 +797,16 @@ PS2                               00000002
 PSA                               00000003
 PSSAC0                            00000002
 PSSAC1                            00000003
-PSSBD0                            00000000
-PSSBD1                            00000001
-PSTRCON                           0000009D
-PULSR                             00000002
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 14
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 15
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTRCON                           0000009D
+PULSR                             00000002
 PULSS                             00000003
 PWM1CON                           0000009B
 R                                 00000002
@@ -777,19 +856,20 @@ RX9D                              00000000
 R_NOT_W                           00000002
 R_W                               00000002
 S                                 00000003
-SBOREN                            00000004
-SCKP                              00000004
-SCS                               00000000
-SEN                               00000000
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 15
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 16
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SBOREN                            00000004
+SCKP                              00000004
+SCS                               00000000
+SEN                               00000000
 SENDB                             00000003
-SETUP                             00000001
+SETUP                             00000005
 SMP                               00000007
+SONGEND                           00000100
 SPBRG                             00000099
 SPBRGH                            0000009A
 SPEN                              00000007
@@ -835,17 +915,17 @@ T1OSCEN                           00000003
 T1SYNC                            00000002
 T2CKPS0                           00000000
 T2CKPS1                           00000001
-T2CON                             00000012
-TABLE                             000000D1
-TABLETWO                          000000E2
-TMR0                              00000001
-TMR0IE                            00000005
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 16
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 17
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+T2CON                             00000012
+TABLE                             00000108
+TABLETWO                          0000011C
+TMR0                              00000001
+TMR0IE                            00000005
 TMR0IF                            00000002
 TMR1                              0000000E
 TMR1CS                            00000001
@@ -894,17 +974,17 @@ TRISE                             00000089
 TRISE3                            00000003
 TRMT                              00000001
 TUN0                              00000000
-TUN1                              00000001
-TUN2                              00000002
-TUN3                              00000003
-TUN4                              00000004
-TX8_9                             00000006
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 17
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 18
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX8_9                             00000006
 TX9                               00000006
 TX9D                              00000000
 TXD8                              00000000
@@ -953,17 +1033,17 @@ _BOR21V                           00003EFF
 _BOR40V                           00003FFF
 _BOR4V_BOR21V                     00003EFF
 _BOR4V_BOR40V                     00003FFF
-_BOREN_NSLEEP                     00003EFF
-_BOREN_OFF                        00003CFF
-_BOREN_ON                         00003FFF
-_BOREN_SBODEN                     00003DFF
-_BOR_NSLEEP                       00003EFF
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 18
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 19
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_BOREN_NSLEEP                     00003EFF
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
+_BOREN_SBODEN                     00003DFF
+_BOR_NSLEEP                       00003EFF
 _BOR_OFF                          00003CFF
 _BOR_ON                           00003FFF
 _BOR_SBODEN                       00003DFF
@@ -1012,17 +1092,17 @@ _PWRTE_ON                         00003FEF
 _WDTE_OFF                         00003FF7
 _WDTE_ON                          00003FFF
 _WDT_OFF                          00003FF7
-_WDT_ON                           00003FFF
-_WRT_1FOURTH                      00003BFF
-_WRT_256                          00003DFF
-_WRT_HALF                         000039FF
-_WRT_OFF                          00003FFF
-MPASM 5.86                    FUNKYFUNKY.ASM   9-19-2024  14:34:55         PAGE 19
+MPASM 5.86                    FUNKYFUNKY.ASM   9-20-2024  13:24:49         PAGE 20
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
 _XT_OSC                           00003FF9
 __16F883                          00000001
 
