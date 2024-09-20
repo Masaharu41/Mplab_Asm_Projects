@@ -1,0 +1,55 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu Sep 12 17:31:46 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00011c
+                   .cinit    romdata   0x00008e    program   0x000004
+.config_2007_BUILD/DEFAULT/PRODUCTION/873ABAS       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/873ABAS       code   0x002008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00008f      
+                            0x002007    0x002008      
+            146 out of 4359 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     MAIN   0x000047    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                      RUN   0x00004c    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET0   0x00005e    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET1   0x000064    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET2   0x00006a    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET3   0x000070    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET4   0x000076    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET5   0x00007c    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET6   0x000082    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET7   0x000088    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                    SETUP   0x000001    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    SETUP   0x000001    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     MAIN   0x000047    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                      RUN   0x00004c    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET0   0x00005e    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET1   0x000064    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET2   0x00006a    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET3   0x000070    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET4   0x000076    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET5   0x00007c    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET6   0x000082    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+                     SET7   0x000088    program     static C:\Users\jackel\MPLABXProjects\883keypad.X\873ABasic.asm
+
+
