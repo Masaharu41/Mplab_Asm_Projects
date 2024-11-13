@@ -209,7 +209,7 @@ void Keypad_Check()
     }
 }
 
-char Conver_To_Chr(int temp)
+char Convert_To_Chr(int temp)
 /*return the value that is the ascii character of the integer
  that is brought in. this then returns the value within the function*/
 {
@@ -218,11 +218,17 @@ char Conver_To_Chr(int temp)
         return Key;   
 }
 
+void Write_To_Port(char write)
+{
+    PORTC = write;
+}
+
 int main(int argc, char** argv) {
     Setup();
     while (1 == 1)
     {   
          Keypad_Check();
+         Write_To_Port(Convert_To_Chr(button));
     }
    
             

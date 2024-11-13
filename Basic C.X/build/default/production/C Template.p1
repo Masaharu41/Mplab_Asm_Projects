@@ -1572,14 +1572,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 715 ]
 }
 "212
-[; ;C Template.c: 212: char Conver_To_Chr(int temp)
-[v _Conver_To_Chr `(uc ~T0 @X0 1 ef1`i ]
+[; ;C Template.c: 212: char Convert_To_Chr(int temp)
+[v _Convert_To_Chr `(uc ~T0 @X0 1 ef1`i ]
 "215
 [; ;C Template.c: 215: {
 {
-[e :U _Conver_To_Chr ]
+[e :U _Convert_To_Chr ]
 "212
-[; ;C Template.c: 212: char Conver_To_Chr(int temp)
+[; ;C Template.c: 212: char Convert_To_Chr(int temp)
 [v _temp `i ~T0 @X0 1 r1 ]
 "215
 [; ;C Template.c: 215: {
@@ -1598,41 +1598,64 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 219: }
 [e :UE 759 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
 "221
-[; ;C Template.c: 221: int main(int argc, char** argv) {
+[; ;C Template.c: 221: void Write_To_Port(char write)
+[v _Write_To_Port `(v ~T0 @X0 1 ef1`uc ]
+"222
+[; ;C Template.c: 222: {
+{
+[e :U _Write_To_Port ]
+"221
+[; ;C Template.c: 221: void Write_To_Port(char write)
+[v _write `uc ~T0 @X0 1 r1 ]
+"222
+[; ;C Template.c: 222: {
+[f ]
+"223
+[; ;C Template.c: 223:     PORTC = write;
+[e = _PORTC -> _write `uc ]
+"224
+[; ;C Template.c: 224: }
+[e :UE 760 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"226
+[; ;C Template.c: 226: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"222
-[; ;C Template.c: 222:     Setup();
+"227
+[; ;C Template.c: 227:     Setup();
 [e ( _Setup ..  ]
-"223
-[; ;C Template.c: 223:     while (1 == 1)
-[e $U 761  ]
-[e :U 762 ]
-"224
-[; ;C Template.c: 224:     {
-{
-"225
-[; ;C Template.c: 225:          Keypad_Check();
-[e ( _Keypad_Check ..  ]
-"226
-[; ;C Template.c: 226:     }
-}
-[e :U 761 ]
-"223
-[; ;C Template.c: 223:     while (1 == 1)
-[e $ == -> 1 `i -> 1 `i 762  ]
+"228
+[; ;C Template.c: 228:     while (1 == 1)
+[e $U 762  ]
 [e :U 763 ]
 "229
-[; ;C Template.c: 229:     return (0);
-[e ) -> 0 `i ]
-[e $UE 760  ]
+[; ;C Template.c: 229:     {
+{
 "230
-[; ;C Template.c: 230: }
-[e :UE 760 ]
+[; ;C Template.c: 230:          Keypad_Check();
+[e ( _Keypad_Check ..  ]
+"231
+[; ;C Template.c: 231:          Write_To_Port(Convert_To_Chr(button));
+[e ( _Write_To_Port (1 ( _Convert_To_Chr (1 -> _button `i ]
+"232
+[; ;C Template.c: 232:     }
+}
+[e :U 762 ]
+"228
+[; ;C Template.c: 228:     while (1 == 1)
+[e $ == -> 1 `i -> 1 `i 763  ]
+[e :U 764 ]
+"235
+[; ;C Template.c: 235:     return (0);
+[e ) -> 0 `i ]
+[e $UE 761  ]
+"236
+[; ;C Template.c: 236: }
+[e :UE 761 ]
 }
