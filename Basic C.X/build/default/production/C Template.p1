@@ -1076,12 +1076,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 45: short int button;
 [v _button `s ~T0 @X0 1 e ]
 "47
-[; ;C Template.c: 47: void SETUP()
-[v _SETUP `(v ~T0 @X0 1 ef ]
+[; ;C Template.c: 47: void Setup()
+[v _Setup `(v ~T0 @X0 1 ef ]
 "48
 [; ;C Template.c: 48: {
 {
-[e :U _SETUP ]
+[e :U _Setup ]
 [f ]
 "50
 [; ;C Template.c: 50:     OSCCONbits.SPLLEN = 1;
@@ -1169,8 +1169,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 87:         {
 {
 "88
-[; ;C Template.c: 88:             button = 0;
-[e = _button -> -> 0 `i `s ]
+[; ;C Template.c: 88:             button = 48;
+[e = _button -> -> 48 `i `s ]
 "89
 [; ;C Template.c: 89:         }
 }
@@ -1183,8 +1183,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 91:         {
 {
 "92
-[; ;C Template.c: 92:             button = 1;
-[e = _button -> -> 1 `i `s ]
+[; ;C Template.c: 92:             button = 49;
+[e = _button -> -> 49 `i `s ]
 "93
 [; ;C Template.c: 93:         }
 }
@@ -1197,8 +1197,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 95:         {
 {
 "96
-[; ;C Template.c: 96:             button = 2;
-[e = _button -> -> 2 `i `s ]
+[; ;C Template.c: 96:             button = 50;
+[e = _button -> -> 50 `i `s ]
 "97
 [; ;C Template.c: 97:         }
 }
@@ -1211,8 +1211,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 99:         {
 {
 "100
-[; ;C Template.c: 100:             button = 3;
-[e = _button -> -> 3 `i `s ]
+[; ;C Template.c: 100:             button = 51;
+[e = _button -> -> 51 `i `s ]
 "101
 [; ;C Template.c: 101:         }
 }
@@ -1224,8 +1224,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 103:         {
 {
 "104
-[; ;C Template.c: 104:             button = -1;
-[e = _button -> -U -> 1 `i `s ]
+[; ;C Template.c: 104:             button = 35;
+[e = _button -> -> 35 `i `s ]
 "105
 [; ;C Template.c: 105:         }
 }
@@ -1234,8 +1234,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 722 ]
 [e :U 720 ]
 "107
-[; ;C Template.c: 107:         if (button = -1)
-[e $ ! != -> = _button -> -U -> 1 `i `s `i -> 0 `i 727  ]
+[; ;C Template.c: 107:         if (button = 35)
+[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 727  ]
 "108
 [; ;C Template.c: 108:         {
 {
@@ -1269,8 +1269,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 119:         {
 {
 "120
-[; ;C Template.c: 120:             button = 4;
-[e = _button -> -> 4 `i `s ]
+[; ;C Template.c: 120:             button = 52;
+[e = _button -> -> 52 `i `s ]
 "121
 [; ;C Template.c: 121:         }
 }
@@ -1283,8 +1283,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 123:         {
 {
 "124
-[; ;C Template.c: 124:             button = 5;
-[e = _button -> -> 5 `i `s ]
+[; ;C Template.c: 124:             button = 53;
+[e = _button -> -> 53 `i `s ]
 "125
 [; ;C Template.c: 125:         }
 }
@@ -1297,8 +1297,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 127:         {
 {
 "128
-[; ;C Template.c: 128:             button = 6;
-[e = _button -> -> 6 `i `s ]
+[; ;C Template.c: 128:             button = 54;
+[e = _button -> -> 54 `i `s ]
 "129
 [; ;C Template.c: 129:         }
 }
@@ -1311,8 +1311,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 131:         {
 {
 "132
-[; ;C Template.c: 132:             button = 7;
-[e = _button -> -> 7 `i `s ]
+[; ;C Template.c: 132:             button = 55;
+[e = _button -> -> 55 `i `s ]
 "133
 [; ;C Template.c: 133:         }
 }
@@ -1324,8 +1324,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 135:         {
 {
 "136
-[; ;C Template.c: 136:             button = -1;
-[e = _button -> -U -> 1 `i `s ]
+[; ;C Template.c: 136:             button = 35;
+[e = _button -> -> 35 `i `s ]
 "137
 [; ;C Template.c: 137:         }
 }
@@ -1334,8 +1334,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 732 ]
 [e :U 730 ]
 "139
-[; ;C Template.c: 139:         if (button = -1)
-[e $ ! != -> = _button -> -U -> 1 `i `s `i -> 0 `i 737  ]
+[; ;C Template.c: 139:         if (button = 35)
+[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 737  ]
 "140
 [; ;C Template.c: 140:         {
 {
@@ -1369,8 +1369,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 150:         {
 {
 "151
-[; ;C Template.c: 151:             button = 8;
-[e = _button -> -> 8 `i `s ]
+[; ;C Template.c: 151:             button = 56;
+[e = _button -> -> 56 `i `s ]
 "152
 [; ;C Template.c: 152:         }
 }
@@ -1383,8 +1383,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 154:         {
 {
 "155
-[; ;C Template.c: 155:             button = 9;
-[e = _button -> -> 9 `i `s ]
+[; ;C Template.c: 155:             button = 57;
+[e = _button -> -> 57 `i `s ]
 "156
 [; ;C Template.c: 156:         }
 }
@@ -1397,8 +1397,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 158:         {
 {
 "159
-[; ;C Template.c: 159:             button = 10;
-[e = _button -> -> 10 `i `s ]
+[; ;C Template.c: 159:             button = 65;
+[e = _button -> -> 65 `i `s ]
 "160
 [; ;C Template.c: 160:         }
 }
@@ -1411,8 +1411,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 162:         {
 {
 "163
-[; ;C Template.c: 163:             button = 11;
-[e = _button -> -> 11 `i `s ]
+[; ;C Template.c: 163:             button = 66;
+[e = _button -> -> 66 `i `s ]
 "164
 [; ;C Template.c: 164:         }
 }
@@ -1424,8 +1424,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 166:         {
 {
 "167
-[; ;C Template.c: 167:             button = -1;
-[e = _button -> -U -> 1 `i `s ]
+[; ;C Template.c: 167:             button = 35;
+[e = _button -> -> 35 `i `s ]
 "168
 [; ;C Template.c: 168:         }
 }
@@ -1434,8 +1434,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 742 ]
 [e :U 740 ]
 "170
-[; ;C Template.c: 170:         if (button = -1)
-[e $ ! != -> = _button -> -U -> 1 `i `s `i -> 0 `i 747  ]
+[; ;C Template.c: 170:         if (button = 35)
+[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 747  ]
 "171
 [; ;C Template.c: 171:         {
 {
@@ -1469,8 +1469,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 181:         {
 {
 "182
-[; ;C Template.c: 182:             button = 4;
-[e = _button -> -> 4 `i `s ]
+[; ;C Template.c: 182:             button = 67;
+[e = _button -> -> 67 `i `s ]
 "183
 [; ;C Template.c: 183:         }
 }
@@ -1483,8 +1483,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 185:         {
 {
 "186
-[; ;C Template.c: 186:             button = 5;
-[e = _button -> -> 5 `i `s ]
+[; ;C Template.c: 186:             button = 68;
+[e = _button -> -> 68 `i `s ]
 "187
 [; ;C Template.c: 187:         }
 }
@@ -1497,8 +1497,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 189:         {
 {
 "190
-[; ;C Template.c: 190:             button = 6;
-[e = _button -> -> 6 `i `s ]
+[; ;C Template.c: 190:             button = 69;
+[e = _button -> -> 69 `i `s ]
 "191
 [; ;C Template.c: 191:         }
 }
@@ -1511,8 +1511,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 193:         {
 {
 "194
-[; ;C Template.c: 194:             button = 7;
-[e = _button -> -> 7 `i `s ]
+[; ;C Template.c: 194:             button = 70;
+[e = _button -> -> 70 `i `s ]
 "195
 [; ;C Template.c: 195:         }
 }
@@ -1524,8 +1524,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 197:         {
 {
 "198
-[; ;C Template.c: 198:             button = -1;
-[e = _button -> -U -> 1 `i `s ]
+[; ;C Template.c: 198:             button = 35;
+[e = _button -> -> 35 `i `s ]
 "199
 [; ;C Template.c: 199:         }
 }
@@ -1534,8 +1534,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 752 ]
 [e :U 750 ]
 "201
-[; ;C Template.c: 201:         if (button = -1)
-[e $ ! != -> = _button -> -U -> 1 `i `s `i -> 0 `i 757  ]
+[; ;C Template.c: 201:         if (button = 35)
+[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 757  ]
 "202
 [; ;C Template.c: 202:         {
 {
@@ -1572,39 +1572,67 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 715 ]
 }
 "212
-[; ;C Template.c: 212: char COVERT_TO_CHR(int Keypad)
-[v _COVERT_TO_CHR `(uc ~T0 @X0 1 ef1`i ]
-"213
-[; ;C Template.c: 213: {
-{
-[e :U _COVERT_TO_CHR ]
-"212
-[; ;C Template.c: 212: char COVERT_TO_CHR(int Keypad)
-[v _Keypad `i ~T0 @X0 1 r1 ]
-"213
-[; ;C Template.c: 213: {
-[f ]
+[; ;C Template.c: 212: char Conver_To_Chr(int temp)
+[v _Conver_To_Chr `(uc ~T0 @X0 1 ef1`i ]
 "215
-[; ;C Template.c: 215: }
+[; ;C Template.c: 215: {
+{
+[e :U _Conver_To_Chr ]
+"212
+[; ;C Template.c: 212: char Conver_To_Chr(int temp)
+[v _temp `i ~T0 @X0 1 r1 ]
+"215
+[; ;C Template.c: 215: {
+[f ]
+"216
+[; ;C Template.c: 216:     char Key;
+[v _Key `uc ~T0 @X0 1 a ]
+"217
+[; ;C Template.c: 217:         Key = (char)temp;
+[e = _Key -> _temp `uc ]
+"218
+[; ;C Template.c: 218:         return Key;
+[e ) _Key ]
+[e $UE 759  ]
+"219
+[; ;C Template.c: 219: }
 [e :UE 759 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"217
-[; ;C Template.c: 217: int main(int argc, char** argv) {
+"221
+[; ;C Template.c: 221: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"218
-[; ;C Template.c: 218:     SETUP();
-[e ( _SETUP ..  ]
-"220
-[; ;C Template.c: 220:     return (0);
+"222
+[; ;C Template.c: 222:     Setup();
+[e ( _Setup ..  ]
+"223
+[; ;C Template.c: 223:     while (1 == 1)
+[e $U 761  ]
+[e :U 762 ]
+"224
+[; ;C Template.c: 224:     {
+{
+"225
+[; ;C Template.c: 225:          Keypad_Check();
+[e ( _Keypad_Check ..  ]
+"226
+[; ;C Template.c: 226:     }
+}
+[e :U 761 ]
+"223
+[; ;C Template.c: 223:     while (1 == 1)
+[e $ == -> 1 `i -> 1 `i 762  ]
+[e :U 763 ]
+"229
+[; ;C Template.c: 229:     return (0);
 [e ) -> 0 `i ]
 [e $UE 760  ]
-"221
-[; ;C Template.c: 221: }
+"230
+[; ;C Template.c: 230: }
 [e :UE 760 ]
 }

@@ -44,7 +44,7 @@
  */
 short int button; // Define global integer variable
 
-void SETUP()
+void Setup()
 {
     // OSCILATOR SETUP
     OSCCONbits.SPLLEN   = 1; // ENABLE PLL
@@ -83,28 +83,28 @@ void Keypad_Check()
     while (1 == 1)
     {    
         RA0 = 1;
-        if (PORTA = 0x11)
+        if (keypad = 0x11)
         {
-            button = 0;
+            button = 48;
         }
-        else if (PORTA = 0x21)
+        else if (keypad = 0x21)
         {
-            button = 1;
+            button = 49;
         }
-        else if (PORTA = 0x41)
+        else if (keypad = 0x41)
         {
-            button = 2;
+            button = 50;
         }
-        else if (PORTA = 0x81)
+        else if (keypad = 0x81)
         {
-            button = 3;
+            button = 51;
         }
         else 
         {
-            button = -1;
+            button = 35;
         }
         /*Returns a dummy case unless a valid case has been found*/
-        if (button = -1)
+        if (button = 35)
         {
             asm("CLRF PORTA");
             RA1 = 1;
@@ -115,28 +115,28 @@ void Keypad_Check()
         }
         // if a value was found the function is bailed out otherwise test again
         // test row 2
-        if (PORTA = 0x12)
+        if (keypad = 0x12)
         {
-            button = 4;
+            button = 52;
         }
-        else if (PORTA = 0x22)
+        else if (keypad = 0x22)
         {
-            button = 5;
+            button = 53;
         }
-        else if (PORTA = 0x42)
+        else if (keypad = 0x42)
         {
-            button = 6;
+            button = 54;
         }
-        else if (PORTA = 0x82)
+        else if (keypad = 0x82)
         {
-            button = 7;
+            button = 55;
         }
         else 
         {
-            button = -1;
+            button = 35;
         }
         //
-        if (button = -1)
+        if (button = 35)
         {
             asm("CLRF PORTA");
             RA2 = 1;
@@ -146,28 +146,28 @@ void Keypad_Check()
             return;
         }
          // test row 3
-        if (PORTA = 0x13)
+        if (keypad = 0x13)
         {
-            button = 8;
+            button = 56;
         }
-        else if (PORTA = 0x23)
+        else if (keypad = 0x23)
         {
-            button = 9;
+            button = 57;
         }
-        else if (PORTA = 0x43)
+        else if (keypad = 0x43)
         {
-            button = 10;
+            button = 65;
         }
-        else if (PORTA = 0x83)
+        else if (keypad = 0x83)
         {
-            button = 11;
+            button = 66;
         }
         else 
         {
-            button = -1;
+            button = 35;
         }
         //
-        if (button = -1)
+        if (button = 35)
         {
             asm("CLRF PORTA");
             RA3 = 1;
@@ -177,28 +177,28 @@ void Keypad_Check()
             return;
         }
          // test row 4
-        if (PORTA = 0x12)
+        if (keypad = 0x12)
         {
-            button = 4;
+            button = 67;
         }
-        else if (PORTA = 0x22)
+        else if (keypad = 0x22)
         {
-            button = 5;
+            button = 68;
         }
-        else if (PORTA = 0x42)
+        else if (keypad = 0x42)
         {
-            button = 6;
+            button = 69;
         }
-        else if (PORTA = 0x82)
+        else if (keypad = 0x82)
         {
-            button = 7;
+            button = 70;
         }
         else 
         {
-            button = -1;
+            button = 35;
         }
         //
-        if (button = -1)
+        if (button = 35)
         {
             asm("CLRF PORTA");
         }
@@ -209,13 +209,22 @@ void Keypad_Check()
     }
 }
 
-char COVERT_TO_CHR(int Keypad)
+char Conver_To_Chr(int temp)
+/*return the value that is the ascii character of the integer
+ that is brought in. this then returns the value within the function*/
 {
-    
+    char Key;
+        Key = (char)temp;
+        return Key;   
 }
 
 int main(int argc, char** argv) {
-    SETUP();
+    Setup();
+    while (1 == 1)
+    {   
+         Keypad_Check();
+    }
+   
             
     return (EXIT_SUCCESS);
 }

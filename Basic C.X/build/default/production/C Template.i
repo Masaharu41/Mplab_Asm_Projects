@@ -10416,7 +10416,7 @@ extern __bank0 __bit __timeout;
 
 short int button;
 
-void SETUP()
+void Setup()
 {
 
     OSCCONbits.SPLLEN = 1;
@@ -10457,26 +10457,26 @@ void Keypad_Check()
         RA0 = 1;
         if (PORTA = 0x11)
         {
-            button = 0;
+            button = 48;
         }
         else if (PORTA = 0x21)
         {
-            button = 1;
+            button = 49;
         }
         else if (PORTA = 0x41)
         {
-            button = 2;
+            button = 50;
         }
         else if (PORTA = 0x81)
         {
-            button = 3;
+            button = 51;
         }
         else
         {
-            button = -1;
+            button = 35;
         }
 
-        if (button = -1)
+        if (button = 35)
         {
             __asm("CLRF PORTA");
             RA1 = 1;
@@ -10489,26 +10489,26 @@ void Keypad_Check()
 
         if (PORTA = 0x12)
         {
-            button = 4;
+            button = 52;
         }
         else if (PORTA = 0x22)
         {
-            button = 5;
+            button = 53;
         }
         else if (PORTA = 0x42)
         {
-            button = 6;
+            button = 54;
         }
         else if (PORTA = 0x82)
         {
-            button = 7;
+            button = 55;
         }
         else
         {
-            button = -1;
+            button = 35;
         }
 
-        if (button = -1)
+        if (button = 35)
         {
             __asm("CLRF PORTA");
             RA2 = 1;
@@ -10520,26 +10520,26 @@ void Keypad_Check()
 
         if (PORTA = 0x13)
         {
-            button = 8;
+            button = 56;
         }
         else if (PORTA = 0x23)
         {
-            button = 9;
+            button = 57;
         }
         else if (PORTA = 0x43)
         {
-            button = 10;
+            button = 65;
         }
         else if (PORTA = 0x83)
         {
-            button = 11;
+            button = 66;
         }
         else
         {
-            button = -1;
+            button = 35;
         }
 
-        if (button = -1)
+        if (button = 35)
         {
             __asm("CLRF PORTA");
             RA3 = 1;
@@ -10551,26 +10551,26 @@ void Keypad_Check()
 
         if (PORTA = 0x12)
         {
-            button = 4;
+            button = 67;
         }
         else if (PORTA = 0x22)
         {
-            button = 5;
+            button = 68;
         }
         else if (PORTA = 0x42)
         {
-            button = 6;
+            button = 69;
         }
         else if (PORTA = 0x82)
         {
-            button = 7;
+            button = 70;
         }
         else
         {
-            button = -1;
+            button = 35;
         }
 
-        if (button = -1)
+        if (button = 35)
         {
             __asm("CLRF PORTA");
         }
@@ -10581,13 +10581,22 @@ void Keypad_Check()
     }
 }
 
-char COVERT_TO_CHR(int Keypad)
-{
+char Conver_To_Chr(int temp)
 
+
+{
+    char Key;
+        Key = (char)temp;
+        return Key;
 }
 
 int main(int argc, char** argv) {
-    SETUP();
+    Setup();
+    while (1 == 1)
+    {
+         Keypad_Check();
+    }
+
 
     return (0);
 }

@@ -4,8 +4,10 @@
 [d chip 16F1788 ]
 [d frameptr 6 ]
 "47 C:\Users\jackel\MPLABXProjects\Basic C.X\C Template.c
-[v _SETUP SETUP `(v  1 e 1 0 ]
-"217
+[v _Setup Setup `(v  1 e 1 0 ]
+"76
+[v _Keypad_Check Keypad_Check `(v  1 e 1 0 ]
+"221
 [v _main main `(i  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -67,13 +69,18 @@
 [v _RA2 RA2 `VEb  1 e 0 @98 ]
 "19320
 [v _RA3 RA3 `VEb  1 e 0 @99 ]
-"217 C:\Users\jackel\MPLABXProjects\Basic C.X\C Template.c
+"221 C:\Users\jackel\MPLABXProjects\Basic C.X\C Template.c
 [v _main main `(i  1 e 2 0 ]
 {
-"221
+"230
 } 0
 "47
-[v _SETUP SETUP `(v  1 e 1 0 ]
+[v _Setup Setup `(v  1 e 1 0 ]
 {
 "74
+} 0
+"76
+[v _Keypad_Check Keypad_Check `(v  1 e 1 0 ]
+{
+"210
 } 0
