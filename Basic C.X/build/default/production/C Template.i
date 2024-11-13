@@ -10448,6 +10448,9 @@ void SETUP()
 void Keypad_Check()
 {
 
+
+
+
     RA0 = 1;
     if (PORTA = 0x11)
     {
@@ -10469,15 +10472,48 @@ void Keypad_Check()
     {
         button = -1;
     }
+
     if (button = -1)
     {
         __asm("CLRF PORTA");
-        PORTA = 0x02;
+        RA1 = 0;
     }
     else
     {
-
+        return;
     }
+
+     if (PORTA = 0x12)
+    {
+        button = 4;
+    }
+    else if (PORTA = 0x22)
+    {
+        button = 5;
+    }
+    else if (PORTA = 0x42)
+    {
+        button = 6;
+    }
+    else if (PORTA = 0x82)
+    {
+        button = 7;
+    }
+    else
+    {
+        button = -1;
+    }
+
+    if (button = -1)
+    {
+        __asm("CLRF PORTA");
+        RA1 = 0;
+    }
+    else
+    {
+        return;
+    }
+
 
 }
 

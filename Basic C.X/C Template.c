@@ -76,6 +76,9 @@ PORTA SETUP*/
 void Keypad_Check()
 {
 #define keypad PORTA
+    /*Test the keypad on PORTA with testing each row
+     when a valid statement is found an integer is placed
+     into the global variable for the key's int value*/
     RA0 = 1;
     if (PORTA = 0x11)
     {
@@ -97,15 +100,48 @@ void Keypad_Check()
     {
         button = -1;
     }
+    /*Returns a dummy case unless a valid case has been found*/
     if (button = -1)
     {
         asm("CLRF PORTA");
-        PORTA = 0x02;
+        RA1 = 0;
     }
     else 
     {
-        
+        return;
     }
+    // if a value was found the function is bailed out otherwise test again
+     if (PORTA = 0x12)
+    {
+        button = 4;
+    }
+    else if (PORTA = 0x22)
+    {
+        button = 5;
+    }
+    else if (PORTA = 0x42)
+    {
+        button = 6;
+    }
+    else if (PORTA = 0x82)
+    {
+        button = 7;
+    }
+    else 
+    {
+        button = -1;
+    }
+    //
+    if (button = -1)
+    {
+        asm("CLRF PORTA");
+        RA1 = 0;
+    }
+    else 
+    {
+        return;
+    }
+    
         
 }
 
