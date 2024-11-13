@@ -78,71 +78,135 @@ void Keypad_Check()
 #define keypad PORTA
     /*Test the keypad on PORTA with testing each row
      when a valid statement is found an integer is placed
-     into the global variable for the key's int value*/
-    RA0 = 1;
-    if (PORTA = 0x11)
-    {
-        button = 0;
+     into the global variable for the key's int value
+     infinite while loop until the code is broken*/
+    while (1 == 1)
+    {    
+        RA0 = 1;
+        if (PORTA = 0x11)
+        {
+            button = 0;
+        }
+        else if (PORTA = 0x21)
+        {
+            button = 1;
+        }
+        else if (PORTA = 0x41)
+        {
+            button = 2;
+        }
+        else if (PORTA = 0x81)
+        {
+            button = 3;
+        }
+        else 
+        {
+            button = -1;
+        }
+        /*Returns a dummy case unless a valid case has been found*/
+        if (button = -1)
+        {
+            asm("CLRF PORTA");
+            RA1 = 1;
+        }
+        else 
+        {
+            return;
+        }
+        // if a value was found the function is bailed out otherwise test again
+        // test row 2
+        if (PORTA = 0x12)
+        {
+            button = 4;
+        }
+        else if (PORTA = 0x22)
+        {
+            button = 5;
+        }
+        else if (PORTA = 0x42)
+        {
+            button = 6;
+        }
+        else if (PORTA = 0x82)
+        {
+            button = 7;
+        }
+        else 
+        {
+            button = -1;
+        }
+        //
+        if (button = -1)
+        {
+            asm("CLRF PORTA");
+            RA2 = 1;
+        }
+        else 
+        {
+            return;
+        }
+         // test row 3
+        if (PORTA = 0x13)
+        {
+            button = 8;
+        }
+        else if (PORTA = 0x23)
+        {
+            button = 9;
+        }
+        else if (PORTA = 0x43)
+        {
+            button = 10;
+        }
+        else if (PORTA = 0x83)
+        {
+            button = 11;
+        }
+        else 
+        {
+            button = -1;
+        }
+        //
+        if (button = -1)
+        {
+            asm("CLRF PORTA");
+            RA3 = 1;
+        }
+        else 
+        {
+            return;
+        }
+         // test row 4
+        if (PORTA = 0x12)
+        {
+            button = 4;
+        }
+        else if (PORTA = 0x22)
+        {
+            button = 5;
+        }
+        else if (PORTA = 0x42)
+        {
+            button = 6;
+        }
+        else if (PORTA = 0x82)
+        {
+            button = 7;
+        }
+        else 
+        {
+            button = -1;
+        }
+        //
+        if (button = -1)
+        {
+            asm("CLRF PORTA");
+        }
+        else 
+        {
+            return;
+        }
     }
-    else if (PORTA = 0x21)
-    {
-        button = 1;
-    }
-    else if (PORTA = 0x41)
-    {
-        button = 2;
-    }
-    else if (PORTA = 0x81)
-    {
-        button = 3;
-    }
-    else 
-    {
-        button = -1;
-    }
-    /*Returns a dummy case unless a valid case has been found*/
-    if (button = -1)
-    {
-        asm("CLRF PORTA");
-        RA1 = 0;
-    }
-    else 
-    {
-        return;
-    }
-    // if a value was found the function is bailed out otherwise test again
-     if (PORTA = 0x12)
-    {
-        button = 4;
-    }
-    else if (PORTA = 0x22)
-    {
-        button = 5;
-    }
-    else if (PORTA = 0x42)
-    {
-        button = 6;
-    }
-    else if (PORTA = 0x82)
-    {
-        button = 7;
-    }
-    else 
-    {
-        button = -1;
-    }
-    //
-    if (button = -1)
-    {
-        asm("CLRF PORTA");
-        RA1 = 0;
-    }
-    else 
-    {
-        return;
-    }
-    
-        
 }
 
 char COVERT_TO_CHR(int Keypad)
