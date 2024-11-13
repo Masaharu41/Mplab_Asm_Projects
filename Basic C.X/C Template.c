@@ -75,29 +75,38 @@ PORTA SETUP*/
 
 void Keypad_Check()
 {
-    PORTA = 0x10; // set output on the 
-    switch (PORTA)
-    {        
-    Case1:
-        RA0 = 1;
-        button = 0;
-        break;
-    Case2:
-        RA1 = 1;
-        button = 1;
-        break;
-    Case3:
-        RA2 = 1;
-        button = 2;
-        break;
-    Case4:
-        RA3 = 1;
-        button = 3;
-        break;
-    default:
+#define keypad PORTA
+    RA0 = 1;
+    if (PORTA = 0x11)
+    {
         button = 0;
     }
-       
+    else if (PORTA = 0x21)
+    {
+        button = 1;
+    }
+    else if (PORTA = 0x41)
+    {
+        button = 2;
+    }
+    else if (PORTA = 0x81)
+    {
+        button = 3;
+    }
+    else 
+    {
+        button = -1;
+    }
+    if (button = -1)
+    {
+        asm("CLRF PORTA");
+        PORTA = 0x02;
+    }
+    else 
+    {
+        
+    }
+        
 }
 
 char COVERT_TO_CHR(int Keypad)

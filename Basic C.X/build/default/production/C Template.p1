@@ -56,15 +56,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19311
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 19311: extern volatile __bit RA0 __attribute__((address(0x60)));
 [v _RA0 `Vb ~T0 @X0 0 e@96 ]
-"19314
-[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 19314: extern volatile __bit RA1 __attribute__((address(0x61)));
-[v _RA1 `Vb ~T0 @X0 0 e@97 ]
-"19317
-[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 19317: extern volatile __bit RA2 __attribute__((address(0x62)));
-[v _RA2 `Vb ~T0 @X0 0 e@98 ]
-"19320
-[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 19320: extern volatile __bit RA3 __attribute__((address(0x63)));
-[v _RA3 `Vb ~T0 @X0 0 e@99 ]
 [p mainexit ]
 "13 C Template.c
 [p x FOSC  =  INTOSC     ]
@@ -1152,114 +1143,144 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Keypad_Check ]
 [f ]
-"78
-[; ;C Template.c: 78:     PORTA = 0x10;
-[e = _PORTA -> -> 16 `i `uc ]
 "79
-[; ;C Template.c: 79:     switch (PORTA)
-[e $U 717  ]
-"80
-[; ;C Template.c: 80:     {
-{
-"81
-[; ;C Template.c: 81:     Case1:
-[e :U 718 ]
-"82
-[; ;C Template.c: 82:         RA0 = 1;
+[; ;C Template.c: 79:     RA0 = 1;
 [e = _RA0 -> -> 1 `i `b ]
+"80
+[; ;C Template.c: 80:     if (PORTA = 0x11)
+[e $ ! != -> = _PORTA -> -> 17 `i `uc `i -> 0 `i 716  ]
+"81
+[; ;C Template.c: 81:     {
+{
+"82
+[; ;C Template.c: 82:         button = 0;
+[e = _button -> -> 0 `i `s ]
 "83
-[; ;C Template.c: 83:         button = 0;
-[e = _button -> -> 0 `i `s ]
+[; ;C Template.c: 83:     }
+}
+[e $U 717  ]
 "84
-[; ;C Template.c: 84:         break;
-[e $U 716  ]
+[; ;C Template.c: 84:     else if (PORTA = 0x21)
+[e :U 716 ]
+[e $ ! != -> = _PORTA -> -> 33 `i `uc `i -> 0 `i 718  ]
 "85
-[; ;C Template.c: 85:     Case2:
-[e :U 719 ]
+[; ;C Template.c: 85:     {
+{
 "86
-[; ;C Template.c: 86:         RA1 = 1;
-[e = _RA1 -> -> 1 `i `b ]
-"87
-[; ;C Template.c: 87:         button = 1;
+[; ;C Template.c: 86:         button = 1;
 [e = _button -> -> 1 `i `s ]
+"87
+[; ;C Template.c: 87:     }
+}
+[e $U 719  ]
 "88
-[; ;C Template.c: 88:         break;
-[e $U 716  ]
+[; ;C Template.c: 88:     else if (PORTA = 0x41)
+[e :U 718 ]
+[e $ ! != -> = _PORTA -> -> 65 `i `uc `i -> 0 `i 720  ]
 "89
-[; ;C Template.c: 89:     Case3:
-[e :U 720 ]
+[; ;C Template.c: 89:     {
+{
 "90
-[; ;C Template.c: 90:         RA2 = 1;
-[e = _RA2 -> -> 1 `i `b ]
-"91
-[; ;C Template.c: 91:         button = 2;
+[; ;C Template.c: 90:         button = 2;
 [e = _button -> -> 2 `i `s ]
+"91
+[; ;C Template.c: 91:     }
+}
+[e $U 721  ]
 "92
-[; ;C Template.c: 92:         break;
-[e $U 716  ]
+[; ;C Template.c: 92:     else if (PORTA = 0x81)
+[e :U 720 ]
+[e $ ! != -> = _PORTA -> -> 129 `i `uc `i -> 0 `i 722  ]
 "93
-[; ;C Template.c: 93:     Case4:
-[e :U 721 ]
+[; ;C Template.c: 93:     {
+{
 "94
-[; ;C Template.c: 94:         RA3 = 1;
-[e = _RA3 -> -> 1 `i `b ]
-"95
-[; ;C Template.c: 95:         button = 3;
+[; ;C Template.c: 94:         button = 3;
 [e = _button -> -> 3 `i `s ]
+"95
+[; ;C Template.c: 95:     }
+}
+[e $U 723  ]
 "96
-[; ;C Template.c: 96:         break;
-[e $U 716  ]
-"97
-[; ;C Template.c: 97:     default:
+[; ;C Template.c: 96:     else
 [e :U 722 ]
+"97
+[; ;C Template.c: 97:     {
+{
 "98
-[; ;C Template.c: 98:         button = 0;
-[e = _button -> -> 0 `i `s ]
+[; ;C Template.c: 98:         button = -1;
+[e = _button -> -U -> 1 `i `s ]
 "99
 [; ;C Template.c: 99:     }
 }
-[e $U 716  ]
+[e :U 723 ]
+[e :U 721 ]
+[e :U 719 ]
 [e :U 717 ]
-[e [\ _PORTA 722 ]
-[e :U 716 ]
+"100
+[; ;C Template.c: 100:     if (button = -1)
+[e $ ! != -> = _button -> -U -> 1 `i `s `i -> 0 `i 724  ]
 "101
-[; ;C Template.c: 101: }
+[; ;C Template.c: 101:     {
+{
+"102
+[; ;C Template.c: 102:         __asm("CLRF PORTA");
+[; <" CLRF PORTA ;# ">
+"103
+[; ;C Template.c: 103:         PORTA = 0x02;
+[e = _PORTA -> -> 2 `i `uc ]
+"104
+[; ;C Template.c: 104:     }
+}
+[e $U 725  ]
+"105
+[; ;C Template.c: 105:     else
+[e :U 724 ]
+"106
+[; ;C Template.c: 106:     {
+{
+"108
+[; ;C Template.c: 108:     }
+}
+[e :U 725 ]
+"110
+[; ;C Template.c: 110: }
 [e :UE 715 ]
 }
-"103
-[; ;C Template.c: 103: char COVERT_TO_CHR(int Keypad)
+"112
+[; ;C Template.c: 112: char COVERT_TO_CHR(int Keypad)
 [v _COVERT_TO_CHR `(uc ~T0 @X0 1 ef1`i ]
-"104
-[; ;C Template.c: 104: {
+"113
+[; ;C Template.c: 113: {
 {
 [e :U _COVERT_TO_CHR ]
-"103
-[; ;C Template.c: 103: char COVERT_TO_CHR(int Keypad)
+"112
+[; ;C Template.c: 112: char COVERT_TO_CHR(int Keypad)
 [v _Keypad `i ~T0 @X0 1 r1 ]
-"104
-[; ;C Template.c: 104: {
+"113
+[; ;C Template.c: 113: {
 [f ]
-"106
-[; ;C Template.c: 106: }
-[e :UE 723 ]
+"115
+[; ;C Template.c: 115: }
+[e :UE 726 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"108
-[; ;C Template.c: 108: int main(int argc, char** argv) {
+"117
+[; ;C Template.c: 117: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"109
-[; ;C Template.c: 109:     SETUP();
+"118
+[; ;C Template.c: 118:     SETUP();
 [e ( _SETUP ..  ]
-"111
-[; ;C Template.c: 111:     return (0);
+"120
+[; ;C Template.c: 120:     return (0);
 [e ) -> 0 `i ]
-[e $UE 724  ]
-"112
-[; ;C Template.c: 112: }
-[e :UE 724 ]
+[e $UE 727  ]
+"121
+[; ;C Template.c: 121: }
+[e :UE 727 ]
 }

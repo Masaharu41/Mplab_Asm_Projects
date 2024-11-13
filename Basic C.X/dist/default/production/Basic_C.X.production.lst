@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
-                                                                                               Wed Nov 13 09:37:00 2024
+                                                                                               Wed Nov 13 10:09:03 2024
 
 Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
      1                           	processor	16F1788
@@ -723,286 +723,283 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    709     0018                     _T1CON          set	24
    710     000E                     _PORTC          set	14
    711     000C                     _PORTA          set	12
-   712     0063                     _RA3            set	99
-   713     0062                     _RA2            set	98
-   714     0061                     _RA1            set	97
-   715     0060                     _RA0            set	96
-   716     0092                     _PIE2           set	146
-   717     0091                     _PIE1           set	145
-   718     008E                     _TRISC          set	142
-   719     008C                     _TRISA          set	140
-   720     0099                     _OSCCONbits     set	153
-   721     010C                     _LATA           set	268
-   722     018E                     _ANSELC         set	398
-   723     018C                     _ANSELA         set	396
-   724     029A                     _CCP2CON        set	666
-   725     0293                     _CCP1CON        set	659
-   726                           
-   727                           	psect	cinit
-   728     07FB                     start_initialization:	
-   729                           ; #config settings
-   730                           
-   731     07FB                     __initialization:
-   732                           
-   733                           ; Clear objects allocated to COMMON
-   734     07FB  01F4               	clrf	__pbssCOMMON& (0+127)
-   735     07FC  01F5               	clrf	(__pbssCOMMON+1)& (0+127)
-   736     07FD                     end_of_initialization:	
-   737                           ;End of C runtime variable initialization code
-   738                           
-   739     07FD                     __end_of__initialization:
-   740     07FD  0020               	movlb	0
-   741     07FE  3187  2FD6         	ljmp	_main	;jump to C main() function
-   742                           
-   743                           	psect	bssCOMMON
-   744     0074                     __pbssCOMMON:
-   745     0074                     _button:
-   746     0074                     	ds	2
-   747                           
-   748                           	psect	cstackCOMMON
-   749     0070                     __pcstackCOMMON:
-   750     0070                     ?_SETUP:
-   751     0070                     ?_main:	
-   752                           ; 1 bytes @ 0x0
+   712     0060                     _RA0            set	96
+   713     0092                     _PIE2           set	146
+   714     0091                     _PIE1           set	145
+   715     008E                     _TRISC          set	142
+   716     008C                     _TRISA          set	140
+   717     0099                     _OSCCONbits     set	153
+   718     010C                     _LATA           set	268
+   719     018E                     _ANSELC         set	398
+   720     018C                     _ANSELA         set	396
+   721     029A                     _CCP2CON        set	666
+   722     0293                     _CCP1CON        set	659
+   723                           
+   724                           	psect	cinit
+   725     07FB                     start_initialization:	
+   726                           ; #config settings
+   727                           
+   728     07FB                     __initialization:
+   729                           
+   730                           ; Clear objects allocated to COMMON
+   731     07FB  01F4               	clrf	__pbssCOMMON& (0+127)
+   732     07FC  01F5               	clrf	(__pbssCOMMON+1)& (0+127)
+   733     07FD                     end_of_initialization:	
+   734                           ;End of C runtime variable initialization code
+   735                           
+   736     07FD                     __end_of__initialization:
+   737     07FD  0020               	movlb	0
+   738     07FE  3187  2FD6         	ljmp	_main	;jump to C main() function
+   739                           
+   740                           	psect	bssCOMMON
+   741     0074                     __pbssCOMMON:
+   742     0074                     _button:
+   743     0074                     	ds	2
+   744                           
+   745                           	psect	cstackCOMMON
+   746     0070                     __pcstackCOMMON:
+   747     0070                     ?_SETUP:
+   748     0070                     ?_main:	
+   749                           ; 1 bytes @ 0x0
+   750                           
+   751     0070                     main@argc:	
+   752                           ; 2 bytes @ 0x0
    753                           
-   754     0070                     main@argc:	
+   754     0070                     ??_SETUP:	
    755                           ; 2 bytes @ 0x0
    756                           
-   757     0070                     ??_SETUP:	
-   758                           ; 2 bytes @ 0x0
-   759                           
-   760                           
-   761                           ; 1 bytes @ 0x0
-   762     0070                     	ds	2
-   763     0072                     main@argv:
-   764                           
-   765                           ; 2 bytes @ 0x2
-   766     0072                     	ds	2
-   767     0074                     ??_main:
-   768                           
-   769                           	psect	maintext
-   770     07D6                     __pmaintext:	
-   771                           ; 1 bytes @ 0x4
-   772 ;;
-   773 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   774 ;;
-   775 ;; *************** function _main *****************
-   776 ;; Defined at:
-   777 ;;		line 108 in file "C Template.c"
-   778 ;; Parameters:    Size  Location     Type
-   779 ;;  argc            2    0[COMMON] int 
-   780 ;;  argv            2    2[COMMON] PTR PTR unsigned char 
-   781 ;; Auto vars:     Size  Location     Type
-   782 ;;		None
-   783 ;; Return value:  Size  Location     Type
-   784 ;;                  2    0[COMMON] int 
-   785 ;; Registers used:
-   786 ;;		status,2, status,0, pclath, cstack
-   787 ;; Tracked objects:
-   788 ;;		On entry : B1F/0
-   789 ;;		On exit  : 0/0
-   790 ;;		Unchanged: 0/0
-   791 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   757                           
+   758                           ; 1 bytes @ 0x0
+   759     0070                     	ds	2
+   760     0072                     main@argv:
+   761                           
+   762                           ; 2 bytes @ 0x2
+   763     0072                     	ds	2
+   764     0074                     ??_main:
+   765                           
+   766                           	psect	maintext
+   767     07D6                     __pmaintext:	
+   768                           ; 1 bytes @ 0x4
+   769 ;;
+   770 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   771 ;;
+   772 ;; *************** function _main *****************
+   773 ;; Defined at:
+   774 ;;		line 117 in file "C Template.c"
+   775 ;; Parameters:    Size  Location     Type
+   776 ;;  argc            2    0[COMMON] int 
+   777 ;;  argv            2    2[COMMON] PTR PTR unsigned char 
+   778 ;; Auto vars:     Size  Location     Type
+   779 ;;		None
+   780 ;; Return value:  Size  Location     Type
+   781 ;;                  2    0[COMMON] int 
+   782 ;; Registers used:
+   783 ;;		status,2, status,0, pclath, cstack
+   784 ;; Tracked objects:
+   785 ;;		On entry : B1F/0
+   786 ;;		On exit  : 0/0
+   787 ;;		Unchanged: 0/0
+   788 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-   792 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+   789 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   793 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   790 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   794 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   791 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   795 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
+   792 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   796 ;;Total ram usage:        4 bytes
-   797 ;; Hardware stack levels required when called: 1
-   798 ;; This function calls:
-   799 ;;		_SETUP
-   800 ;; This function is called by:
-   801 ;;		Startup code after reset
-   802 ;; This function uses a non-reentrant model
-   803 ;;
+   793 ;;Total ram usage:        4 bytes
+   794 ;; Hardware stack levels required when called: 1
+   795 ;; This function calls:
+   796 ;;		_SETUP
+   797 ;; This function is called by:
+   798 ;;		Startup code after reset
+   799 ;; This function uses a non-reentrant model
+   800 ;;
+   801                           
+   802     07D6                     _main:	
+   803                           ;psect for function _main
    804                           
-   805     07D6                     _main:	
-   806                           ;psect for function _main
-   807                           
-   808     07D6                     l693:	
-   809                           ;incstack = 0
-   810                           ; Regs used in _main: [status,2+status,0+pclath+cstack]
-   811                           
-   812                           
-   813                           ;C Template.c: 109:     SETUP();
-   814     07D6  3187  27DB  3187   	fcall	_SETUP
-   815     07D9                     l59:
-   816     07D9  3180  2802         	ljmp	start
-   817     07DB                     __end_of_main:
-   818                           
-   819                           	psect	text1
-   820     07DB                     __ptext1:	
-   821 ;; *************** function _SETUP *****************
-   822 ;; Defined at:
-   823 ;;		line 47 in file "C Template.c"
-   824 ;; Parameters:    Size  Location     Type
-   825 ;;		None
-   826 ;; Auto vars:     Size  Location     Type
-   827 ;;		None
-   828 ;; Return value:  Size  Location     Type
-   829 ;;                  1    wreg      void 
-   830 ;; Registers used:
-   831 ;;		status,2
-   832 ;; Tracked objects:
-   833 ;;		On entry : 0/0
-   834 ;;		On exit  : 0/0
-   835 ;;		Unchanged: 0/0
-   836 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   805     07D6                     l690:	
+   806                           ;incstack = 0
+   807                           ; Regs used in _main: [status,2+status,0+pclath+cstack]
+   808                           
+   809                           
+   810                           ;C Template.c: 118:     SETUP();
+   811     07D6  3187  27DB  3187   	fcall	_SETUP
+   812     07D9                     l56:
+   813     07D9  3180  2802         	ljmp	start
+   814     07DB                     __end_of_main:
+   815                           
+   816                           	psect	text1
+   817     07DB                     __ptext1:	
+   818 ;; *************** function _SETUP *****************
+   819 ;; Defined at:
+   820 ;;		line 47 in file "C Template.c"
+   821 ;; Parameters:    Size  Location     Type
+   822 ;;		None
+   823 ;; Auto vars:     Size  Location     Type
+   824 ;;		None
+   825 ;; Return value:  Size  Location     Type
+   826 ;;                  1    wreg      void 
+   827 ;; Registers used:
+   828 ;;		status,2
+   829 ;; Tracked objects:
+   830 ;;		On entry : 0/0
+   831 ;;		On exit  : 0/0
+   832 ;;		Unchanged: 0/0
+   833 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-   837 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   834 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   838 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   835 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   839 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   836 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   840 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   837 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   841 ;;Total ram usage:        0 bytes
-   842 ;; Hardware stack levels used: 1
-   843 ;; This function calls:
-   844 ;;		Nothing
-   845 ;; This function is called by:
-   846 ;;		_main
-   847 ;; This function uses a non-reentrant model
-   848 ;;
+   838 ;;Total ram usage:        0 bytes
+   839 ;; Hardware stack levels used: 1
+   840 ;; This function calls:
+   841 ;;		Nothing
+   842 ;; This function is called by:
+   843 ;;		_main
+   844 ;; This function uses a non-reentrant model
+   845 ;;
+   846                           
+   847     07DB                     _SETUP:	
+   848                           ;psect for function _SETUP
    849                           
-   850     07DB                     _SETUP:	
-   851                           ;psect for function _SETUP
-   852                           
-   853     07DB                     l667:	
-   854                           ;incstack = 0
-   855                           ; Regs used in _SETUP: [status,2]
-   856                           
-   857                           
-   858                           ;C Template.c: 50:     OSCCONbits.SPLLEN = 1;
-   859     07DB  0021               	movlb	1	; select bank1
-   860     07DC  1799               	bsf	25,7	;volatile
+   850     07DB                     l664:	
+   851                           ;incstack = 0
+   852                           ; Regs used in _SETUP: [status,2]
+   853                           
+   854                           
+   855                           ;C Template.c: 50:     OSCCONbits.SPLLEN = 1;
+   856     07DB  0021               	movlb	1	; select bank1
+   857     07DC  1799               	bsf	25,7	;volatile
+   858                           
+   859                           ;C Template.c: 51:     OSCCONbits.IRCF3 = 1;
+   860     07DD  1719               	bsf	25,6	;volatile
    861                           
-   862                           ;C Template.c: 51:     OSCCONbits.IRCF3 = 1;
-   863     07DD  1719               	bsf	25,6	;volatile
+   862                           ;C Template.c: 52:     OSCCONbits.IRCF2 = 1;
+   863     07DE  1699               	bsf	25,5	;volatile
    864                           
-   865                           ;C Template.c: 52:     OSCCONbits.IRCF2 = 1;
-   866     07DE  1699               	bsf	25,5	;volatile
+   865                           ;C Template.c: 53:     OSCCONbits.IRCF1 = 0;
+   866     07DF  1219               	bcf	25,4	;volatile
    867                           
-   868                           ;C Template.c: 53:     OSCCONbits.IRCF1 = 0;
-   869     07DF  1219               	bcf	25,4	;volatile
+   868                           ;C Template.c: 54:     OSCCONbits.IRCF0 = 1;
+   869     07E0  1599               	bsf	25,3	;volatile
    870                           
-   871                           ;C Template.c: 54:     OSCCONbits.IRCF0 = 1;
-   872     07E0  1599               	bsf	25,3	;volatile
-   873                           
-   874                           ;C Template.c: 55:     OSCCONbits.SCS1 = 1;
-   875     07E1  1499               	bsf	25,1	;volatile
-   876     07E2                     l669:
-   877                           
-   878                           ;C Template.c: 59:     LATA = 0x00;
-   879     07E2  0022               	movlb	2	; select bank2
-   880     07E3  018C               	clrf	12	;volatile
-   881     07E4                     l671:
-   882                           
-   883                           ;C Template.c: 60:     TRISA = 0xF0;
-   884     07E4  30F0               	movlw	240
-   885     07E5  0021               	movlb	1	; select bank1
-   886     07E6  008C               	movwf	12	;volatile
-   887                           
-   888                           ;C Template.c: 61:     PORTA = 0x00;
-   889     07E7  0020               	movlb	0	; select bank0
-   890     07E8  018C               	clrf	12	;volatile
-   891                           
-   892                           ;C Template.c: 62:     ANSELA = 0x00;
-   893     07E9  0023               	movlb	3	; select bank3
-   894     07EA  018C               	clrf	12	;volatile
+   871                           ;C Template.c: 55:     OSCCONbits.SCS1 = 1;
+   872     07E1  1499               	bsf	25,1	;volatile
+   873     07E2                     l666:
+   874                           
+   875                           ;C Template.c: 59:     LATA = 0x00;
+   876     07E2  0022               	movlb	2	; select bank2
+   877     07E3  018C               	clrf	12	;volatile
+   878     07E4                     l668:
+   879                           
+   880                           ;C Template.c: 60:     TRISA = 0xF0;
+   881     07E4  30F0               	movlw	240
+   882     07E5  0021               	movlb	1	; select bank1
+   883     07E6  008C               	movwf	12	;volatile
+   884                           
+   885                           ;C Template.c: 61:     PORTA = 0x00;
+   886     07E7  0020               	movlb	0	; select bank0
+   887     07E8  018C               	clrf	12	;volatile
+   888                           
+   889                           ;C Template.c: 62:     ANSELA = 0x00;
+   890     07E9  0023               	movlb	3	; select bank3
+   891     07EA  018C               	clrf	12	;volatile
+   892                           
+   893                           ;C Template.c: 64:     ANSELC = 0x00;
+   894     07EB  018E               	clrf	14	;volatile
    895                           
-   896                           ;C Template.c: 64:     ANSELC = 0x00;
-   897     07EB  018E               	clrf	14	;volatile
-   898                           
-   899                           ;C Template.c: 65:     TRISC = 0x00;
-   900     07EC  0021               	movlb	1	; select bank1
-   901     07ED  018E               	clrf	14	;volatile
-   902     07EE                     l673:
-   903                           
-   904                           ;C Template.c: 66:     PORTC = 0x30;
-   905     07EE  3030               	movlw	48
-   906     07EF  0020               	movlb	0	; select bank0
-   907     07F0  008E               	movwf	14	;volatile
-   908                           
-   909                           ;C Template.c: 68:     PIE1 = 0x00;
-   910     07F1  0021               	movlb	1	; select bank1
-   911     07F2  0191               	clrf	17	;volatile
+   896                           ;C Template.c: 65:     TRISC = 0x00;
+   897     07EC  0021               	movlb	1	; select bank1
+   898     07ED  018E               	clrf	14	;volatile
+   899     07EE                     l670:
+   900                           
+   901                           ;C Template.c: 66:     PORTC = 0x30;
+   902     07EE  3030               	movlw	48
+   903     07EF  0020               	movlb	0	; select bank0
+   904     07F0  008E               	movwf	14	;volatile
+   905                           
+   906                           ;C Template.c: 68:     PIE1 = 0x00;
+   907     07F1  0021               	movlb	1	; select bank1
+   908     07F2  0191               	clrf	17	;volatile
+   909                           
+   910                           ;C Template.c: 69:     PIE2 = 0x00;
+   911     07F3  0192               	clrf	18	;volatile
    912                           
-   913                           ;C Template.c: 69:     PIE2 = 0x00;
-   914     07F3  0192               	clrf	18	;volatile
-   915                           
-   916                           ;C Template.c: 70:     CCP1CON = 0x00;
-   917     07F4  0025               	movlb	5	; select bank5
-   918     07F5  0193               	clrf	19	;volatile
+   913                           ;C Template.c: 70:     CCP1CON = 0x00;
+   914     07F4  0025               	movlb	5	; select bank5
+   915     07F5  0193               	clrf	19	;volatile
+   916                           
+   917                           ;C Template.c: 71:     CCP2CON = 0x00;
+   918     07F6  019A               	clrf	26	;volatile
    919                           
-   920                           ;C Template.c: 71:     CCP2CON = 0x00;
-   921     07F6  019A               	clrf	26	;volatile
-   922                           
-   923                           ;C Template.c: 72:     T1CON = 0x00;
-   924     07F7  0020               	movlb	0	; select bank0
-   925     07F8  0198               	clrf	24	;volatile
-   926                           
-   927                           ;C Template.c: 73:     T2CON = 0x00;
-   928     07F9  019C               	clrf	28	;volatile
-   929     07FA                     l41:
-   930     07FA  0008               	return
-   931     07FB                     __end_of_SETUP:
-   932     0003                     ___latbits      equ	3
-   933     007E                     btemp           set	126	;btemp
-   934     007E                     wtemp0          set	126
-   935                           
-   936                           	psect	config
-   937                           
-   938                           ;Config register CONFIG1 @ 0x8007
-   939                           ;	Oscillator Selection
-   940                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
-   941                           ;	Watchdog Timer Enable
-   942                           ;	WDTE = ON, WDT enabled
-   943                           ;	Power-up Timer Enable
-   944                           ;	PWRTE = OFF, PWRT disabled
-   945                           ;	MCLR Pin Function Select
-   946                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
-   947                           ;	Flash Program Memory Code Protection
-   948                           ;	CP = OFF, Program memory code protection is disabled
-   949                           ;	Data Memory Code Protection
-   950                           ;	CPD = OFF, Data memory code protection is disabled
-   951                           ;	Brown-out Reset Enable
-   952                           ;	BOREN = OFF, Brown-out Reset disabled
-   953                           ;	Clock Out Enable
-   954                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+   920                           ;C Template.c: 72:     T1CON = 0x00;
+   921     07F7  0020               	movlb	0	; select bank0
+   922     07F8  0198               	clrf	24	;volatile
+   923                           
+   924                           ;C Template.c: 73:     T2CON = 0x00;
+   925     07F9  019C               	clrf	28	;volatile
+   926     07FA                     l35:
+   927     07FA  0008               	return
+   928     07FB                     __end_of_SETUP:
+   929     0003                     ___latbits      equ	3
+   930     007E                     btemp           set	126	;btemp
+   931     007E                     wtemp0          set	126
+   932                           
+   933                           	psect	config
+   934                           
+   935                           ;Config register CONFIG1 @ 0x8007
+   936                           ;	Oscillator Selection
+   937                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
+   938                           ;	Watchdog Timer Enable
+   939                           ;	WDTE = ON, WDT enabled
+   940                           ;	Power-up Timer Enable
+   941                           ;	PWRTE = OFF, PWRT disabled
+   942                           ;	MCLR Pin Function Select
+   943                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
+   944                           ;	Flash Program Memory Code Protection
+   945                           ;	CP = OFF, Program memory code protection is disabled
+   946                           ;	Data Memory Code Protection
+   947                           ;	CPD = OFF, Data memory code protection is disabled
+   948                           ;	Brown-out Reset Enable
+   949                           ;	BOREN = OFF, Brown-out Reset disabled
+   950                           ;	Clock Out Enable
+   951                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
       +                          pin
-   955                           ;	Internal/External Switchover
-   956                           ;	IESO = OFF, Internal/External Switchover mode is disabled
-   957                           ;	Fail-Safe Clock Monitor Enable
-   958                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
-   959     8007                     	org	32775
-   960     8007  29FC               	dw	10748
-   961                           
-   962                           ;Config register CONFIG2 @ 0x8008
-   963                           ;	Flash Memory Self-Write Protection
-   964                           ;	WRT = OFF, Write protection off
-   965                           ;	Voltage Regulator Capacitor Enable bit
-   966                           ;	VCAPEN = OFF, Vcap functionality is disabled on RA6.
-   967                           ;	PLL Enable
-   968                           ;	PLLEN = ON, 4x PLL enabled
-   969                           ;	Stack Overflow/Underflow Reset Enable
-   970                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
-   971                           ;	Brown-out Reset Voltage Selection
-   972                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
-   973                           ;	Low Power Brown-Out Reset Enable Bit
-   974                           ;	LPBOR = OFF, Low power brown-out is disabled
-   975                           ;	In-Circuit Debugger Mode
-   976                           ;	DEBUG = 0x1, unprogrammed default
-   977                           ;	Low-Voltage Programming Enable
-   978                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
-   979     8008                     	org	32776
-   980     8008  1FFF               	dw	8191
+   952                           ;	Internal/External Switchover
+   953                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+   954                           ;	Fail-Safe Clock Monitor Enable
+   955                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
+   956     8007                     	org	32775
+   957     8007  29FC               	dw	10748
+   958                           
+   959                           ;Config register CONFIG2 @ 0x8008
+   960                           ;	Flash Memory Self-Write Protection
+   961                           ;	WRT = OFF, Write protection off
+   962                           ;	Voltage Regulator Capacitor Enable bit
+   963                           ;	VCAPEN = OFF, Vcap functionality is disabled on RA6.
+   964                           ;	PLL Enable
+   965                           ;	PLLEN = ON, 4x PLL enabled
+   966                           ;	Stack Overflow/Underflow Reset Enable
+   967                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+   968                           ;	Brown-out Reset Voltage Selection
+   969                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+   970                           ;	Low Power Brown-Out Reset Enable Bit
+   971                           ;	LPBOR = OFF, Low power brown-out is disabled
+   972                           ;	In-Circuit Debugger Mode
+   973                           ;	DEBUG = 0x1, unprogrammed default
+   974                           ;	Low-Voltage Programming Enable
+   975                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
+   976     8008                     	org	32776
+   977     8008  1FFF               	dw	8191
 
 Data Sizes:
     Strings     0
@@ -1235,12 +1232,11 @@ DATA                 0      0       6      0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
-Symbol Table                                                                                   Wed Nov 13 09:37:00 2024
+Symbol Table                                                                                   Wed Nov 13 10:09:03 2024
 
-                     l41 07FA                       l59 07D9                      l671 07E4  
-                    l673 07EE                      l667 07DB                      l669 07E2  
-                    l693 07D6                      _RA0 0060                      _RA1 0061  
-                    _RA2 0062                      _RA3 0063                     _LATA 010C  
+                     l35 07FA                       l56 07D9                      l670 07EE  
+                    l664 07DB                      l666 07E2                      l690 07D6  
+                    l668 07E4                      _RA0 0060                     _LATA 010C  
                    _PIE1 0091                     _PIE2 0092                     _main 07D6  
                    btemp 007E                     start 0002                    ?_main 0070  
                   _T1CON 0018                    _T2CON 001C                    _SETUP 07DB  
