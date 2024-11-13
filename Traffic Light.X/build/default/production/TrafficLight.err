@@ -1,0 +1,19 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 36 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 40 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 68 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 69 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 74 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 84 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 87 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 89 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICSETUP.INC 99 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\POPOUT.INC 24 : Using default destination of 1 (file).
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\POPOUT.INC 26 : Using default destination of 1 (file).
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\TRAFFIC LIGHT.X\TRAFFICLIGHT.ASM 194 : Found directive in column 1. (END)

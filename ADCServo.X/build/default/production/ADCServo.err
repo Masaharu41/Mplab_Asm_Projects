@@ -1,0 +1,17 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 45 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 74 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 79 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 86 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 89 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 92 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOSETUP.INC 100 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOPOPOUT.INC 24 : Using default destination of 1 (file).
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\SERVOPOPOUT.INC 26 : Using default destination of 1 (file).
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\ADCSERVO.X\ADCSERVO.ASM 190 : Found directive in column 1. (END)

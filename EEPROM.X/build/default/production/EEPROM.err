@@ -1,0 +1,28 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 45 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 74 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 76 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 88 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 94 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 97 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\SETUP.INC 105 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 29 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 30 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 35 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 37 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEWRITE.INC 40 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEREAD.INC 26 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEREAD.INC 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEREAD.INC 29 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEREAD.INC 31 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\EEPROM.X\EEPROM.ASM 337 : Found directive in column 1. (END)

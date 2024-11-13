@@ -1,0 +1,1016 @@
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;***************************************************************************
+                      00002 ;
+                      00003 ;           Filename: ADCServo.asm
+                      00004 ;           Date: 09/30/2024
+                      00005 ;           File Version: 1
+                      00006 ;           Author: Owen Fujii
+                      00007 ;           Company: Idaho State University
+                      00008 ;           Description: A program that uses Adc to adjust a servo motor
+                      00009 ;
+                      00010 ;*************************************************************************
+                      00011         
+                      00012 ;*************************************************************************
+                      00013 ; 
+                      00014 ;           Revision History:
+                      00015 ;   
+                      00016 ;           Modified as listed
+                      00017 ;           Started 10/7/2024-
+                      00018 ;
+                      00019 ;*************************************************************************
+                      00020 
+                      00021         ;Basic Setup File for the PIC16F883
+                      00022 
+                      00023                 #INCLUDE <p16f883.inc>                  ; processor specific variable definitions
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ; Build date : Oct 24 2019
+                      00005 ;  MPASM PIC16F883 processor include
+                      00006 ; 
+                      00007 ;  (c) Copyright 1999-2019 Microchip Technology, All rights reserved
+                      00008 ;==========================================================================
+                      00009 
+                      00781         LIST
+                      00024                 #INCLUDE <ServoSetup.inc>
+                      00001 ;***************************************************************************
+                      00002 ;
+                      00003 ;           Filename: Setup.inc
+                      00004 ;           Date: 09/24/2024
+                      00005 ;           File Version: 1
+                      00006 ;           Author: Owen Fujii
+                      00007 ;           Company: Idaho State University
+                      00008 ;           Description: A collection of registry setups and subroutines
+                      00009 ;
+                      00010 ;*************************************************************************
+                      00011         
+                      00012 ;*************************************************************************
+                      00013 ; 
+                      00014 ;           Revision History:
+                      00015 ;   1: Inc file to contain generic registry setups 
+                      00016 ;
+                      00017 ;       2: Removed GPR setup and added code reference 
+                      00018 ;           Modified as listed
+                      00019 ;           Started 09/24/2024 -Current version implemented 10/7/2024
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00020 ;
+                      00021 ;*************************************************************************
+                      00022         
+                      00023         
+                      00024 START_CODE CODE
+                      00025 
+0000                  00026 START
+                      00027 
+                      00028 
+                      00029                 
+                      00030 ;*** SET OPTION_REG: ****
+0000   1683 1303      00031                 BANKSEL OPTION_REG
+0002   30F4           00032                 MOVLW H'F4'                             ; INITIALIZE SET OF RBPU INTEDG T0SE 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   0081           00033                 MOVWF OPTION_REG
+                      00034 ;*** SET INTCON REG: ****
+0004   1283 1303      00035                 BANKSEL INTCON
+0006   3000           00036                 MOVLW H'00'
+0007   008B           00037                 MOVWF INTCON                            ; INIT PEIE
+                      00038 ;*** SET PIE1 REG: *****
+0008   1683 1303      00039                 BANKSEL PIE1
+000A   3001           00040                 MOVLW H'01'                             ; INIT PIE1 CLEAR
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   008C           00041                 MOVWF PIE1
+                      00042 ;***** SET PIE2 REG: *****
+000C   1683 1303      00043                 BANKSEL PIE2
+000E   3000           00044                 MOVLW H'00'                             ; INIT OSFIE CLEAR OTHERS
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   008D           00045                 MOVWF PIE2
+                      00046 ;*** SET CCP1CON REG: **
+0010   1283 1303      00047                 BANKSEL CCP1CON
+0012   3000           00048                 MOVLW   H'000'                          ;DISABLE PWM & CCP
+0013   0097           00049                 MOVWF   CCP1CON
+0014   1283 1303      00050                 BANKSEL CCP2CON
+0016   019D           00051                 CLRF CCP2CON
+0017   1283 1703      00052                 BANKSEL CM2CON1
+0019   3000           00053                 MOVLW   H'000'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001A   0089           00054                 MOVWF   CM2CON1
+                      00055 
+                      00056 ;*** TIMER 1 SETUP *****
+001B   1283 1303      00057                 BANKSEL T1CON
+001D   3000           00058                 MOVLW   H'000'                          ;
+001E   0090           00059                 MOVWF   T1CON                           ;DISABLE TIMER 1
+                      00060 
+                      00061 ;*** TIMER 2 SETUP *****
+                      00062 
+001F   1283 1303      00063                 BANKSEL T2CON
+0021   0192           00064                 CLRF    T2CON                           ;DISABLE TIMER 2, 1:1 POST SCALE, PRESCALER 1
+0022   3000           00065                 MOVLW   H'000'                          ;SET PR2 FOR FULL COUNT 
+0023   1683 1303      00066                 BANKSEL PR2                             ;
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0025   0092           00067                 MOVWF   PR2                             ;PR2 IS SETS OUTPUT OF PWM HIGH WHEN = TMR2
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00068  
+                      00069 ;*** PORT A SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
+                      00070 
+0026   1683 1303      00071                 BANKSEL ADCON1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0028   139F           00072                 BCF     ADCON1,7
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0029   169F           00073                 BSF     ADCON1,5
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+002A   171F           00074                 BSF     ADCON1,6
+002B   1283 1303      00075                 BANKSEL PORTA
+002D   0185           00076                 CLRF    PORTA                           ; CLEAR PORTA
+002E   1683 1303      00077                 BANKSEL TRISA
+0030   30FE           00078                 MOVLW   H'FE'                           ;SET PORT A INPUT EXEPT RA0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0031   0085           00079                 MOVWF   TRISA
+                      00080                 
+                      00081 ;*** PORT B SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
+0032   1283 1303      00082                 BANKSEL PORTB
+0034   0186           00083                 CLRF    PORTB                           ; CLEAR PORTB 
+0035   1683 1303      00084                 BANKSEL TRISB
+0037   30FF           00085                 MOVLW   H'FF'                           ;SET PORT B AS INPUT
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0038   0086           00086                 MOVWF   TRISB
+0039   1683 1703      00087                 BANKSEL ANSELH
+003B   3010           00088                 MOVLW H'10'                            ; DISABLE ADC INPUTS BANK B
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+003C   0089           00089                 MOVWF ANSELH                            
+003D   1683 1303      00090                 BANKSEL WPUB                            ; DISABLE ALL WEAK PULL UPS PORT B
+003F   3000           00091                 MOVLW   H'00'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0040   0095           00092                 MOVWF   WPUB
+                      00093                 
+                      00094 
+                      00095 ;*** PORT C SETUP **** PORT B RB0 IS USED AS EDGE TRIGGERED INPUT
+0041   1283 1303      00096                 BANKSEL PORTC
+0043   0187           00097                 CLRF    PORTC                           ; CLEAR PORTC
+0044   1683 1303      00098                 BANKSEL TRISC
+0046   3000           00099                 MOVLW   H'000'                          ;SET PORT C AS OUTPUT
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0047   0087           00100                 MOVWF   TRISC
+0048   0008           00101                 RETURN
+                      00025                 #INCLUDE <ServoPOPout.inc>
+                      00001 ;***************************************************************************
+                      00002 ;
+                      00003 ;           Filename: POPout.inc
+                      00004 ;           Date: 09/24/2024
+                      00005 ;           File Version: 1
+                      00006 ;           Author: Owen Fujii
+                      00007 ;           Company: Idaho State University
+                      00008 ;           Description: A sub routine for restoring working and status
+                      00009 ;
+                      00010 ;*************************************************************************
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00011         
+                      00012 ;*************************************************************************
+                      00013 ; 
+                      00014 ;           Revision History:
+                      00015 ;   
+                      00016 ;           Modified as listed
+                      00017 ;           Started 09/25/2024 - Finished 09/25/2024
+                      00018 ;
+                      00019 ;*************************************************************************
+                      00020         
+                      00021 POPOUT_CODE CODE
+                      00022 
+0000                  00023 POPOUT
+Message[305]: Using default destination of 1 (file).
+0000   08A1           00024             MOVF H'21'
+0001   0083           00025             MOVWF STATUS
+Message[305]: Using default destination of 1 (file).
+0002   08A0           00026             MOVF H'20'
+0003   0008           00027             RETURN
+                      00026                 #INCLUDE <ServoPUSHin.inc>
+                      00001 ;***************************************************************************
+                      00002 ;
+                      00003 ;           Filename: PUSHin.inc
+                      00004 ;           Date: 09/24/2024
+                      00005 ;           File Version: 1
+                      00006 ;           Author: Owen Fujii
+                      00007 ;           Company: Idaho State University
+                      00008 ;           Description: A Sub routine for saving status and working 
+                      00009 ;
+                      00010 ;*************************************************************************
+                      00011         
+                      00012 ;*************************************************************************
+                      00013 ; 
+                      00014 ;           Revision History:
+                      00015 ;   
+                      00016 ;           Modified as listed
+                      00017 ;           Started 09/25/2024 - Finished 09/25/2024
+                      00018 ;           Modified 09/26/24
+                      00019 ;               CHANGED ORDER OF MOVWF FOR CORRECT STORAGE
+                      00020 ;
+                      00021 ;*************************************************************************
+                      00022 PUSHIN_CODE CODE
+                      00023 
+0000                  00024 PUSHIN
+0000   00A0           00025                 MOVWF H'20'
+0001   0803           00026                 MOVF STATUS,0      ; ROUTINE FOR RESTORING WORKING AND STATUS
+0002   00A1           00027                 MOVWF H'21'     
+0003   0008           00028                 RETURN
+                      00027                 LIST      p=16f883                      ; list directive to define processor
+                      00028                 errorlevel -302,-207,-305,-206,-203     ;suppress "not in bank 0" message,  Found label 
+                            after column 1,
+                      00029                                                         ;Using default destination of 1 (file),  Found c
+                            all to macro in column 1
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00030 
+                      00031                 #include "p16f883.inc"
+                      00782         LIST
+                      00783 
+                      00784 ;==========================================================================
+                      00785 ; Build date : Oct 24 2019
+                      00786 ;  MPASM PIC16F883 processor include
+                      00787 ; 
+                      00788 ;  (c) Copyright 1999-2019 Microchip Technology, All rights reserved
+                      00789 ;==========================================================================
+                      00790 
+Message[310]: Superseding current maximum RAM and RAM map.
+                      01562         LIST
+                      00032 
+                      00033 ; CONFIG1
+                      00034 ; __config 0xF8E7
+2007   20D1           00035  __CONFIG _CONFIG1, _FOSC_XT & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _CPD_OFF & _BOREN_OFF & _
+                            IESO_OFF & _FCMEN_OFF & _LVP_OFF
+                      00036 ; CONFIG2
+                      00037 ; __config 0xFFFF
+2008   3FFF           00038  __CONFIG _CONFIG2, _BOR4V_BOR40V & _WRT_OFF
+                      00039 ;******************************************             
+                      00040 ;Define Constants
+                      00041 ;******************************************
+                      00042 
+                      00043 #Define         BAUD            D'100'                          ;Desired Baud Rate in Kbps for I2C
+                      00044 #Define         FOSC            D'16000'                        ;Oscillator Clock in KHz This must be fi
+                            lled
+                      00045  
+  00000022            00046             STORE      EQU H'22'
+  00000023            00047             SAVE       EQU H'23'
+  00000024            00048             ROTATE     EQU H'24'
+  00000025            00049             PWM        EQU H'25'
+                      00050             
+                      00051        
+                      00052             
+                      00053  
+                      00054  ; GPR 20 and 21 are used for interrupt save
+                      00055  
+                      00056                 ORG H'000'                                      
+0000   2???           00057                 GOTO SETUP                                      ;RESET CONDITION GOTO SETUP
+                      00058                 ORG H'004'
+0004   2???           00059                 GOTO INTER
+                      00060                 
+0005                  00061 TABLE
+0005   0782           00062         ADDWF PCL,1         ; TABLE THAT CONTAINS EACH 
+0006   3432           00063         RETLW H'32'
+0007   3438           00064         RETLW H'38'
+0008   343F           00065         RETLW H'3F'
+0009   3445           00066         RETLW H'45'
+000A   344B           00067         RETLW H'4B'
+000B   3451           00068         RETLW H'51'
+000C   3458           00069         RETLW H'58'
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000D   345E           00070         RETLW H'5E'
+000E   3464           00071         RETLW H'64'
+000F   346A           00072         RETLW H'6A'
+0010   3471           00073         RETLW H'71'
+0011   3477           00074         RETLW H'77'
+0012   347D           00075         RETLW H'7D'
+0013   3484           00076         RETLW H'84'
+0014   348B           00077         RETLW H'8B'
+0015   3493           00078         RETLW H'93'
+                      00079  
+0016                  00080  SETUP
+0016   2???           00081         CALL START
+0017   1283           00082         BCF STATUS,RP0
+0018   019F           00083         CLRF ADCON0             ; CONFIGURE ANALOG TO DIGITAL REGISTER
+0019   3070           00084         MOVLW H'70'             ; USE FOSC/8 AND AN12 FOR INPUT
+001A   009F           00085         MOVWF ADCON0
+001B   1683 1303      00086         BANKSEL ADCON1
+001D   019F           00087         CLRF ADCON1
+001E   161F           00088         BSF ADCON1,4
+001F   3043           00089         MOVLW H'43'
+0020   008C           00090         MOVWF PIE1              ; ENABLE ADC INTERRUPT, TMR1, TMR2
+0021   1283 1303      00091         BANKSEL ADCON0
+0023   018C           00092         CLRF PIR1
+0024   141F           00093         BSF ADCON0,0            ; ENABLE ADC
+0025   149F           00094         BSF ADCON0,1
+0026   178B           00095         BSF INTCON,GIE
+0027   170B           00096         BSF INTCON,PEIE
+0028   2???           00097         GOTO MAIN
+                      00098         
+0029                  00099 MAIN
+0029   0000           00100         NOP
+002A   2???           00101         GOTO MAIN
+                      00102 
+002B                  00103 INTER
+002B   2???           00104         CALL PUSHIN
+002C   1283 1303      00105         BANKSEL PIR1
+002E   1B0C           00106         BTFSC PIR1,6            ; CHECK ADC
+002F   2???           00107         CALL CONVERT
+0030   188C           00108         BTFSC PIR1,1            ; CHECK TMR2
+0031   2???           00109         CALL PW
+0032   180C           00110         BTFSC PIR1,0            ; CHECK TMR1
+0033   2???           00111         CALL RESTART
+0034   2???           00112         CALL POPOUT
+0035   0009           00113         RETFIE
+                      00114 
+0036                  00115 CONVERT
+0036   018B           00116         CLRF INTCON
+0037   130C           00117         BCF PIR1,6
+0038   101F           00118         BCF ADCON0,0            ; DISABLE ADC
+0039   109F           00119         BCF ADCON0,1
+003A   081E           00120         MOVF ADRESH,0           ; MOVE UPPER BITS TO GPR
+003B   00A2           00121         MOVWF STORE
+003C   0EA2           00122         SWAPF STORE,1
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003D   1222           00123         BCF STORE,4             ; CLEAR UPPER BITS IN REGISTER
+003E   12A2           00124         BCF STORE,5
+003F   1322           00125         BCF STORE,6
+0040   13A2           00126         BCF STORE,7
+0041   1103           00127         BCF STATUS,Z
+0042   01A5           00128         CLRF PWM
+0043   2???           00129         GOTO CHECK
+                      00130 
+                      00131 
+                      00132         
+0044                  00133 TMRSTART
+0044   0825           00134         MOVF PWM,0      ;MOVE OFFSET INTO WORKING
+0045   2???           00135         CALL TABLE      ; CALL TABLE WITH DELAY VALUES
+0046   1683 1303      00136         BANKSEL PR2
+0048   0092           00137         MOVWF PR2       ; MOVE DELAY VALUE INTO PR2
+0049   1283 1303      00138         BANKSEL TMR2
+004B   0191           00139         CLRF TMR2       ; CLEAR TMR2
+004C   3002           00140         MOVLW H'02'     ; CONFIGURE TMR2
+004D   0092           00141         MOVWF T2CON
+004E   1512           00142         BSF T2CON,2     ; ENABLE TMR2
+004F   178B           00143         BSF INTCON,7    ; ENABLE INTERRUPTS
+0050   170B           00144         BSF INTCON,6
+0051   1407           00145         BSF PORTC,0     ; SET OUTPUT HIGH
+0052   0008           00146         RETURN
+                      00147         
+0053                  00148 CHECK
+0053   0825           00149         MOVF PWM,0  
+0054   0222           00150         SUBWF STORE,0   ; SUBTRACT STORE FROM PWM
+0055   1903           00151         BTFSC STATUS,Z  ; CHECK IF OUTCOME IS EQUAL
+0056   2???           00152         GOTO TMRSTART
+0057   0AA5           00153         INCF PWM,1
+0058   1103           00154         BCF STATUS,Z
+0059   2???           00155         GOTO CHECK
+                      00156 
+                      00157         
+005A                  00158 PW
+005A   1283 1303      00159         BANKSEL T2CON
+005C   018B           00160         CLRF INTCON
+005D   1112           00161         BCF T2CON,2         ; DISABLE TMR2  
+005E   1007           00162         BCF PORTC,0
+005F   108C           00163         BCF PIR1,1          
+0060   0190           00164         CLRF T1CON          ; SET T1CON 
+0061   30B1           00165         MOVLW H'B1'         ; OFFSET TMR1 FOR A COUNT OF 20K FOR ROLLOVER
+0062   008F           00166         MOVWF TMR1H
+0063   30E3           00167         MOVLW H'E3'
+0064   008E           00168         MOVWF TMR1L
+0065   1410           00169         BSF T1CON,0         ; START TMR1
+0066   178B           00170         BSF INTCON,7
+0067   170B           00171         BSF INTCON,6
+0068   0008           00172         RETURN
+                      00173         
+0069                  00174 RESTART
+0069   1283 1303      00175         BANKSEL T1CON
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+006B   018B           00176         CLRF INTCON
+006C   1010           00177         BCF T1CON,0         ; DISABLE TMR1
+006D   100C           00178         BCF PIR1,0          ; CLEAR INT FLAG
+006E   019E           00179         CLRF ADRESH         ; CLEAR UPPER REGISTER ADC
+006F   1683           00180         BSF STATUS,RP0
+0070   019E           00181         CLRF ADRESL         ; CLEAR LOWER REGISTER ADC
+0071   1283           00182         BCF STATUS,RP0
+0072   141F           00183         BSF ADCON0,0        ; RE ENABLE ADC CONVERSION
+0073   149F           00184         BSF ADCON0,1
+0074   178B           00185         BSF INTCON,7
+0075   170B           00186         BSF INTCON,6
+0076   0008           00187         RETURN
+                      00188         
+                      00189         
+Warning[205]: Found directive in column 1. (END)
+20D1 3FFF             00190 END
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ABDEN                             00000000
+ABDOVF                            00000007
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ANS0                              00000000
+ANS1                              00000001
+ANS10                             00000002
+ANS11                             00000003
+ANS12                             00000004
+ANS13                             00000005
+ANS2                              00000002
+ANS3                              00000003
+ANS4                              00000004
+ANS8                              00000000
+ANS9                              00000001
+ANSEL                             00000188
+ANSELH                            00000189
+BAUD                              D'100'
+BAUDCTL                           00000187
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRG0                              00000000
+BRG1                              00000001
+BRG10                             00000002
+BRG11                             00000003
+BRG12                             00000004
+BRG13                             00000005
+BRG14                             00000006
+BRG15                             00000007
+BRG16                             00000003
+BRG2                              00000002
+BRG3                              00000003
+BRG4                              00000004
+BRG5                              00000005
+BRG6                              00000006
+BRG7                              00000007
+BRG8                              00000000
+BRG9                              00000001
+BRGH                              00000002
+C                                 00000000
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C1CH0                             00000000
+C1CH1                             00000001
+C1IE                              00000005
+C1IF                              00000005
+C1OE                              00000005
+C1ON                              00000007
+C1OUT                             00000006
+C1POL                             00000004
+C1R                               00000002
+C1RSEL                            00000005
+C1SEN                             00000005
+C2CH0                             00000000
+C2CH1                             00000001
+C2IE                              00000006
+C2IF                              00000006
+C2OE                              00000005
+C2ON                              00000007
+C2OUT                             00000006
+C2POL                             00000004
+C2R                               00000002
+C2REN                             00000004
+C2RSEL                            00000004
+C2SYNC                            00000000
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHECK                             00000053
+CHS0                              00000002
+CHS1                              00000003
+CHS2                              00000004
+CHS3                              00000005
+CKE                               00000006
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CKP                               00000004
+CM1CON0                           00000107
+CM2CON0                           00000108
+CM2CON1                           00000109
+CONVERT                           00000036
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+DC1B0                             00000004
+DC1B1                             00000005
+DC2B0                             00000004
+DC2B1                             00000005
+D_A                               00000005
+D_NOT_A                           00000005
+ECCPAS                            0000009C
+ECCPAS0                           00000004
+ECCPAS1                           00000005
+ECCPAS2                           00000006
+ECCPASE                           00000007
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDAT                             0000010C
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+FOSC                              D'16000'
+FSR                               00000004
+FVREN                             00000000
+GCEN                              00000007
+GIE                               00000007
+GO                                00000001
+GO_DONE                           00000001
+GO_NOT_DONE                       00000001
+HTS                               00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTER                             0000002B
+INTF                              00000001
+IOCB                              00000096
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IOCB6                             00000006
+IOCB7                             00000007
+IRCF0                             00000004
+IRCF1                             00000005
+IRCF2                             00000006
+IRP                               00000007
+LTS                               00000001
+MAIN                              00000029
+MC1OUT                            00000007
+MC2OUT                            00000006
+MSK                               00000093
+MSK0                              00000000
+MSK1                              00000001
+MSK2                              00000002
+MSK3                              00000003
+MSK4                              00000004
+MSK5                              00000005
+MSK6                              00000006
+MSK7                              00000007
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000001
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OERR                              00000001
+OPTION_REG                        00000081
+OSCCON                            0000008F
+OSCTUNE                           00000090
+OSFIE                             00000007
+OSFIF                             00000007
+OSTS                              00000003
+P                                 00000004
+P1M0                              00000006
+P1M1                              00000007
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PDC0                              00000000
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+PDC1                              00000001
+PDC2                              00000002
+PDC3                              00000003
+PDC4                              00000004
+PDC5                              00000005
+PDC6                              00000006
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+POPOUT                            00000000
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTE                             00000009
+PR2                               00000092
+PRSEN                             00000007
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSSAC0                            00000002
+PSSAC1                            00000003
+PSSBD0                            00000000
+PSSBD1                            00000001
+PSTRCON                           0000009D
+PULSR                             00000002
+PULSS                             00000003
+PUSHIN                            00000000
+PW                                0000005A
+PWM                               00000025
+PWM1CON                           0000009B
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIDL                             00000006
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RE3                               00000003
+READ_WRITE                        00000002
+RESTART                           00000069
+ROTATE                            00000024
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SAVE                              00000023
+SBOREN                            00000004
+SCKP                              00000004
+SCS                               00000000
+SEN                               00000000
+SENDB                             00000003
+SETUP                             00000016
+SMP                               00000007
+SPBRG                             00000099
+SPBRGH                            0000009A
+SPEN                              00000007
+SR0                               00000006
+SR1                               00000007
+SRCON                             00000185
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPMSK                            00000093
+SSPOV                             00000006
+SSPSTAT                           00000094
+START                             00000000
+STATUS                            00000003
+STORE                             00000022
+STRA                              00000000
+STRB                              00000001
+STRC                              00000002
+STRD                              00000003
+STRSYNC                           00000004
+SWDTEN                            00000000
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1GINV                            00000007
+T1GIV                             00000007
+T1GSS                             00000001
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TABLE                             00000005
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TMRSTART                          00000044
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISE                             00000089
+TRISE3                            00000003
+TRMT                              00000001
+TUN0                              00000000
+TUN1                              00000001
+TUN2                              00000002
+TUN3                              00000003
+TUN4                              00000004
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+ULPWUE                            00000005
+ULPWUIE                           00000002
+ULPWUIF                           00000002
+VCFG0                             00000004
+VCFG1                             00000005
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+VR3                               00000003
+VRCON                             00000097
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+VRSS                              00000004
+W                                 00000000
+WCOL                              00000007
+WDTCON                            00000105
+WDTPS0                            00000001
+WDTPS1                            00000002
+WDTPS2                            00000003
+WDTPS3                            00000004
+WPUB                              00000095
+WPUB0                             00000000
+WPUB1                             00000001
+WPUB2                             00000002
+WPUB3                             00000003
+WPUB4                             00000004
+WPUB5                             00000005
+WPUB6                             00000006
+WPUB7                             00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+WUE                               00000001
+Z                                 00000002
+_BOR21V                           00003EFF
+_BOR40V                           00003FFF
+_BOR4V_BOR21V                     00003EFF
+_BOR4V_BOR40V                     00003FFF
+_BOREN_NSLEEP                     00003EFF
+_BOREN_OFF                        00003CFF
+_BOREN_ON                         00003FFF
+_BOREN_SBODEN                     00003DFF
+_BOR_NSLEEP                       00003EFF
+_BOR_OFF                          00003CFF
+_BOR_ON                           00003FFF
+_BOR_SBODEN                       00003DFF
+_CONFIG1                          00002007
+_CONFIG2                          00002008
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003F7F
+_CP_OFF                           00003FFF
+_CP_ON                            00003FBF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         00001FFF
+_DEVID1                           00002006
+_EC_OSC                           00003FFB
+_EXTRC                            00003FFF
+_EXTRCIO                          00003FFE
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+MPASM 5.86                      ADCSERVO.ASM   10-9-2024  10:50:45         PAGE 18
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_FCMEN_OFF                        000037FF
+_FCMEN_ON                         00003FFF
+_FOSC_EC                          00003FFB
+_FOSC_EXTRC_CLKOUT                00003FFF
+_FOSC_EXTRC_NOCLKOUT              00003FFE
+_FOSC_HS                          00003FFA
+_FOSC_INTRC_CLKOUT                00003FFD
+_FOSC_INTRC_NOCLKOUT              00003FFC
+_FOSC_LP                          00003FF8
+_FOSC_XT                          00003FF9
+_HS_OSC                           00003FFA
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_IESO_OFF                         00003BFF
+_IESO_ON                          00003FFF
+_INTOSC                           00003FFD
+_INTOSCIO                         00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_LVP_OFF                          00002FFF
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDTE_OFF                         00003FF7
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_WRT_1FOURTH                      00003BFF
+_WRT_256                          00003DFF
+_WRT_HALF                         000039FF
+_WRT_OFF                          00003FFF
+_XT_OSC                           00003FF9
+__16F883                          00000001
+
+Errors   :     0
+Warnings :     1 reported,     5 suppressed
+Messages :    16 reported,     5 suppressed
+
+

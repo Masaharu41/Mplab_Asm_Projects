@@ -1,0 +1,37 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 40 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 44 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 66 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 76 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 83 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 86 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 89 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\MASTERSETUP.INC 97 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN0ADC.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN0ADC.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN0ADC.INC 34 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN0ADC.INC 35 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN1ADC.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN1ADC.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN1ADC.INC 34 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 22 : Found label after column 1. (ADDDRESS)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 23 : Found label after column 1. (I2CBYTE)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 30 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 31 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 39 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 42 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 68 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 75 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CWRITE.INC 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN4ADC.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN4ADC.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\AN4ADC.INC 34 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\I2CMASTER.X\I2CMASTER.ASM 195 : Found directive in column 1. (END)

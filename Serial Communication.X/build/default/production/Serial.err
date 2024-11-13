@@ -1,0 +1,21 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 40 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 44 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 66 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 78 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 85 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 88 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALSETUP.INC 99 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALPOPOUT.INC 24 : Using default destination of 1 (file).
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIALPOPOUT.INC 26 : Using default destination of 1 (file).
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\AN12ADC.INC 29 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\AN12ADC.INC 30 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\AN10ADC.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\AN10ADC.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\SERIAL COMMUNICATION.X\SERIAL.ASM 308 : Found directive in column 1. (END)

@@ -1,0 +1,17 @@
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 26 : Found label after column 1. (START)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 37 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 63 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 68 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 69 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 70 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 75 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 82 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 85 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 88 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\BSETUP.INC.INC 99 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\1FLIP7FLOP.X\1FLOP7FLIP.ASM 143 : Found directive in column 1. (END)

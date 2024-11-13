@@ -126,13 +126,23 @@ MAIN
 	BANKSEL PORTC 
 	    MOVLW H'01'
 	    MOVWF PORTC
+BUTTON	    
+	    BSF PORTC, 4
+		BTFSC PORTB,RB4                          ; CHECK INPUTS KEYPRESS OF FIRST ROW
+		GOTO RUN
+		GOTO BUTTON
 RUN
-	    CALL DELAY    
+	    CALL DELAY   
 	    MOVLW H'01'
 	    XORWF PORTB,0
 	    MOVWF PORTC
 	    MOVWF PORTA
-	    GOTO RUN
+	    CALL DELAY   
+	    MOVLW H'01'
+	    XORWF PORTB,0
+	    MOVWF PORTC
+	    MOVWF PORTA
+	    GOTO BUTTON
 	    
 	    
 	   

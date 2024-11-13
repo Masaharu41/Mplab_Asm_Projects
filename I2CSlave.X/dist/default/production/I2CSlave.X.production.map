@@ -1,0 +1,72 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu Oct 31 14:45:04 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x0001ae
+               START_CODE       code   0x0000db    program   0x000080
+              PUSHIN_CODE       code   0x00011b    program   0x000008
+              POPOUT_CODE       code   0x00011f    program   0x000008
+.config_8007_BUILD/DEFAULT/PRODUCTION/I2CSLAV       code   0x008007    program   0x000002
+.config_8008_BUILD/DEFAULT/PRODUCTION/I2CSLAV       code   0x008008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000122      
+                            0x008007    0x008008      
+            292 out of 16647 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                CHANGEOUT   0x00007e    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                    INTER   0x000066    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                     MAIN   0x000061    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                   POPOUT   0x00011f    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\1788POPout.inc
+                   PUSHIN   0x00011b    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\1788Pushin.inc
+                  RECIEVE   0x000072    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  SETCCP1   0x000087    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  SETCCP2   0x0000a3    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  SETCCP3   0x0000bf    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                    SETUP   0x00002f    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                    START   0x0000db    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\1788Setup.inc
+                    TABLE   0x000005    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                 TABLETWO   0x00001a    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_0034   0x000034    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_009E   0x00009e    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_00BA   0x0000ba    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_00D6   0x0000d6    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    TABLE   0x000005    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                 TABLETWO   0x00001a    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                    SETUP   0x00002f    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_0034   0x000034    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                     MAIN   0x000061    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                    INTER   0x000066    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  RECIEVE   0x000072    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                CHANGEOUT   0x00007e    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  SETCCP1   0x000087    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_009E   0x00009e    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  SETCCP2   0x0000a3    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_00BA   0x0000ba    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                  SETCCP3   0x0000bf    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+             _.org_1_00D6   0x0000d6    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\I2CSlave.asm
+                    START   0x0000db    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\1788Setup.inc
+                   PUSHIN   0x00011b    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\1788Pushin.inc
+                   POPOUT   0x00011f    program     static C:\Users\jackel\MPLABXProjects\I2CSlave.X\1788POPout.inc
+
+

@@ -1,0 +1,74 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Wed Oct 02 15:16:41 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x0000e4
+               START_CODE       code   0x000076    program   0x00009c
+              PUSHIN_CODE       code   0x0000c4    program   0x000008
+              POPOUT_CODE       code   0x0000c8    program   0x000008
+.config_2007_BUILD/DEFAULT/PRODUCTION/TRAFFIC       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/TRAFFIC       code   0x002008    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x0000cb      
+                            0x002007    0x002008      
+            205 out of 4359 program addresses used, program memory utilization is 4%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    INTER   0x000061    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+             INTERSECTION   0x00006a    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                     MAIN   0x00000e    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+            OVERFLOWCHECK   0x000027    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                   POPOUT   0x0000c8    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\POPout.inc
+                   PUSHIN   0x0000c4    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\PUSHin.inc
+             SETGREENEAST   0x000047    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+            SETGREENNORTH   0x000054    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                    SETUP   0x000005    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+            SETYELLOWEAST   0x00004c    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+           SETYELLOWNORTH   0x00003f    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                     SKIP   0x000050    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                    SKIPP   0x000043    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                    START   0x000076    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficSetup.inc
+                 SWITCHER   0x000032    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                 TMRGREEN   0x00005d    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                 TMRSTART   0x000010    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                TMRYELLOW   0x000059    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    SETUP   0x000005    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                     MAIN   0x00000e    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                 TMRSTART   0x000010    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+            OVERFLOWCHECK   0x000027    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                 SWITCHER   0x000032    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+           SETYELLOWNORTH   0x00003f    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                    SKIPP   0x000043    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+             SETGREENEAST   0x000047    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+            SETYELLOWEAST   0x00004c    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                     SKIP   0x000050    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+            SETGREENNORTH   0x000054    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                TMRYELLOW   0x000059    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                 TMRGREEN   0x00005d    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                    INTER   0x000061    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+             INTERSECTION   0x00006a    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficLight.asm
+                    START   0x000076    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\TrafficSetup.inc
+                   PUSHIN   0x0000c4    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\PUSHin.inc
+                   POPOUT   0x0000c8    program     static C:\Users\jackel\MPLABXProjects\Traffic Light.X\POPout.inc
+
+

@@ -1,11 +1,11 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Fri Sep 20 13:46:54 2024
+Linker Map File - Created Mon Sep 23 19:55:35 2024
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .org_0       code   0x000000    program   0x0000b8
-                   .cinit    romdata   0x00005c    program   0x000004
+                   .org_0       code   0x000000    program   0x0000ca
+                   .cinit    romdata   0x000065    program   0x000004
 .config_2007_BUILD/DEFAULT/PRODUCTION/1KTONE.       code   0x002007    program   0x000002
 .config_2008_BUILD/DEFAULT/PRODUCTION/1KTONE.       code   0x002008    program   0x000002
 
@@ -14,19 +14,20 @@ Linker Map File - Created Fri Sep 20 13:46:54 2024
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x00005d      
+                            0x000000    0x000066      
                             0x002007    0x002008      
-            96 out of 4359 program addresses used, program memory utilization is 2%
+            105 out of 4359 program addresses used, program memory utilization is 2%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    DELAY   0x000051    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
-                     LOOP   0x000053    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                   BUTTON   0x00004b    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                    DELAY   0x00005a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                     LOOP   0x00005c    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
                      MAIN   0x000047    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
-                      RUN   0x00004b    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                      RUN   0x00004f    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
                     SETUP   0x000001    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
 
 
@@ -36,8 +37,9 @@ Linker Map File - Created Fri Sep 20 13:46:54 2024
                 ---------  ---------  ---------  --------- ---------                
                     SETUP   0x000001    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
                      MAIN   0x000047    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
-                      RUN   0x00004b    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
-                    DELAY   0x000051    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
-                     LOOP   0x000053    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                   BUTTON   0x00004b    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                      RUN   0x00004f    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                    DELAY   0x00005a    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
+                     LOOP   0x00005c    program     static C:\Users\jackel\MPLABXProjects\FunkyMuzak.X\1kTone.asm
 
 

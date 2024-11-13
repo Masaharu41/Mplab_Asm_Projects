@@ -1,0 +1,79 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1788 ]
+[d frameptr 6 ]
+"47 C:\Users\jackel\MPLABXProjects\Basic C.X\C Template.c
+[v _SETUP SETUP `(v  1 e 1 0 ]
+"108
+[v _main main `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"45 C:\Users\jackel\MPLABXProjects\Basic C.X\C Template.c
+[v _button button `s  1 e 2 0 ]
+"429 C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
+"569
+[v _PORTC PORTC `VEuc  1 e 1 @14 ]
+"942
+[v _T1CON T1CON `VEuc  1 e 1 @24 ]
+"1124
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+"1195
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1335
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1434
+[v _PIE1 PIE1 `VEuc  1 e 1 @145 ]
+"1496
+[v _PIE2 PIE2 `VEuc  1 e 1 @146 ]
+[s S22 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF0 1 0 :1:3 
+`uc 1 IRCF1 1 0 :1:4 
+`uc 1 IRCF2 1 0 :1:5 
+`uc 1 IRCF3 1 0 :1:6 
+`uc 1 SPLLEN 1 0 :1:7 
+]
+"1929
+[s S31 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF 1 0 :4:3 
+]
+[u S35 . 1 `S22 1 . 1 0 `S31 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES35  1 e 1 @153 ]
+"2331
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"3676
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3805
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"6810
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
+"6921
+[v _CCP2CON CCP2CON `VEuc  1 e 1 @666 ]
+"19311
+[v _RA0 RA0 `VEb  1 e 0 @96 ]
+"19314
+[v _RA1 RA1 `VEb  1 e 0 @97 ]
+"19317
+[v _RA2 RA2 `VEb  1 e 0 @98 ]
+"19320
+[v _RA3 RA3 `VEb  1 e 0 @99 ]
+"108 C:\Users\jackel\MPLABXProjects\Basic C.X\C Template.c
+[v _main main `(i  1 e 2 0 ]
+{
+"112
+} 0
+"47
+[v _SETUP SETUP `(v  1 e 1 0 ]
+{
+"74
+} 0

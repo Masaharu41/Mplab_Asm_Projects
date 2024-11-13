@@ -1,0 +1,16 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 42 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 64 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 69 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 70 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 76 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 83 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 86 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 89 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 92 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\BSETUP.INC.INC 100 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[310] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\P16F883.INC 1460 : Superseding current maximum RAM and RAM map.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\PORTBINT.X\PORTB INTERRUPT.ASM 223 : Found directive in column 1. (END)
