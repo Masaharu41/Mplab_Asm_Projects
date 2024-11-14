@@ -1244,8 +1244,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 107:     {
 {
 "108
-[; ;C Template.c: 108:         button = 23;
-[e = _button -> -> 23 `i `s ]
+[; ;C Template.c: 108:         button = 35;
+[e = _button -> -> 35 `i `s ]
 "109
 [; ;C Template.c: 109:     }
 }
@@ -1422,8 +1422,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 164:     {
 {
 "165
-[; ;C Template.c: 165:         button = 23;
-[e = _button -> -> 23 `i `s ]
+[; ;C Template.c: 165:         button = 35;
+[e = _button -> -> 35 `i `s ]
 "166
 [; ;C Template.c: 166:     }
 }
@@ -1511,107 +1511,110 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 192:     {
 {
 "193
-[; ;C Template.c: 193:         button = 23;
-[e = _button -> -> 23 `i `s ]
+[; ;C Template.c: 193:         button = 35;
+[e = _button -> -> 35 `i `s ]
 "194
 [; ;C Template.c: 194:         __asm("CLRF PORTA");
 [; <" CLRF PORTA ;# ">
 "195
-[; ;C Template.c: 195:     }
+[; ;C Template.c: 195:         return;
+[e $UE 715  ]
+"196
+[; ;C Template.c: 196:     }
 }
 [e :U 747 ]
 [e :U 745 ]
 [e :U 743 ]
 [e :U 741 ]
-"198
-[; ;C Template.c: 198: }
+"199
+[; ;C Template.c: 199: }
 [e :UE 715 ]
 }
-"200
-[; ;C Template.c: 200: char Convert_To_Chr(int temp)
+"201
+[; ;C Template.c: 201: char Convert_To_Chr(int temp)
 [v _Convert_To_Chr `(uc ~T0 @X0 1 ef1`i ]
-"203
-[; ;C Template.c: 203: {
+"204
+[; ;C Template.c: 204: {
 {
 [e :U _Convert_To_Chr ]
-"200
-[; ;C Template.c: 200: char Convert_To_Chr(int temp)
+"201
+[; ;C Template.c: 201: char Convert_To_Chr(int temp)
 [v _temp `i ~T0 @X0 1 r1 ]
-"203
-[; ;C Template.c: 203: {
-[f ]
 "204
-[; ;C Template.c: 204:     char Key;
-[v _Key `uc ~T0 @X0 1 a ]
+[; ;C Template.c: 204: {
+[f ]
 "205
-[; ;C Template.c: 205:         Key = (char)temp;
-[e = _Key -> _temp `uc ]
+[; ;C Template.c: 205:     char Key;
+[v _Key `uc ~T0 @X0 1 a ]
 "206
-[; ;C Template.c: 206:         return Key;
+[; ;C Template.c: 206:         Key = (char)temp;
+[e = _Key -> _temp `uc ]
+"207
+[; ;C Template.c: 207:         return Key;
 [e ) _Key ]
 [e $UE 748  ]
-"207
-[; ;C Template.c: 207: }
+"208
+[; ;C Template.c: 208: }
 [e :UE 748 ]
 }
-"209
-[; ;C Template.c: 209: void Write_To_Port(char write)
-[v _Write_To_Port `(v ~T0 @X0 1 ef1`uc ]
 "210
-[; ;C Template.c: 210: {
+[; ;C Template.c: 210: void Write_To_Port(char write)
+[v _Write_To_Port `(v ~T0 @X0 1 ef1`uc ]
+"211
+[; ;C Template.c: 211: {
 {
 [e :U _Write_To_Port ]
-"209
-[; ;C Template.c: 209: void Write_To_Port(char write)
-[v _write `uc ~T0 @X0 1 r1 ]
 "210
-[; ;C Template.c: 210: {
-[f ]
+[; ;C Template.c: 210: void Write_To_Port(char write)
+[v _write `uc ~T0 @X0 1 r1 ]
 "211
-[; ;C Template.c: 211:     PORTC = write;
-[e = _PORTC -> _write `uc ]
+[; ;C Template.c: 211: {
+[f ]
 "212
-[; ;C Template.c: 212: }
+[; ;C Template.c: 212:     PORTC = write;
+[e = _PORTC -> _write `uc ]
+"213
+[; ;C Template.c: 213: }
 [e :UE 749 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"214
-[; ;C Template.c: 214: int main(int argc, char** argv) {
+"215
+[; ;C Template.c: 215: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"215
-[; ;C Template.c: 215:     Setup();
-[e ( _Setup ..  ]
 "216
-[; ;C Template.c: 216:     while (1 == 1)
+[; ;C Template.c: 216:     Setup();
+[e ( _Setup ..  ]
+"217
+[; ;C Template.c: 217:     while (1 == 1)
 [e $U 751  ]
 [e :U 752 ]
-"217
-[; ;C Template.c: 217:     {
-{
 "218
-[; ;C Template.c: 218:         Keypad_Check();
-[e ( _Keypad_Check ..  ]
+[; ;C Template.c: 218:     {
+{
 "219
-[; ;C Template.c: 219:         Write_To_Port(Convert_To_Chr(button));
-[e ( _Write_To_Port (1 ( _Convert_To_Chr (1 -> _button `i ]
+[; ;C Template.c: 219:         Keypad_Check();
+[e ( _Keypad_Check ..  ]
 "220
-[; ;C Template.c: 220:     }
+[; ;C Template.c: 220:         Write_To_Port(Convert_To_Chr(button));
+[e ( _Write_To_Port (1 ( _Convert_To_Chr (1 -> _button `i ]
+"221
+[; ;C Template.c: 221:     }
 }
 [e :U 751 ]
-"216
-[; ;C Template.c: 216:     while (1 == 1)
+"217
+[; ;C Template.c: 217:     while (1 == 1)
 [e $ == -> 1 `i -> 1 `i 752  ]
 [e :U 753 ]
-"223
-[; ;C Template.c: 223:     return (0);
+"224
+[; ;C Template.c: 224:     return (0);
 [e ) -> 0 `i ]
 [e $UE 750  ]
-"224
-[; ;C Template.c: 224: }
+"225
+[; ;C Template.c: 225: }
 [e :UE 750 ]
 }

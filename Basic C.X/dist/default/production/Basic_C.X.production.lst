@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
-                                                                                               Thu Nov 14 10:53:26 2024
+                                                                                               Thu Nov 14 11:03:25 2024
 
 Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
      1                           	processor	16F1788
@@ -821,7 +821,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    807 ;;
    808 ;; *************** function _main *****************
    809 ;; Defined at:
-   810 ;;		line 214 in file "C Template.c"
+   810 ;;		line 215 in file "C Template.c"
    811 ;; Parameters:    Size  Location     Type
    812 ;;  argc            2    3[COMMON] int 
    813 ;;  argv            2    5[COMMON] PTR PTR unsigned char 
@@ -860,28 +860,28 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    841     071B                     _main:	
    842                           ;psect for function _main
    843                           
-   844     071B                     l840:	
+   844     071B                     l842:	
    845                           ;incstack = 0
    846                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    847                           
    848                           
-   849                           ;C Template.c: 215:     Setup();
+   849                           ;C Template.c: 216:     Setup();
    850     071B  3187  272E  3187   	fcall	_Setup
-   851     071E                     l842:	
-   852                           ;C Template.c: 216:     while (1 == 1)
+   851     071E                     l844:	
+   852                           ;C Template.c: 217:     while (1 == 1)
    853                           
    854                           
-   855                           ;C Template.c: 217:     {;C Template.c: 218:         Keypad_Check();
+   855                           ;C Template.c: 218:     {;C Template.c: 219:         Keypad_Check();
    856     071E  3187  274E  3187   	fcall	_Keypad_Check
    857                           
-   858                           ;C Template.c: 219:         Write_To_Port(Convert_To_Chr(button));
+   858                           ;C Template.c: 220:         Write_To_Port(Convert_To_Chr(button));
    859     0721  0878               	movf	_button+1,w
    860     0722  00F1               	movwf	Convert_To_Chr@temp+1
    861     0723  0877               	movf	_button,w
    862     0724  00F0               	movwf	Convert_To_Chr@temp
    863     0725  3187  2712  3187   	fcall	_Convert_To_Chr
    864     0728  3187  2716  3187   	fcall	_Write_To_Port
-   865     072B  2F1E               	goto	l842
+   865     072B  2F1E               	goto	l844
    866     072C  3180  2802         	ljmp	start
    867     072E                     __end_of_main:
    868                           
@@ -889,7 +889,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    870     0716                     __ptext1:	
    871 ;; *************** function _Write_To_Port *****************
    872 ;; Defined at:
-   873 ;;		line 209 in file "C Template.c"
+   873 ;;		line 210 in file "C Template.c"
    874 ;; Parameters:    Size  Location     Type
    875 ;;  write           1    wreg     unsigned char 
    876 ;; Auto vars:     Size  Location     Type
@@ -929,10 +929,10 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    905                           ; Regs used in _Write_To_Port: [wreg]
    906                           ;Write_To_Port@write stored from wreg
    907     0716  00F0               	movwf	Write_To_Port@write
-   908     0717                     l830:
+   908     0717                     l832:
    909                           
-   910                           ;C Template.c: 209: void Write_To_Port(char write);C Template.c: 210: {;C Template.c: 21
-      +                          1:     PORTC = write;
+   910                           ;C Template.c: 210: void Write_To_Port(char write);C Template.c: 211: {;C Template.c: 21
+      +                          2:     PORTC = write;
    911     0717  0870               	movf	Write_To_Port@write,w
    912     0718  0020               	movlb	0	; select bank0
    913     0719  008E               	movwf	14	;volatile
@@ -1175,8 +1175,8 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1140     0773  2FFA               	goto	l47
   1141     0774                     l734:
   1142                           
-  1143                           ;C Template.c: 107:     {;C Template.c: 108:         button = 23;
-  1144     0774  3017               	movlw	23
+  1143                           ;C Template.c: 107:     {;C Template.c: 108:         button = 35;
+  1144     0774  3023               	movlw	35
   1145     0775  00F7               	movwf	_button
   1146     0776  3000               	movlw	0
   1147     0777  00F8               	movwf	_button+1
@@ -1339,8 +1339,8 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1304     07C9  2FFA               	goto	l47
   1305     07CA                     l794:
   1306                           
-  1307                           ;C Template.c: 164:     {;C Template.c: 165:         button = 23;
-  1308     07CA  3017               	movlw	23
+  1307                           ;C Template.c: 164:     {;C Template.c: 165:         button = 35;
+  1308     07CA  3023               	movlw	35
   1309     07CB  00F7               	movwf	_button
   1310     07CC  3000               	movlw	0
   1311     07CD  00F8               	movwf	_button+1
@@ -1421,8 +1421,8 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1386     07F4  2FFA               	goto	l47
   1387     07F5                     l824:
   1388                           
-  1389                           ;C Template.c: 192:     {;C Template.c: 193:         button = 23;
-  1390     07F5  3017               	movlw	23
+  1389                           ;C Template.c: 192:     {;C Template.c: 193:         button = 35;
+  1390     07F5  3023               	movlw	35
   1391     07F6  00F7               	movwf	_button
   1392     07F7  3000               	movlw	0
   1393     07F8  00F8               	movwf	_button+1
@@ -1435,7 +1435,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1400     0712                     __ptext4:	
   1401 ;; *************** function _Convert_To_Chr *****************
   1402 ;; Defined at:
-  1403 ;;		line 200 in file "C Template.c"
+  1403 ;;		line 201 in file "C Template.c"
   1404 ;; Parameters:    Size  Location     Type
   1405 ;;  temp            2    0[COMMON] int 
   1406 ;; Auto vars:     Size  Location     Type
@@ -1470,17 +1470,17 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
   1430     0712                     _Convert_To_Chr:	
   1431                           ;psect for function _Convert_To_Chr
   1432                           
-  1433     0712                     l836:	
+  1433     0712                     l838:	
   1434                           ;incstack = 0
   1435                           ; Regs used in _Convert_To_Chr: [wreg]
   1436                           
   1437                           
-  1438                           ;C Template.c: 200: char Convert_To_Chr(int temp);C Template.c: 203: {;C Template.c: 204
-      +                          :     char Key;;C Template.c: 205:         Key = (char)temp;
+  1438                           ;C Template.c: 201: char Convert_To_Chr(int temp);C Template.c: 204: {;C Template.c: 205
+      +                          :     char Key;;C Template.c: 206:         Key = (char)temp;
   1439     0712  0870               	movf	Convert_To_Chr@temp,w
   1440     0713  00F2               	movwf	Convert_To_Chr@Key
   1441                           
-  1442                           ;C Template.c: 206:         return Key;
+  1442                           ;C Template.c: 207:         return Key;
   1443     0714  0872               	movf	Convert_To_Chr@Key,w
   1444     0715                     l81:
   1445     0715  0008               	return
@@ -1781,7 +1781,7 @@ DATA                 0      0       9      0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
-Symbol Table                                                                                   Thu Nov 14 10:53:26 2024
+Symbol Table                                                                                   Thu Nov 14 11:03:25 2024
 
                      l51 076B                       l43 074D                       l46 0759  
                      l71 07DA                       l63 07AF                       l55 0784  
@@ -1799,11 +1799,11 @@ Symbol Table                                                                    
                     l702 0735                      l800 07D5                      l704 0737  
                     l722 0766                      l706 0741                      l812 07E7  
                     l740 077F                      l716 075D                      l708 074E  
-                    l806 07DE                      l734 0774                      l830 0717  
-                    l824 07F5                      l752 0791                      l736 0779  
-                    l728 076F                      l840 071B                      l818 07F0  
-                    l770 07AA                      l746 0788                      l738 077B  
-                    l842 071E                      l836 0712                      l764 079F  
+                    l806 07DE                      l734 0774                      l824 07F5  
+                    l752 0791                      l736 0779                      l728 076F  
+                    l832 0717                      l818 07F0                      l770 07AA  
+                    l746 0788                      l738 077B                      l842 071B  
+                    l764 079F                      l844 071E                      l838 0712  
                     l782 07BC                      l766 07A4                      l758 079A  
                     l776 07B3                      l768 07A6                      l794 07CA  
                     l796 07CF                      l788 07C5                      l798 07D1  

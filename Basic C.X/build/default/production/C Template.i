@@ -10477,7 +10477,7 @@ void Keypad_Check()
     }
     else
     {
-        button = 23;
+        button = 35;
     }
 
     __asm("CLRF PORTA");
@@ -10534,7 +10534,7 @@ void Keypad_Check()
     }
     else
     {
-        button = 23;
+        button = 35;
     }
 
     __asm("CLRF PORTA");
@@ -10562,8 +10562,9 @@ void Keypad_Check()
     }
     else
     {
-        button = 23;
+        button = 35;
         __asm("CLRF PORTA");
+        return;
     }
 
 

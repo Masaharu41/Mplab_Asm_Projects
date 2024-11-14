@@ -105,7 +105,7 @@ void Keypad_Check()
     }
     else 
     {
-        button = 23;
+        button = 35;
     }
     /*Returns a dummy case unless a valid case has been found*/
     asm("CLRF PORTA");
@@ -162,7 +162,7 @@ void Keypad_Check()
     }
     else 
     {
-        button = 23;
+        button = 35;
     }
     //
     asm("CLRF PORTA");
@@ -190,11 +190,12 @@ void Keypad_Check()
     }
     else 
     {
-        button = 23;
+        button = 35;
         asm("CLRF PORTA");
+        return;
     }
-    //
-  
+//
+    
 }
 
 char Convert_To_Chr(int temp)
