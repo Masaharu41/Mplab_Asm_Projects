@@ -81,7 +81,7 @@ void Keypad_Check()
      into the global variable for the key's int value
      infinite while loop until the code is broken*/
 
-
+    asm("CLRF PORTA");
     RA0 = 1;
     if (PORTAbits.RA4 == 1)
     {
@@ -107,6 +107,7 @@ void Keypad_Check()
     {
         button = 35;
     }
+ 
     /*Returns a dummy case unless a valid case has been found*/
     asm("CLRF PORTA");
     RA1 = 1;

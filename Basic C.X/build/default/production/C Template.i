@@ -10453,7 +10453,7 @@ void Keypad_Check()
 
 
 
-
+    __asm("CLRF PORTA");
     RA0 = 1;
     if (PORTAbits.RA4 == 1)
     {
@@ -10479,6 +10479,7 @@ void Keypad_Check()
     {
         button = 35;
     }
+
 
     __asm("CLRF PORTA");
     RA1 = 1;
