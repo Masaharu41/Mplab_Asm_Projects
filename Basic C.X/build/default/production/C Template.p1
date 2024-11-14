@@ -56,6 +56,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19311
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 19311: extern volatile __bit RA0 __attribute__((address(0x60)));
 [v _RA0 `Vb ~T0 @X0 0 e@96 ]
+"435
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 435:     struct {
+[s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S34 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"445
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 445:     struct {
+[s S35 :8 `uc 1 ]
+[n S35 . PORTA ]
+"434
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 434: typedef union {
+[u S33 `S34 1 `S35 1 ]
+[n S33 . . . ]
+"449
+[; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 449: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x00C)));
+[v _PORTAbits `VS33 ~T0 @X0 0 e@12 ]
 "19314
 [; ;C:\Program Files\Microchip\xc8\v2.50\pic\include\proc\pic16f1788.h: 19314: extern volatile __bit RA1 __attribute__((address(0x61)));
 [v _RA1 `Vb ~T0 @X0 0 e@97 ]
@@ -1120,8 +1135,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C Template.c: 65:     TRISC = 0x00;
 [e = _TRISC -> -> 0 `i `uc ]
 "66
-[; ;C Template.c: 66:     PORTC = 0x30;
-[e = _PORTC -> -> 48 `i `uc ]
+[; ;C Template.c: 66:     PORTC = 0x23;
+[e = _PORTC -> -> 35 `i `uc ]
 "68
 [; ;C Template.c: 68:     PIE1 = 0x00;
 [e = _PIE1 -> -> 0 `i `uc ]
@@ -1152,510 +1167,451 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Keypad_Check ]
 [f ]
-"83
-[; ;C Template.c: 83:     while (1 == 1)
-[e $U 716  ]
-[e :U 717 ]
-"84
-[; ;C Template.c: 84:     {
-{
 "85
-[; ;C Template.c: 85:         RA0 = 1;
+[; ;C Template.c: 85:     RA0 = 1;
 [e = _RA0 -> -> 1 `i `b ]
 "86
-[; ;C Template.c: 86:         if (PORTA = 0x11)
-[e $ ! != -> = _PORTA -> -> 17 `i `uc `i -> 0 `i 719  ]
+[; ;C Template.c: 86:     if (PORTAbits.RA4 == 1)
+[e $ ! == -> . . _PORTAbits 0 4 `i -> 1 `i 716  ]
 "87
-[; ;C Template.c: 87:         {
+[; ;C Template.c: 87:     {
 {
 "88
-[; ;C Template.c: 88:             button = 48;
+[; ;C Template.c: 88:         button = 48;
 [e = _button -> -> 48 `i `s ]
 "89
-[; ;C Template.c: 89:         }
-}
-[e $U 720  ]
-"90
-[; ;C Template.c: 90:         else if (PORTA = 0x21)
-[e :U 719 ]
-[e $ ! != -> = _PORTA -> -> 33 `i `uc `i -> 0 `i 721  ]
-"91
-[; ;C Template.c: 91:         {
-{
-"92
-[; ;C Template.c: 92:             button = 49;
-[e = _button -> -> 49 `i `s ]
-"93
-[; ;C Template.c: 93:         }
-}
-[e $U 722  ]
-"94
-[; ;C Template.c: 94:         else if (PORTA = 0x41)
-[e :U 721 ]
-[e $ ! != -> = _PORTA -> -> 65 `i `uc `i -> 0 `i 723  ]
-"95
-[; ;C Template.c: 95:         {
-{
-"96
-[; ;C Template.c: 96:             button = 50;
-[e = _button -> -> 50 `i `s ]
-"97
-[; ;C Template.c: 97:         }
-}
-[e $U 724  ]
-"98
-[; ;C Template.c: 98:         else if (PORTA = 0x81)
-[e :U 723 ]
-[e $ ! != -> = _PORTA -> -> 129 `i `uc `i -> 0 `i 725  ]
-"99
-[; ;C Template.c: 99:         {
-{
-"100
-[; ;C Template.c: 100:             button = 51;
-[e = _button -> -> 51 `i `s ]
-"101
-[; ;C Template.c: 101:         }
-}
-[e $U 726  ]
-"102
-[; ;C Template.c: 102:         else
-[e :U 725 ]
-"103
-[; ;C Template.c: 103:         {
-{
-"104
-[; ;C Template.c: 104:             button = 35;
-[e = _button -> -> 35 `i `s ]
-"105
-[; ;C Template.c: 105:         }
-}
-[e :U 726 ]
-[e :U 724 ]
-[e :U 722 ]
-[e :U 720 ]
-"107
-[; ;C Template.c: 107:         if (button = 35)
-[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 727  ]
-"108
-[; ;C Template.c: 108:         {
-{
-"109
-[; ;C Template.c: 109:             __asm("CLRF PORTA");
-[; <" CLRF PORTA ;# ">
-"110
-[; ;C Template.c: 110:             RA1 = 1;
-[e = _RA1 -> -> 1 `i `b ]
-"111
-[; ;C Template.c: 111:         }
-}
-[e $U 728  ]
-"112
-[; ;C Template.c: 112:         else
-[e :U 727 ]
-"113
-[; ;C Template.c: 113:         {
-{
-"114
-[; ;C Template.c: 114:             return;
+[; ;C Template.c: 89:         return;
 [e $UE 715  ]
+"90
+[; ;C Template.c: 90:     }
+}
+[e $U 717  ]
+"91
+[; ;C Template.c: 91:     else if (PORTAbits.RA5 == 1)
+[e :U 716 ]
+[e $ ! == -> . . _PORTAbits 0 5 `i -> 1 `i 718  ]
+"92
+[; ;C Template.c: 92:     {
+{
+"93
+[; ;C Template.c: 93:         button = 49;
+[e = _button -> -> 49 `i `s ]
+"94
+[; ;C Template.c: 94:         return;
+[e $UE 715  ]
+"95
+[; ;C Template.c: 95:     }
+}
+[e $U 719  ]
+"96
+[; ;C Template.c: 96:     else if (PORTAbits.RA6 == 1)
+[e :U 718 ]
+[e $ ! == -> . . _PORTAbits 0 6 `i -> 1 `i 720  ]
+"97
+[; ;C Template.c: 97:     {
+{
+"98
+[; ;C Template.c: 98:         button = 50;
+[e = _button -> -> 50 `i `s ]
+"99
+[; ;C Template.c: 99:         return;
+[e $UE 715  ]
+"100
+[; ;C Template.c: 100:     }
+}
+[e $U 721  ]
+"101
+[; ;C Template.c: 101:     else if (PORTAbits.RA7 == 1)
+[e :U 720 ]
+[e $ ! == -> . . _PORTAbits 0 7 `i -> 1 `i 722  ]
+"102
+[; ;C Template.c: 102:     {
+{
+"103
+[; ;C Template.c: 103:         button = 51;
+[e = _button -> -> 51 `i `s ]
+"104
+[; ;C Template.c: 104:         return;
+[e $UE 715  ]
+"105
+[; ;C Template.c: 105:     }
+}
+[e $U 723  ]
+"106
+[; ;C Template.c: 106:     else
+[e :U 722 ]
+"107
+[; ;C Template.c: 107:     {
+{
+"108
+[; ;C Template.c: 108:         button = 23;
+[e = _button -> -> 23 `i `s ]
+"109
+[; ;C Template.c: 109:     }
+}
+[e :U 723 ]
+[e :U 721 ]
+[e :U 719 ]
+[e :U 717 ]
+"111
+[; ;C Template.c: 111:     __asm("CLRF PORTA");
+[; <" CLRF PORTA ;# ">
+"112
+[; ;C Template.c: 112:     RA1 = 1;
+[e = _RA1 -> -> 1 `i `b ]
 "115
-[; ;C Template.c: 115:         }
-}
-[e :U 728 ]
-"118
-[; ;C Template.c: 118:         if (PORTA = 0x12)
-[e $ ! != -> = _PORTA -> -> 18 `i `uc `i -> 0 `i 729  ]
-"119
-[; ;C Template.c: 119:         {
+[; ;C Template.c: 115:     if (PORTAbits.RA4 == 1)
+[e $ ! == -> . . _PORTAbits 0 4 `i -> 1 `i 724  ]
+"116
+[; ;C Template.c: 116:     {
 {
-"120
-[; ;C Template.c: 120:             button = 52;
+"117
+[; ;C Template.c: 117:         button = 52;
 [e = _button -> -> 52 `i `s ]
+"118
+[; ;C Template.c: 118:         return;
+[e $UE 715  ]
+"119
+[; ;C Template.c: 119:     }
+}
+[e $U 725  ]
+"120
+[; ;C Template.c: 120:     else if (PORTAbits.RA5 == 1)
+[e :U 724 ]
+[e $ ! == -> . . _PORTAbits 0 5 `i -> 1 `i 726  ]
 "121
-[; ;C Template.c: 121:         }
-}
-[e $U 730  ]
+[; ;C Template.c: 121:     {
+{
 "122
-[; ;C Template.c: 122:         else if (PORTA = 0x22)
-[e :U 729 ]
-[e $ ! != -> = _PORTA -> -> 34 `i `uc `i -> 0 `i 731  ]
-"123
-[; ;C Template.c: 123:         {
-{
-"124
-[; ;C Template.c: 124:             button = 53;
+[; ;C Template.c: 122:         button = 53;
 [e = _button -> -> 53 `i `s ]
+"123
+[; ;C Template.c: 123:         return;
+[e $UE 715  ]
+"124
+[; ;C Template.c: 124:     }
+}
+[e $U 727  ]
 "125
-[; ;C Template.c: 125:         }
-}
-[e $U 732  ]
+[; ;C Template.c: 125:     else if (PORTAbits.RA6 == 1)
+[e :U 726 ]
+[e $ ! == -> . . _PORTAbits 0 6 `i -> 1 `i 728  ]
 "126
-[; ;C Template.c: 126:         else if (PORTA = 0x42)
-[e :U 731 ]
-[e $ ! != -> = _PORTA -> -> 66 `i `uc `i -> 0 `i 733  ]
-"127
-[; ;C Template.c: 127:         {
+[; ;C Template.c: 126:     {
 {
-"128
-[; ;C Template.c: 128:             button = 54;
+"127
+[; ;C Template.c: 127:         button = 54;
 [e = _button -> -> 54 `i `s ]
+"128
+[; ;C Template.c: 128:         return;
+[e $UE 715  ]
 "129
-[; ;C Template.c: 129:         }
+[; ;C Template.c: 129:     }
 }
-[e $U 734  ]
+[e $U 729  ]
 "130
-[; ;C Template.c: 130:         else if (PORTA = 0x82)
-[e :U 733 ]
-[e $ ! != -> = _PORTA -> -> 130 `i `uc `i -> 0 `i 735  ]
+[; ;C Template.c: 130:     else if (PORTAbits.RA7 == 1)
+[e :U 728 ]
+[e $ ! == -> . . _PORTAbits 0 7 `i -> 1 `i 730  ]
 "131
-[; ;C Template.c: 131:         {
+[; ;C Template.c: 131:     {
 {
 "132
-[; ;C Template.c: 132:             button = 55;
+[; ;C Template.c: 132:         button = 55;
 [e = _button -> -> 55 `i `s ]
 "133
-[; ;C Template.c: 133:         }
-}
-[e $U 736  ]
+[; ;C Template.c: 133:         return;
+[e $UE 715  ]
 "134
-[; ;C Template.c: 134:         else
-[e :U 735 ]
-"135
-[; ;C Template.c: 135:         {
-{
-"136
-[; ;C Template.c: 136:             button = 35;
-[e = _button -> -> 35 `i `s ]
-"137
-[; ;C Template.c: 137:         }
+[; ;C Template.c: 134:     }
 }
-[e :U 736 ]
-[e :U 734 ]
-[e :U 732 ]
+[e $U 731  ]
+"135
+[; ;C Template.c: 135:     else
 [e :U 730 ]
-"139
-[; ;C Template.c: 139:         if (button = 35)
-[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 737  ]
-"140
-[; ;C Template.c: 140:         {
+"136
+[; ;C Template.c: 136:     {
 {
-"141
-[; ;C Template.c: 141:             __asm("CLRF PORTA");
+"137
+[; ;C Template.c: 137:         button = 35;
+[e = _button -> -> 35 `i `s ]
+"138
+[; ;C Template.c: 138:     }
+}
+[e :U 731 ]
+[e :U 729 ]
+[e :U 727 ]
+[e :U 725 ]
+"140
+[; ;C Template.c: 140:     __asm("CLRF PORTA");
 [; <" CLRF PORTA ;# ">
-"142
-[; ;C Template.c: 142:             RA2 = 1;
+"141
+[; ;C Template.c: 141:     RA2 = 1;
 [e = _RA2 -> -> 1 `i `b ]
 "143
-[; ;C Template.c: 143:         }
-}
-[e $U 738  ]
+[; ;C Template.c: 143:     if (PORTAbits.RA4 == 1)
+[e $ ! == -> . . _PORTAbits 0 4 `i -> 1 `i 732  ]
 "144
-[; ;C Template.c: 144:         else
-[e :U 737 ]
-"145
-[; ;C Template.c: 145:         {
+[; ;C Template.c: 144:     {
 {
+"145
+[; ;C Template.c: 145:         button = 56;
+[e = _button -> -> 56 `i `s ]
 "146
-[; ;C Template.c: 146:             return;
+[; ;C Template.c: 146:         return;
 [e $UE 715  ]
 "147
-[; ;C Template.c: 147:         }
+[; ;C Template.c: 147:     }
 }
-[e :U 738 ]
+[e $U 733  ]
+"148
+[; ;C Template.c: 148:     else if (PORTAbits.RA5 == 1)
+[e :U 732 ]
+[e $ ! == -> . . _PORTAbits 0 5 `i -> 1 `i 734  ]
 "149
-[; ;C Template.c: 149:         if (PORTA = 0x13)
-[e $ ! != -> = _PORTA -> -> 19 `i `uc `i -> 0 `i 739  ]
-"150
-[; ;C Template.c: 150:         {
+[; ;C Template.c: 149:     {
 {
+"150
+[; ;C Template.c: 150:         button = 57;
+[e = _button -> -> 57 `i `s ]
 "151
-[; ;C Template.c: 151:             button = 56;
-[e = _button -> -> 56 `i `s ]
+[; ;C Template.c: 151:         return;
+[e $UE 715  ]
 "152
-[; ;C Template.c: 152:         }
+[; ;C Template.c: 152:     }
 }
-[e $U 740  ]
+[e $U 735  ]
 "153
-[; ;C Template.c: 153:         else if (PORTA = 0x23)
-[e :U 739 ]
-[e $ ! != -> = _PORTA -> -> 35 `i `uc `i -> 0 `i 741  ]
+[; ;C Template.c: 153:     else if (PORTAbits.RA6 == 1)
+[e :U 734 ]
+[e $ ! == -> . . _PORTAbits 0 6 `i -> 1 `i 736  ]
 "154
-[; ;C Template.c: 154:         {
+[; ;C Template.c: 154:     {
 {
 "155
-[; ;C Template.c: 155:             button = 57;
-[e = _button -> -> 57 `i `s ]
-"156
-[; ;C Template.c: 156:         }
-}
-[e $U 742  ]
-"157
-[; ;C Template.c: 157:         else if (PORTA = 0x43)
-[e :U 741 ]
-[e $ ! != -> = _PORTA -> -> 67 `i `uc `i -> 0 `i 743  ]
-"158
-[; ;C Template.c: 158:         {
-{
-"159
-[; ;C Template.c: 159:             button = 65;
+[; ;C Template.c: 155:         button = 65;
 [e = _button -> -> 65 `i `s ]
+"156
+[; ;C Template.c: 156:         return;
+[e $UE 715  ]
+"157
+[; ;C Template.c: 157:     }
+}
+[e $U 737  ]
+"158
+[; ;C Template.c: 158:     else if (PORTAbits.RA7 == 1)
+[e :U 736 ]
+[e $ ! == -> . . _PORTAbits 0 7 `i -> 1 `i 738  ]
+"159
+[; ;C Template.c: 159:     {
+{
 "160
-[; ;C Template.c: 160:         }
-}
-[e $U 744  ]
-"161
-[; ;C Template.c: 161:         else if (PORTA = 0x83)
-[e :U 743 ]
-[e $ ! != -> = _PORTA -> -> 131 `i `uc `i -> 0 `i 745  ]
-"162
-[; ;C Template.c: 162:         {
-{
-"163
-[; ;C Template.c: 163:             button = 66;
+[; ;C Template.c: 160:         button = 66;
 [e = _button -> -> 66 `i `s ]
+"161
+[; ;C Template.c: 161:         return;
+[e $UE 715  ]
+"162
+[; ;C Template.c: 162:     }
+}
+[e $U 739  ]
+"163
+[; ;C Template.c: 163:     else
+[e :U 738 ]
 "164
-[; ;C Template.c: 164:         }
-}
-[e $U 746  ]
+[; ;C Template.c: 164:     {
+{
 "165
-[; ;C Template.c: 165:         else
-[e :U 745 ]
+[; ;C Template.c: 165:         button = 23;
+[e = _button -> -> 23 `i `s ]
 "166
-[; ;C Template.c: 166:         {
-{
-"167
-[; ;C Template.c: 167:             button = 35;
-[e = _button -> -> 35 `i `s ]
+[; ;C Template.c: 166:     }
+}
+[e :U 739 ]
+[e :U 737 ]
+[e :U 735 ]
+[e :U 733 ]
 "168
-[; ;C Template.c: 168:         }
-}
-[e :U 746 ]
-[e :U 744 ]
-[e :U 742 ]
-[e :U 740 ]
-"170
-[; ;C Template.c: 170:         if (button = 35)
-[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 747  ]
-"171
-[; ;C Template.c: 171:         {
-{
-"172
-[; ;C Template.c: 172:             __asm("CLRF PORTA");
+[; ;C Template.c: 168:     __asm("CLRF PORTA");
 [; <" CLRF PORTA ;# ">
-"173
-[; ;C Template.c: 173:             RA3 = 1;
+"169
+[; ;C Template.c: 169:     RA3 = 1;
 [e = _RA3 -> -> 1 `i `b ]
-"174
-[; ;C Template.c: 174:         }
-}
-[e $U 748  ]
-"175
-[; ;C Template.c: 175:         else
-[e :U 747 ]
-"176
-[; ;C Template.c: 176:         {
+"171
+[; ;C Template.c: 171:     if (PORTAbits.RA4 == 1)
+[e $ ! == -> . . _PORTAbits 0 4 `i -> 1 `i 740  ]
+"172
+[; ;C Template.c: 172:     {
 {
-"177
-[; ;C Template.c: 177:             return;
-[e $UE 715  ]
-"178
-[; ;C Template.c: 178:         }
-}
-[e :U 748 ]
-"180
-[; ;C Template.c: 180:         if (PORTA = 0x12)
-[e $ ! != -> = _PORTA -> -> 18 `i `uc `i -> 0 `i 749  ]
-"181
-[; ;C Template.c: 181:         {
-{
-"182
-[; ;C Template.c: 182:             button = 67;
+"173
+[; ;C Template.c: 173:         button = 67;
 [e = _button -> -> 67 `i `s ]
-"183
-[; ;C Template.c: 183:         }
-}
-[e $U 750  ]
-"184
-[; ;C Template.c: 184:         else if (PORTA = 0x22)
-[e :U 749 ]
-[e $ ! != -> = _PORTA -> -> 34 `i `uc `i -> 0 `i 751  ]
-"185
-[; ;C Template.c: 185:         {
-{
-"186
-[; ;C Template.c: 186:             button = 68;
-[e = _button -> -> 68 `i `s ]
-"187
-[; ;C Template.c: 187:         }
-}
-[e $U 752  ]
-"188
-[; ;C Template.c: 188:         else if (PORTA = 0x42)
-[e :U 751 ]
-[e $ ! != -> = _PORTA -> -> 66 `i `uc `i -> 0 `i 753  ]
-"189
-[; ;C Template.c: 189:         {
-{
-"190
-[; ;C Template.c: 190:             button = 69;
-[e = _button -> -> 69 `i `s ]
-"191
-[; ;C Template.c: 191:         }
-}
-[e $U 754  ]
-"192
-[; ;C Template.c: 192:         else if (PORTA = 0x82)
-[e :U 753 ]
-[e $ ! != -> = _PORTA -> -> 130 `i `uc `i -> 0 `i 755  ]
-"193
-[; ;C Template.c: 193:         {
-{
-"194
-[; ;C Template.c: 194:             button = 70;
-[e = _button -> -> 70 `i `s ]
-"195
-[; ;C Template.c: 195:         }
-}
-[e $U 756  ]
-"196
-[; ;C Template.c: 196:         else
-[e :U 755 ]
-"197
-[; ;C Template.c: 197:         {
-{
-"198
-[; ;C Template.c: 198:             button = 35;
-[e = _button -> -> 35 `i `s ]
-"199
-[; ;C Template.c: 199:         }
-}
-[e :U 756 ]
-[e :U 754 ]
-[e :U 752 ]
-[e :U 750 ]
-"201
-[; ;C Template.c: 201:         if (button = 35)
-[e $ ! != -> = _button -> -> 35 `i `s `i -> 0 `i 757  ]
-"202
-[; ;C Template.c: 202:         {
-{
-"203
-[; ;C Template.c: 203:             __asm("CLRF PORTA");
-[; <" CLRF PORTA ;# ">
-"204
-[; ;C Template.c: 204:         }
-}
-[e $U 758  ]
-"205
-[; ;C Template.c: 205:         else
-[e :U 757 ]
-"206
-[; ;C Template.c: 206:         {
-{
-"207
-[; ;C Template.c: 207:             return;
+"174
+[; ;C Template.c: 174:         return;
 [e $UE 715  ]
-"208
-[; ;C Template.c: 208:         }
+"175
+[; ;C Template.c: 175:     }
 }
-[e :U 758 ]
-"209
-[; ;C Template.c: 209:     }
+[e $U 741  ]
+"176
+[; ;C Template.c: 176:     else if (PORTAbits.RA5 == 1)
+[e :U 740 ]
+[e $ ! == -> . . _PORTAbits 0 5 `i -> 1 `i 742  ]
+"177
+[; ;C Template.c: 177:     {
+{
+"178
+[; ;C Template.c: 178:         button = 68;
+[e = _button -> -> 68 `i `s ]
+"179
+[; ;C Template.c: 179:         return;
+[e $UE 715  ]
+"180
+[; ;C Template.c: 180:     }
 }
-[e :U 716 ]
-"83
-[; ;C Template.c: 83:     while (1 == 1)
-[e $ == -> 1 `i -> 1 `i 717  ]
-[e :U 718 ]
-"210
-[; ;C Template.c: 210: }
+[e $U 743  ]
+"181
+[; ;C Template.c: 181:     else if (PORTAbits.RA6 == 1)
+[e :U 742 ]
+[e $ ! == -> . . _PORTAbits 0 6 `i -> 1 `i 744  ]
+"182
+[; ;C Template.c: 182:     {
+{
+"183
+[; ;C Template.c: 183:         button = 69;
+[e = _button -> -> 69 `i `s ]
+"184
+[; ;C Template.c: 184:         return;
+[e $UE 715  ]
+"185
+[; ;C Template.c: 185:     }
+}
+[e $U 745  ]
+"186
+[; ;C Template.c: 186:     else if (PORTAbits.RA7 == 1)
+[e :U 744 ]
+[e $ ! == -> . . _PORTAbits 0 7 `i -> 1 `i 746  ]
+"187
+[; ;C Template.c: 187:     {
+{
+"188
+[; ;C Template.c: 188:         button = 70;
+[e = _button -> -> 70 `i `s ]
+"189
+[; ;C Template.c: 189:         return;
+[e $UE 715  ]
+"190
+[; ;C Template.c: 190:     }
+}
+[e $U 747  ]
+"191
+[; ;C Template.c: 191:     else
+[e :U 746 ]
+"192
+[; ;C Template.c: 192:     {
+{
+"193
+[; ;C Template.c: 193:         button = 23;
+[e = _button -> -> 23 `i `s ]
+"194
+[; ;C Template.c: 194:         __asm("CLRF PORTA");
+[; <" CLRF PORTA ;# ">
+"195
+[; ;C Template.c: 195:     }
+}
+[e :U 747 ]
+[e :U 745 ]
+[e :U 743 ]
+[e :U 741 ]
+"198
+[; ;C Template.c: 198: }
 [e :UE 715 ]
 }
-"212
-[; ;C Template.c: 212: char Convert_To_Chr(int temp)
+"200
+[; ;C Template.c: 200: char Convert_To_Chr(int temp)
 [v _Convert_To_Chr `(uc ~T0 @X0 1 ef1`i ]
-"215
-[; ;C Template.c: 215: {
+"203
+[; ;C Template.c: 203: {
 {
 [e :U _Convert_To_Chr ]
-"212
-[; ;C Template.c: 212: char Convert_To_Chr(int temp)
+"200
+[; ;C Template.c: 200: char Convert_To_Chr(int temp)
 [v _temp `i ~T0 @X0 1 r1 ]
-"215
-[; ;C Template.c: 215: {
+"203
+[; ;C Template.c: 203: {
 [f ]
-"216
-[; ;C Template.c: 216:     char Key;
+"204
+[; ;C Template.c: 204:     char Key;
 [v _Key `uc ~T0 @X0 1 a ]
-"217
-[; ;C Template.c: 217:         Key = (char)temp;
+"205
+[; ;C Template.c: 205:         Key = (char)temp;
 [e = _Key -> _temp `uc ]
-"218
-[; ;C Template.c: 218:         return Key;
+"206
+[; ;C Template.c: 206:         return Key;
 [e ) _Key ]
-[e $UE 759  ]
-"219
-[; ;C Template.c: 219: }
-[e :UE 759 ]
+[e $UE 748  ]
+"207
+[; ;C Template.c: 207: }
+[e :UE 748 ]
 }
-"221
-[; ;C Template.c: 221: void Write_To_Port(char write)
+"209
+[; ;C Template.c: 209: void Write_To_Port(char write)
 [v _Write_To_Port `(v ~T0 @X0 1 ef1`uc ]
-"222
-[; ;C Template.c: 222: {
+"210
+[; ;C Template.c: 210: {
 {
 [e :U _Write_To_Port ]
-"221
-[; ;C Template.c: 221: void Write_To_Port(char write)
+"209
+[; ;C Template.c: 209: void Write_To_Port(char write)
 [v _write `uc ~T0 @X0 1 r1 ]
-"222
-[; ;C Template.c: 222: {
+"210
+[; ;C Template.c: 210: {
 [f ]
-"223
-[; ;C Template.c: 223:     PORTC = write;
+"211
+[; ;C Template.c: 211:     PORTC = write;
 [e = _PORTC -> _write `uc ]
-"224
-[; ;C Template.c: 224: }
-[e :UE 760 ]
+"212
+[; ;C Template.c: 212: }
+[e :UE 749 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"226
-[; ;C Template.c: 226: int main(int argc, char** argv) {
+"214
+[; ;C Template.c: 214: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"227
-[; ;C Template.c: 227:     Setup();
+"215
+[; ;C Template.c: 215:     Setup();
 [e ( _Setup ..  ]
-"228
-[; ;C Template.c: 228:     while (1 == 1)
-[e $U 762  ]
-[e :U 763 ]
-"229
-[; ;C Template.c: 229:     {
+"216
+[; ;C Template.c: 216:     while (1 == 1)
+[e $U 751  ]
+[e :U 752 ]
+"217
+[; ;C Template.c: 217:     {
 {
-"230
-[; ;C Template.c: 230:          Keypad_Check();
+"218
+[; ;C Template.c: 218:         Keypad_Check();
 [e ( _Keypad_Check ..  ]
-"231
-[; ;C Template.c: 231:          Write_To_Port(Convert_To_Chr(button));
+"219
+[; ;C Template.c: 219:         Write_To_Port(Convert_To_Chr(button));
 [e ( _Write_To_Port (1 ( _Convert_To_Chr (1 -> _button `i ]
-"232
-[; ;C Template.c: 232:     }
+"220
+[; ;C Template.c: 220:     }
 }
-[e :U 762 ]
-"228
-[; ;C Template.c: 228:     while (1 == 1)
-[e $ == -> 1 `i -> 1 `i 763  ]
-[e :U 764 ]
-"235
-[; ;C Template.c: 235:     return (0);
+[e :U 751 ]
+"216
+[; ;C Template.c: 216:     while (1 == 1)
+[e $ == -> 1 `i -> 1 `i 752  ]
+[e :U 753 ]
+"223
+[; ;C Template.c: 223:     return (0);
 [e ) -> 0 `i ]
-[e $UE 761  ]
-"236
-[; ;C Template.c: 236: }
-[e :UE 761 ]
+[e $UE 750  ]
+"224
+[; ;C Template.c: 224: }
+[e :UE 750 ]
 }

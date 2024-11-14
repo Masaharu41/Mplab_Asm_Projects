@@ -10435,7 +10435,7 @@ void Setup()
 
     ANSELC = 0x00;
     TRISC = 0x00;
-    PORTC = 0x30;
+    PORTC = 0x23;
 
     PIE1 = 0x00;
     PIE2 = 0x00;
@@ -10452,133 +10452,121 @@ void Keypad_Check()
 
 
 
-    while (1 == 1)
+
+
+    RA0 = 1;
+    if (PORTAbits.RA4 == 1)
     {
-        RA0 = 1;
-        if (PORTA = 0x11)
-        {
-            button = 48;
-        }
-        else if (PORTA = 0x21)
-        {
-            button = 49;
-        }
-        else if (PORTA = 0x41)
-        {
-            button = 50;
-        }
-        else if (PORTA = 0x81)
-        {
-            button = 51;
-        }
-        else
-        {
-            button = 35;
-        }
-
-        if (button = 35)
-        {
-            __asm("CLRF PORTA");
-            RA1 = 1;
-        }
-        else
-        {
-            return;
-        }
-
-
-        if (PORTA = 0x12)
-        {
-            button = 52;
-        }
-        else if (PORTA = 0x22)
-        {
-            button = 53;
-        }
-        else if (PORTA = 0x42)
-        {
-            button = 54;
-        }
-        else if (PORTA = 0x82)
-        {
-            button = 55;
-        }
-        else
-        {
-            button = 35;
-        }
-
-        if (button = 35)
-        {
-            __asm("CLRF PORTA");
-            RA2 = 1;
-        }
-        else
-        {
-            return;
-        }
-
-        if (PORTA = 0x13)
-        {
-            button = 56;
-        }
-        else if (PORTA = 0x23)
-        {
-            button = 57;
-        }
-        else if (PORTA = 0x43)
-        {
-            button = 65;
-        }
-        else if (PORTA = 0x83)
-        {
-            button = 66;
-        }
-        else
-        {
-            button = 35;
-        }
-
-        if (button = 35)
-        {
-            __asm("CLRF PORTA");
-            RA3 = 1;
-        }
-        else
-        {
-            return;
-        }
-
-        if (PORTA = 0x12)
-        {
-            button = 67;
-        }
-        else if (PORTA = 0x22)
-        {
-            button = 68;
-        }
-        else if (PORTA = 0x42)
-        {
-            button = 69;
-        }
-        else if (PORTA = 0x82)
-        {
-            button = 70;
-        }
-        else
-        {
-            button = 35;
-        }
-
-        if (button = 35)
-        {
-            __asm("CLRF PORTA");
-        }
-        else
-        {
-            return;
-        }
+        button = 48;
+        return;
     }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 49;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 50;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 51;
+        return;
+    }
+    else
+    {
+        button = 23;
+    }
+
+    __asm("CLRF PORTA");
+    RA1 = 1;
+
+
+    if (PORTAbits.RA4 == 1)
+    {
+        button = 52;
+        return;
+    }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 53;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 54;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 55;
+        return;
+    }
+    else
+    {
+        button = 35;
+    }
+
+    __asm("CLRF PORTA");
+    RA2 = 1;
+
+    if (PORTAbits.RA4 == 1)
+    {
+        button = 56;
+        return;
+    }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 57;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 65;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 66;
+        return;
+    }
+    else
+    {
+        button = 23;
+    }
+
+    __asm("CLRF PORTA");
+    RA3 = 1;
+
+    if (PORTAbits.RA4 == 1)
+    {
+        button = 67;
+        return;
+    }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 68;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 69;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 70;
+        return;
+    }
+    else
+    {
+        button = 23;
+        __asm("CLRF PORTA");
+    }
+
+
 }
 
 char Convert_To_Chr(int temp)
@@ -10599,8 +10587,8 @@ int main(int argc, char** argv) {
     Setup();
     while (1 == 1)
     {
-         Keypad_Check();
-         Write_To_Port(Convert_To_Chr(button));
+        Keypad_Check();
+        Write_To_Port(Convert_To_Chr(button));
     }
 
 

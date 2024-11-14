@@ -57,13 +57,13 @@ void Setup()
 /* I-O Port ***************************
 PORTA SETUP*/
     LATA    = 0x00;
-    TRISA   = 0xF0; // SET PORTA AS <RA7:RA4> OUT AND <RA3:RA0> IN 
+    TRISA   = 0xF0; // SET PORTA AS <RA7:RA4> IN AND <RA3:RA0> OUT 
     PORTA   = 0x00; 
     ANSELA  = 0x00; 
 // PORTC SETUP
     ANSELC  = 0x00;
     TRISC   = 0x00; // SET PORTC AS OUTPUT
-    PORTC   = 0x30; // SET DEFAULT OUT TO 0
+    PORTC   = 0x23; // SET DEFAULT OUT TO 0
 // GENERAL REGISTERS
     PIE1    = 0x00;
     PIE2    = 0x00;
@@ -75,138 +75,126 @@ PORTA SETUP*/
 
 void Keypad_Check()
 {
-#define keypad PORTA
+
     /*Test the keypad on PORTA with testing each row
      when a valid statement is found an integer is placed
      into the global variable for the key's int value
      infinite while loop until the code is broken*/
-    while (1 == 1)
-    {    
-        RA0 = 1;
-        if (keypad = 0x11)
-        {
-            button = 48;
-        }
-        else if (keypad = 0x21)
-        {
-            button = 49;
-        }
-        else if (keypad = 0x41)
-        {
-            button = 50;
-        }
-        else if (keypad = 0x81)
-        {
-            button = 51;
-        }
-        else 
-        {
-            button = 35;
-        }
-        /*Returns a dummy case unless a valid case has been found*/
-        if (button = 35)
-        {
-            asm("CLRF PORTA");
-            RA1 = 1;
-        }
-        else 
-        {
-            return;
-        }
-        // if a value was found the function is bailed out otherwise test again
-        // test row 2
-        if (keypad = 0x12)
-        {
-            button = 52;
-        }
-        else if (keypad = 0x22)
-        {
-            button = 53;
-        }
-        else if (keypad = 0x42)
-        {
-            button = 54;
-        }
-        else if (keypad = 0x82)
-        {
-            button = 55;
-        }
-        else 
-        {
-            button = 35;
-        }
-        //
-        if (button = 35)
-        {
-            asm("CLRF PORTA");
-            RA2 = 1;
-        }
-        else 
-        {
-            return;
-        }
-         // test row 3
-        if (keypad = 0x13)
-        {
-            button = 56;
-        }
-        else if (keypad = 0x23)
-        {
-            button = 57;
-        }
-        else if (keypad = 0x43)
-        {
-            button = 65;
-        }
-        else if (keypad = 0x83)
-        {
-            button = 66;
-        }
-        else 
-        {
-            button = 35;
-        }
-        //
-        if (button = 35)
-        {
-            asm("CLRF PORTA");
-            RA3 = 1;
-        }
-        else 
-        {
-            return;
-        }
-         // test row 4
-        if (keypad = 0x12)
-        {
-            button = 67;
-        }
-        else if (keypad = 0x22)
-        {
-            button = 68;
-        }
-        else if (keypad = 0x42)
-        {
-            button = 69;
-        }
-        else if (keypad = 0x82)
-        {
-            button = 70;
-        }
-        else 
-        {
-            button = 35;
-        }
-        //
-        if (button = 35)
-        {
-            asm("CLRF PORTA");
-        }
-        else 
-        {
-            return;
-        }
+
+
+    RA0 = 1;
+    if (PORTAbits.RA4 == 1)
+    {
+        button = 48;
+        return;
     }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 49;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 50;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 51;
+        return;
+    }
+    else 
+    {
+        button = 23;
+    }
+    /*Returns a dummy case unless a valid case has been found*/
+    asm("CLRF PORTA");
+    RA1 = 1;
+    // if a value was found the function is bailed out otherwise test again
+    // test row 2
+    if (PORTAbits.RA4  == 1)
+    {
+        button = 52;
+        return;
+    }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 53;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 54;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 55;
+        return;
+    }
+    else 
+    {
+        button = 35;
+    }
+    //
+    asm("CLRF PORTA");
+    RA2 = 1;
+     // test row 3
+    if (PORTAbits.RA4  == 1)
+    {
+        button = 56;
+        return;
+    }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 57;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 65;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 66;
+        return;
+    }
+    else 
+    {
+        button = 23;
+    }
+    //
+    asm("CLRF PORTA");
+    RA3 = 1;
+     // test row 4
+    if (PORTAbits.RA4  == 1)
+    {
+        button = 67;
+        return;
+    }
+    else if (PORTAbits.RA5 == 1)
+    {
+        button = 68;
+        return;
+    }
+    else if (PORTAbits.RA6 == 1)
+    {
+        button = 69;
+        return;
+    }
+    else if (PORTAbits.RA7 == 1)
+    {
+        button = 70;
+        return;
+    }
+    else 
+    {
+        button = 23;
+        asm("CLRF PORTA");
+    }
+    //
+  
 }
 
 char Convert_To_Chr(int temp)
@@ -227,8 +215,8 @@ int main(int argc, char** argv) {
     Setup();
     while (1 == 1)
     {   
-         Keypad_Check();
-         Write_To_Port(Convert_To_Chr(button));
+        Keypad_Check();
+        Write_To_Port(Convert_To_Chr(button));
     }
    
             

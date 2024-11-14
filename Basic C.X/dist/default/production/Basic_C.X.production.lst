@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
-                                                                                               Wed Nov 13 10:54:05 2024
+                                                                                               Thu Nov 14 10:53:26 2024
 
 Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
      1                           	processor	16F1788
@@ -722,610 +722,819 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    708     0FED                     STKPTR          equ	4077	;# 
    709     0FEE                     TOSL            equ	4078	;# 
    710     0FEF                     TOSH            equ	4079	;# 
-   711     001C                     _T2CON          set	28
-   712     0018                     _T1CON          set	24
-   713     000E                     _PORTC          set	14
-   714     000C                     _PORTA          set	12
-   715     0063                     _RA3            set	99
-   716     0062                     _RA2            set	98
-   717     0061                     _RA1            set	97
-   718     0060                     _RA0            set	96
-   719     0092                     _PIE2           set	146
-   720     0091                     _PIE1           set	145
-   721     008E                     _TRISC          set	142
-   722     008C                     _TRISA          set	140
-   723     0099                     _OSCCONbits     set	153
-   724     010C                     _LATA           set	268
-   725     018E                     _ANSELC         set	398
-   726     018C                     _ANSELA         set	396
-   727     029A                     _CCP2CON        set	666
-   728     0293                     _CCP1CON        set	659
-   729                           
-   730                           	psect	cinit
-   731     07FB                     start_initialization:	
-   732                           ; #config settings
-   733                           
-   734     07FB                     __initialization:
-   735                           
-   736                           ; Clear objects allocated to COMMON
-   737     07FB  01F7               	clrf	__pbssCOMMON& (0+127)
-   738     07FC  01F8               	clrf	(__pbssCOMMON+1)& (0+127)
-   739     07FD                     end_of_initialization:	
-   740                           ;End of C runtime variable initialization code
-   741                           
-   742     07FD                     __end_of__initialization:
-   743     07FD  0020               	movlb	0
-   744     07FE  3187  2F92         	ljmp	_main	;jump to C main() function
-   745                           
-   746                           	psect	bssCOMMON
-   747     0077                     __pbssCOMMON:
-   748     0077                     _button:
-   749     0077                     	ds	2
-   750                           
-   751                           	psect	cstackCOMMON
-   752     0070                     __pcstackCOMMON:
-   753     0070                     ?_Setup:
-   754     0070                     ?_Keypad_Check:	
-   755                           ; 1 bytes @ 0x0
-   756                           
-   757     0070                     ?_Convert_To_Chr:	
-   758                           ; 1 bytes @ 0x0
-   759                           
-   760     0070                     ?_Write_To_Port:	
-   761                           ; 1 bytes @ 0x0
-   762                           
-   763     0070                     Write_To_Port@write:	
-   764                           ; 1 bytes @ 0x0
-   765                           
-   766     0070                     Convert_To_Chr@temp:	
-   767                           ; 1 bytes @ 0x0
-   768                           
-   769     0070                     ??_Setup:	
-   770                           ; 2 bytes @ 0x0
-   771                           
-   772     0070                     ??_Keypad_Check:	
-   773                           ; 1 bytes @ 0x0
-   774                           
-   775     0070                     ??_Write_To_Port:	
-   776                           ; 1 bytes @ 0x0
-   777                           
+   711     000C                     _PORTAbits      set	12
+   712     001C                     _T2CON          set	28
+   713     0018                     _T1CON          set	24
+   714     000E                     _PORTC          set	14
+   715     000C                     _PORTA          set	12
+   716     0063                     _RA3            set	99
+   717     0062                     _RA2            set	98
+   718     0061                     _RA1            set	97
+   719     0060                     _RA0            set	96
+   720     0092                     _PIE2           set	146
+   721     0091                     _PIE1           set	145
+   722     008E                     _TRISC          set	142
+   723     008C                     _TRISA          set	140
+   724     0099                     _OSCCONbits     set	153
+   725     010C                     _LATA           set	268
+   726     018E                     _ANSELC         set	398
+   727     018C                     _ANSELA         set	396
+   728     029A                     _CCP2CON        set	666
+   729     0293                     _CCP1CON        set	659
+   730                           
+   731                           	psect	cinit
+   732     07FB                     start_initialization:	
+   733                           ; #config settings
+   734                           
+   735     07FB                     __initialization:
+   736                           
+   737                           ; Clear objects allocated to COMMON
+   738     07FB  01F7               	clrf	__pbssCOMMON& (0+127)
+   739     07FC  01F8               	clrf	(__pbssCOMMON+1)& (0+127)
+   740     07FD                     end_of_initialization:	
+   741                           ;End of C runtime variable initialization code
+   742                           
+   743     07FD                     __end_of__initialization:
+   744     07FD  0020               	movlb	0
+   745     07FE  3187  2F1B         	ljmp	_main	;jump to C main() function
+   746                           
+   747                           	psect	bssCOMMON
+   748     0077                     __pbssCOMMON:
+   749     0077                     _button:
+   750     0077                     	ds	2
+   751                           
+   752                           	psect	cstackCOMMON
+   753     0070                     __pcstackCOMMON:
+   754     0070                     ?_Setup:
+   755     0070                     ?_Keypad_Check:	
+   756                           ; 1 bytes @ 0x0
+   757                           
+   758     0070                     ?_Convert_To_Chr:	
+   759                           ; 1 bytes @ 0x0
+   760                           
+   761     0070                     ?_Write_To_Port:	
+   762                           ; 1 bytes @ 0x0
+   763                           
+   764     0070                     Write_To_Port@write:	
+   765                           ; 1 bytes @ 0x0
+   766                           
+   767     0070                     Convert_To_Chr@temp:	
+   768                           ; 1 bytes @ 0x0
+   769                           
+   770     0070                     ??_Setup:	
+   771                           ; 2 bytes @ 0x0
+   772                           
+   773     0070                     ??_Keypad_Check:	
+   774                           ; 1 bytes @ 0x0
+   775                           
+   776     0070                     ??_Write_To_Port:	
+   777                           ; 1 bytes @ 0x0
    778                           
-   779                           ; 1 bytes @ 0x0
-   780     0070                     	ds	2
-   781     0072                     Convert_To_Chr@Key:
-   782     0072                     ??_Convert_To_Chr:	
-   783                           ; 1 bytes @ 0x2
-   784                           
+   779                           
+   780                           ; 1 bytes @ 0x0
+   781     0070                     	ds	2
+   782     0072                     Convert_To_Chr@Key:
+   783     0072                     ??_Convert_To_Chr:	
+   784                           ; 1 bytes @ 0x2
    785                           
-   786                           ; 1 bytes @ 0x2
-   787     0072                     	ds	1
-   788     0073                     ?_main:
-   789     0073                     main@argc:	
-   790                           ; 2 bytes @ 0x3
-   791                           
+   786                           
+   787                           ; 1 bytes @ 0x2
+   788     0072                     	ds	1
+   789     0073                     ?_main:
+   790     0073                     main@argc:	
+   791                           ; 2 bytes @ 0x3
    792                           
-   793                           ; 2 bytes @ 0x3
-   794     0073                     	ds	2
-   795     0075                     main@argv:
-   796                           
-   797                           ; 2 bytes @ 0x5
-   798     0075                     	ds	2
-   799     0077                     ??_main:
-   800                           
-   801                           	psect	maintext
-   802     0792                     __pmaintext:	
-   803                           ; 1 bytes @ 0x7
-   804 ;;
-   805 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-   806 ;;
-   807 ;; *************** function _main *****************
-   808 ;; Defined at:
-   809 ;;		line 226 in file "C Template.c"
-   810 ;; Parameters:    Size  Location     Type
-   811 ;;  argc            2    3[COMMON] int 
-   812 ;;  argv            2    5[COMMON] PTR PTR unsigned char 
-   813 ;; Auto vars:     Size  Location     Type
-   814 ;;		None
-   815 ;; Return value:  Size  Location     Type
-   816 ;;                  2    3[COMMON] int 
-   817 ;; Registers used:
-   818 ;;		wreg, status,2, status,0, pclath, cstack
-   819 ;; Tracked objects:
-   820 ;;		On entry : B1F/0
-   821 ;;		On exit  : 0/0
-   822 ;;		Unchanged: 0/0
-   823 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   793                           
+   794                           ; 2 bytes @ 0x3
+   795     0073                     	ds	2
+   796     0075                     main@argv:
+   797                           
+   798                           ; 2 bytes @ 0x5
+   799     0075                     	ds	2
+   800     0077                     ??_main:
+   801                           
+   802                           	psect	maintext
+   803     071B                     __pmaintext:	
+   804                           ; 1 bytes @ 0x7
+   805 ;;
+   806 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   807 ;;
+   808 ;; *************** function _main *****************
+   809 ;; Defined at:
+   810 ;;		line 214 in file "C Template.c"
+   811 ;; Parameters:    Size  Location     Type
+   812 ;;  argc            2    3[COMMON] int 
+   813 ;;  argv            2    5[COMMON] PTR PTR unsigned char 
+   814 ;; Auto vars:     Size  Location     Type
+   815 ;;		None
+   816 ;; Return value:  Size  Location     Type
+   817 ;;                  2    3[COMMON] int 
+   818 ;; Registers used:
+   819 ;;		wreg, status,2, status,0, pclath, cstack
+   820 ;; Tracked objects:
+   821 ;;		On entry : B1F/0
+   822 ;;		On exit  : 0/0
+   823 ;;		Unchanged: 0/0
+   824 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-   824 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+   825 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   825 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   826 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   826 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   827 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   827 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
+   828 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   828 ;;Total ram usage:        4 bytes
-   829 ;; Hardware stack levels required when called: 1
-   830 ;; This function calls:
-   831 ;;		_Convert_To_Chr
-   832 ;;		_Keypad_Check
-   833 ;;		_Setup
-   834 ;;		_Write_To_Port
-   835 ;; This function is called by:
-   836 ;;		Startup code after reset
-   837 ;; This function uses a non-reentrant model
-   838 ;;
-   839                           
-   840     0792                     _main:	
-   841                           ;psect for function _main
-   842                           
-   843     0792                     l779:	
-   844                           ;incstack = 0
-   845                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   846                           
+   829 ;;Total ram usage:        4 bytes
+   830 ;; Hardware stack levels required when called: 1
+   831 ;; This function calls:
+   832 ;;		_Convert_To_Chr
+   833 ;;		_Keypad_Check
+   834 ;;		_Setup
+   835 ;;		_Write_To_Port
+   836 ;; This function is called by:
+   837 ;;		Startup code after reset
+   838 ;; This function uses a non-reentrant model
+   839 ;;
+   840                           
+   841     071B                     _main:	
+   842                           ;psect for function _main
+   843                           
+   844     071B                     l840:	
+   845                           ;incstack = 0
+   846                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    847                           
-   848                           ;C Template.c: 227:     Setup();
-   849     0792  3187  27A5  3187   	fcall	_Setup
-   850     0795                     l781:	
-   851                           ;C Template.c: 228:     while (1 == 1)
-   852                           
+   848                           
+   849                           ;C Template.c: 215:     Setup();
+   850     071B  3187  272E  3187   	fcall	_Setup
+   851     071E                     l842:	
+   852                           ;C Template.c: 216:     while (1 == 1)
    853                           
-   854                           ;C Template.c: 229:     {;C Template.c: 230:          Keypad_Check();
-   855     0795  3187  27C5  3187   	fcall	_Keypad_Check
-   856                           
-   857                           ;C Template.c: 231:          Write_To_Port(Convert_To_Chr(button));
-   858     0798  0878               	movf	_button+1,w
-   859     0799  00F1               	movwf	Convert_To_Chr@temp+1
-   860     079A  0877               	movf	_button,w
-   861     079B  00F0               	movwf	Convert_To_Chr@temp
-   862     079C  3187  2789  3187   	fcall	_Convert_To_Chr
-   863     079F  3187  278D  3187   	fcall	_Write_To_Port
-   864     07A2  2F95               	goto	l781
-   865     07A3  3180  2802         	ljmp	start
-   866     07A5                     __end_of_main:
-   867                           
-   868                           	psect	text1
-   869     078D                     __ptext1:	
-   870 ;; *************** function _Write_To_Port *****************
-   871 ;; Defined at:
-   872 ;;		line 221 in file "C Template.c"
-   873 ;; Parameters:    Size  Location     Type
-   874 ;;  write           1    wreg     unsigned char 
-   875 ;; Auto vars:     Size  Location     Type
-   876 ;;  write           1    0[COMMON] unsigned char 
-   877 ;; Return value:  Size  Location     Type
-   878 ;;                  1    wreg      void 
-   879 ;; Registers used:
-   880 ;;		wreg
-   881 ;; Tracked objects:
-   882 ;;		On entry : 0/0
-   883 ;;		On exit  : 0/0
-   884 ;;		Unchanged: 0/0
-   885 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   854                           
+   855                           ;C Template.c: 217:     {;C Template.c: 218:         Keypad_Check();
+   856     071E  3187  274E  3187   	fcall	_Keypad_Check
+   857                           
+   858                           ;C Template.c: 219:         Write_To_Port(Convert_To_Chr(button));
+   859     0721  0878               	movf	_button+1,w
+   860     0722  00F1               	movwf	Convert_To_Chr@temp+1
+   861     0723  0877               	movf	_button,w
+   862     0724  00F0               	movwf	Convert_To_Chr@temp
+   863     0725  3187  2712  3187   	fcall	_Convert_To_Chr
+   864     0728  3187  2716  3187   	fcall	_Write_To_Port
+   865     072B  2F1E               	goto	l842
+   866     072C  3180  2802         	ljmp	start
+   867     072E                     __end_of_main:
+   868                           
+   869                           	psect	text1
+   870     0716                     __ptext1:	
+   871 ;; *************** function _Write_To_Port *****************
+   872 ;; Defined at:
+   873 ;;		line 209 in file "C Template.c"
+   874 ;; Parameters:    Size  Location     Type
+   875 ;;  write           1    wreg     unsigned char 
+   876 ;; Auto vars:     Size  Location     Type
+   877 ;;  write           1    0[COMMON] unsigned char 
+   878 ;; Return value:  Size  Location     Type
+   879 ;;                  1    wreg      void 
+   880 ;; Registers used:
+   881 ;;		wreg
+   882 ;; Tracked objects:
+   883 ;;		On entry : 0/0
+   884 ;;		On exit  : 0/0
+   885 ;;		Unchanged: 0/0
+   886 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-   886 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   887 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   887 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+   888 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   888 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   889 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   889 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+   890 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   890 ;;Total ram usage:        1 bytes
-   891 ;; Hardware stack levels used: 1
-   892 ;; This function calls:
-   893 ;;		Nothing
-   894 ;; This function is called by:
-   895 ;;		_main
-   896 ;; This function uses a non-reentrant model
-   897 ;;
-   898                           
-   899     078D                     _Write_To_Port:	
-   900                           ;psect for function _Write_To_Port
-   901                           
+   891 ;;Total ram usage:        1 bytes
+   892 ;; Hardware stack levels used: 1
+   893 ;; This function calls:
+   894 ;;		Nothing
+   895 ;; This function is called by:
+   896 ;;		_main
+   897 ;; This function uses a non-reentrant model
+   898 ;;
+   899                           
+   900     0716                     _Write_To_Port:	
+   901                           ;psect for function _Write_To_Port
    902                           
-   903                           ;incstack = 0
-   904                           ; Regs used in _Write_To_Port: [wreg]
-   905                           ;Write_To_Port@write stored from wreg
-   906     078D  00F0               	movwf	Write_To_Port@write
-   907     078E                     l769:
-   908                           
-   909                           ;C Template.c: 221: void Write_To_Port(char write);C Template.c: 222: {;C Template.c: 22
-      +                          3:     PORTC = write;
-   910     078E  0870               	movf	Write_To_Port@write,w
-   911     078F  0020               	movlb	0	; select bank0
-   912     0790  008E               	movwf	14	;volatile
-   913     0791                     l93:
-   914     0791  0008               	return
-   915     0792                     __end_of_Write_To_Port:
-   916                           
-   917                           	psect	text2
-   918     07A5                     __ptext2:	
-   919 ;; *************** function _Setup *****************
-   920 ;; Defined at:
-   921 ;;		line 47 in file "C Template.c"
-   922 ;; Parameters:    Size  Location     Type
-   923 ;;		None
-   924 ;; Auto vars:     Size  Location     Type
-   925 ;;		None
-   926 ;; Return value:  Size  Location     Type
-   927 ;;                  1    wreg      void 
-   928 ;; Registers used:
-   929 ;;		status,2
-   930 ;; Tracked objects:
-   931 ;;		On entry : 0/0
-   932 ;;		On exit  : 0/0
-   933 ;;		Unchanged: 0/0
-   934 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   903                           
+   904                           ;incstack = 0
+   905                           ; Regs used in _Write_To_Port: [wreg]
+   906                           ;Write_To_Port@write stored from wreg
+   907     0716  00F0               	movwf	Write_To_Port@write
+   908     0717                     l830:
+   909                           
+   910                           ;C Template.c: 209: void Write_To_Port(char write);C Template.c: 210: {;C Template.c: 21
+      +                          1:     PORTC = write;
+   911     0717  0870               	movf	Write_To_Port@write,w
+   912     0718  0020               	movlb	0	; select bank0
+   913     0719  008E               	movwf	14	;volatile
+   914     071A                     l84:
+   915     071A  0008               	return
+   916     071B                     __end_of_Write_To_Port:
+   917                           
+   918                           	psect	text2
+   919     072E                     __ptext2:	
+   920 ;; *************** function _Setup *****************
+   921 ;; Defined at:
+   922 ;;		line 47 in file "C Template.c"
+   923 ;; Parameters:    Size  Location     Type
+   924 ;;		None
+   925 ;; Auto vars:     Size  Location     Type
+   926 ;;		None
+   927 ;; Return value:  Size  Location     Type
+   928 ;;                  1    wreg      void 
+   929 ;; Registers used:
+   930 ;;		status,2
+   931 ;; Tracked objects:
+   932 ;;		On entry : 0/0
+   933 ;;		On exit  : 0/0
+   934 ;;		Unchanged: 0/0
+   935 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-   935 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   936 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   936 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   937 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   937 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   938 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   938 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   939 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-   939 ;;Total ram usage:        0 bytes
-   940 ;; Hardware stack levels used: 1
-   941 ;; This function calls:
-   942 ;;		Nothing
-   943 ;; This function is called by:
-   944 ;;		_main
-   945 ;; This function uses a non-reentrant model
-   946 ;;
-   947                           
-   948     07A5                     _Setup:	
-   949                           ;psect for function _Setup
-   950                           
-   951     07A5                     l709:	
-   952                           ;incstack = 0
-   953                           ; Regs used in _Setup: [status,2]
-   954                           
+   940 ;;Total ram usage:        0 bytes
+   941 ;; Hardware stack levels used: 1
+   942 ;; This function calls:
+   943 ;;		Nothing
+   944 ;; This function is called by:
+   945 ;;		_main
+   946 ;; This function uses a non-reentrant model
+   947 ;;
+   948                           
+   949     072E                     _Setup:	
+   950                           ;psect for function _Setup
+   951                           
+   952     072E                     l700:	
+   953                           ;incstack = 0
+   954                           ; Regs used in _Setup: [status,2]
    955                           
-   956                           ;C Template.c: 50:     OSCCONbits.SPLLEN = 1;
-   957     07A5  0021               	movlb	1	; select bank1
-   958     07A6  1799               	bsf	25,7	;volatile
-   959                           
-   960                           ;C Template.c: 51:     OSCCONbits.IRCF3 = 1;
-   961     07A7  1719               	bsf	25,6	;volatile
-   962                           
-   963                           ;C Template.c: 52:     OSCCONbits.IRCF2 = 1;
-   964     07A8  1699               	bsf	25,5	;volatile
-   965                           
-   966                           ;C Template.c: 53:     OSCCONbits.IRCF1 = 0;
-   967     07A9  1219               	bcf	25,4	;volatile
-   968                           
-   969                           ;C Template.c: 54:     OSCCONbits.IRCF0 = 1;
-   970     07AA  1599               	bsf	25,3	;volatile
-   971                           
-   972                           ;C Template.c: 55:     OSCCONbits.SCS1 = 1;
-   973     07AB  1499               	bsf	25,1	;volatile
-   974     07AC                     l711:
-   975                           
-   976                           ;C Template.c: 59:     LATA = 0x00;
-   977     07AC  0022               	movlb	2	; select bank2
-   978     07AD  018C               	clrf	12	;volatile
-   979     07AE                     l713:
-   980                           
-   981                           ;C Template.c: 60:     TRISA = 0xF0;
-   982     07AE  30F0               	movlw	240
-   983     07AF  0021               	movlb	1	; select bank1
-   984     07B0  008C               	movwf	12	;volatile
-   985                           
-   986                           ;C Template.c: 61:     PORTA = 0x00;
-   987     07B1  0020               	movlb	0	; select bank0
-   988     07B2  018C               	clrf	12	;volatile
-   989                           
-   990                           ;C Template.c: 62:     ANSELA = 0x00;
-   991     07B3  0023               	movlb	3	; select bank3
-   992     07B4  018C               	clrf	12	;volatile
-   993                           
-   994                           ;C Template.c: 64:     ANSELC = 0x00;
-   995     07B5  018E               	clrf	14	;volatile
-   996                           
-   997                           ;C Template.c: 65:     TRISC = 0x00;
-   998     07B6  0021               	movlb	1	; select bank1
-   999     07B7  018E               	clrf	14	;volatile
-  1000     07B8                     l715:
-  1001                           
-  1002                           ;C Template.c: 66:     PORTC = 0x30;
-  1003     07B8  3030               	movlw	48
-  1004     07B9  0020               	movlb	0	; select bank0
-  1005     07BA  008E               	movwf	14	;volatile
-  1006                           
-  1007                           ;C Template.c: 68:     PIE1 = 0x00;
-  1008     07BB  0021               	movlb	1	; select bank1
-  1009     07BC  0191               	clrf	17	;volatile
-  1010                           
-  1011                           ;C Template.c: 69:     PIE2 = 0x00;
-  1012     07BD  0192               	clrf	18	;volatile
-  1013                           
-  1014                           ;C Template.c: 70:     CCP1CON = 0x00;
-  1015     07BE  0025               	movlb	5	; select bank5
-  1016     07BF  0193               	clrf	19	;volatile
-  1017                           
-  1018                           ;C Template.c: 71:     CCP2CON = 0x00;
-  1019     07C0  019A               	clrf	26	;volatile
-  1020                           
-  1021                           ;C Template.c: 72:     T1CON = 0x00;
-  1022     07C1  0020               	movlb	0	; select bank0
-  1023     07C2  0198               	clrf	24	;volatile
-  1024                           
-  1025                           ;C Template.c: 73:     T2CON = 0x00;
-  1026     07C3  019C               	clrf	28	;volatile
-  1027     07C4                     l41:
-  1028     07C4  0008               	return
-  1029     07C5                     __end_of_Setup:
-  1030                           
-  1031                           	psect	text3
-  1032     07C5                     __ptext3:	
-  1033 ;; *************** function _Keypad_Check *****************
-  1034 ;; Defined at:
-  1035 ;;		line 76 in file "C Template.c"
-  1036 ;; Parameters:    Size  Location     Type
-  1037 ;;		None
-  1038 ;; Auto vars:     Size  Location     Type
-  1039 ;;		None
-  1040 ;; Return value:  Size  Location     Type
-  1041 ;;                  1    wreg      void 
-  1042 ;; Registers used:
-  1043 ;;		wreg
-  1044 ;; Tracked objects:
-  1045 ;;		On entry : 0/0
-  1046 ;;		On exit  : 0/0
-  1047 ;;		Unchanged: 0/0
-  1048 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   956                           
+   957                           ;C Template.c: 50:     OSCCONbits.SPLLEN = 1;
+   958     072E  0021               	movlb	1	; select bank1
+   959     072F  1799               	bsf	25,7	;volatile
+   960                           
+   961                           ;C Template.c: 51:     OSCCONbits.IRCF3 = 1;
+   962     0730  1719               	bsf	25,6	;volatile
+   963                           
+   964                           ;C Template.c: 52:     OSCCONbits.IRCF2 = 1;
+   965     0731  1699               	bsf	25,5	;volatile
+   966                           
+   967                           ;C Template.c: 53:     OSCCONbits.IRCF1 = 0;
+   968     0732  1219               	bcf	25,4	;volatile
+   969                           
+   970                           ;C Template.c: 54:     OSCCONbits.IRCF0 = 1;
+   971     0733  1599               	bsf	25,3	;volatile
+   972                           
+   973                           ;C Template.c: 55:     OSCCONbits.SCS1 = 1;
+   974     0734  1499               	bsf	25,1	;volatile
+   975     0735                     l702:
+   976                           
+   977                           ;C Template.c: 59:     LATA = 0x00;
+   978     0735  0022               	movlb	2	; select bank2
+   979     0736  018C               	clrf	12	;volatile
+   980     0737                     l704:
+   981                           
+   982                           ;C Template.c: 60:     TRISA = 0xF0;
+   983     0737  30F0               	movlw	240
+   984     0738  0021               	movlb	1	; select bank1
+   985     0739  008C               	movwf	12	;volatile
+   986                           
+   987                           ;C Template.c: 61:     PORTA = 0x00;
+   988     073A  0020               	movlb	0	; select bank0
+   989     073B  018C               	clrf	12	;volatile
+   990                           
+   991                           ;C Template.c: 62:     ANSELA = 0x00;
+   992     073C  0023               	movlb	3	; select bank3
+   993     073D  018C               	clrf	12	;volatile
+   994                           
+   995                           ;C Template.c: 64:     ANSELC = 0x00;
+   996     073E  018E               	clrf	14	;volatile
+   997                           
+   998                           ;C Template.c: 65:     TRISC = 0x00;
+   999     073F  0021               	movlb	1	; select bank1
+  1000     0740  018E               	clrf	14	;volatile
+  1001     0741                     l706:
+  1002                           
+  1003                           ;C Template.c: 66:     PORTC = 0x23;
+  1004     0741  3023               	movlw	35
+  1005     0742  0020               	movlb	0	; select bank0
+  1006     0743  008E               	movwf	14	;volatile
+  1007                           
+  1008                           ;C Template.c: 68:     PIE1 = 0x00;
+  1009     0744  0021               	movlb	1	; select bank1
+  1010     0745  0191               	clrf	17	;volatile
+  1011                           
+  1012                           ;C Template.c: 69:     PIE2 = 0x00;
+  1013     0746  0192               	clrf	18	;volatile
+  1014                           
+  1015                           ;C Template.c: 70:     CCP1CON = 0x00;
+  1016     0747  0025               	movlb	5	; select bank5
+  1017     0748  0193               	clrf	19	;volatile
+  1018                           
+  1019                           ;C Template.c: 71:     CCP2CON = 0x00;
+  1020     0749  019A               	clrf	26	;volatile
+  1021                           
+  1022                           ;C Template.c: 72:     T1CON = 0x00;
+  1023     074A  0020               	movlb	0	; select bank0
+  1024     074B  0198               	clrf	24	;volatile
+  1025                           
+  1026                           ;C Template.c: 73:     T2CON = 0x00;
+  1027     074C  019C               	clrf	28	;volatile
+  1028     074D                     l43:
+  1029     074D  0008               	return
+  1030     074E                     __end_of_Setup:
+  1031                           
+  1032                           	psect	text3
+  1033     074E                     __ptext3:	
+  1034 ;; *************** function _Keypad_Check *****************
+  1035 ;; Defined at:
+  1036 ;;		line 76 in file "C Template.c"
+  1037 ;; Parameters:    Size  Location     Type
+  1038 ;;		None
+  1039 ;; Auto vars:     Size  Location     Type
+  1040 ;;		None
+  1041 ;; Return value:  Size  Location     Type
+  1042 ;;                  1    wreg      void 
+  1043 ;; Registers used:
+  1044 ;;		wreg
+  1045 ;; Tracked objects:
+  1046 ;;		On entry : 0/0
+  1047 ;;		On exit  : 0/0
+  1048 ;;		Unchanged: 0/0
+  1049 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-  1049 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1050 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1050 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1051 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1051 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1052 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1052 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1053 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1053 ;;Total ram usage:        0 bytes
-  1054 ;; Hardware stack levels used: 1
-  1055 ;; This function calls:
-  1056 ;;		Nothing
-  1057 ;; This function is called by:
-  1058 ;;		_main
-  1059 ;; This function uses a non-reentrant model
-  1060 ;;
-  1061                           
-  1062     07C5                     _Keypad_Check:	
-  1063                           ;psect for function _Keypad_Check
-  1064                           
-  1065     07C5                     l717:	
-  1066                           ;incstack = 0
-  1067                           ; Regs used in _Keypad_Check: [wreg]
-  1068                           
-  1069     07C5                     l45:	
-  1070                           ;C Template.c: 83:     while (1 == 1)
-  1071                           
-  1072                           
-  1073                           ;C Template.c: 84:     {;C Template.c: 85:         RA0 = 1;
-  1074     07C5  0020               	movlb	0	; select bank0
-  1075     07C6  140C               	bsf	12,0	;volatile
-  1076                           
-  1077                           ;C Template.c: 86:         if (PORTA = 0x11)
-  1078     07C7  3011               	movlw	17
-  1079     07C8  008C               	movwf	12	;volatile
-  1080     07C9                     l719:
-  1081                           
-  1082                           ;C Template.c: 87:         {;C Template.c: 88:             button = 48;
-  1083     07C9  3030               	movlw	48
-  1084     07CA  00F7               	movwf	_button
-  1085     07CB  3000               	movlw	0
-  1086     07CC  00F8               	movwf	_button+1
-  1087     07CD                     l47:	
-  1088                           ;C Template.c: 89:         }
-  1089                           
-  1090                           
-  1091                           ;C Template.c: 107:         if (button = 35)
-  1092     07CD  3023               	movlw	35
-  1093     07CE  00F7               	movwf	_button
-  1094     07CF  3000               	movlw	0
-  1095     07D0  00F8               	movwf	_button+1
-  1096     07D1  018C               	clrf	12	;# 
-  1097     07D2                     l729:
-  1098                           
-  1099                           ;C Template.c: 110:             RA1 = 1;
-  1100     07D2  0020               	movlb	0	; select bank0
-  1101     07D3  148C               	bsf	12,1	;volatile
-  1102     07D4                     l55:	
-  1103                           ;C Template.c: 115:         }
-  1104                           
-  1105                           
-  1106                           ;C Template.c: 118:         if (PORTA = 0x12)
-  1107     07D4  3012               	movlw	18
-  1108     07D5  008C               	movwf	12	;volatile
-  1109     07D6                     l731:
-  1110                           
-  1111                           ;C Template.c: 119:         {;C Template.c: 120:             button = 52;
-  1112     07D6  3034               	movlw	52
-  1113     07D7  00F7               	movwf	_button
-  1114     07D8  3000               	movlw	0
-  1115     07D9  00F8               	movwf	_button+1
-  1116     07DA                     l58:	
-  1117                           ;C Template.c: 121:         }
-  1118                           
-  1119                           
-  1120                           ;C Template.c: 139:         if (button = 35)
-  1121     07DA  3023               	movlw	35
-  1122     07DB  00F7               	movwf	_button
-  1123     07DC  3000               	movlw	0
-  1124     07DD  00F8               	movwf	_button+1
-  1125     07DE  018C               	clrf	12	;# 
-  1126     07DF                     l741:
-  1127                           
-  1128                           ;C Template.c: 142:             RA2 = 1;
-  1129     07DF  0020               	movlb	0	; select bank0
-  1130     07E0  150C               	bsf	12,2	;volatile
-  1131     07E1                     l66:	
-  1132                           ;C Template.c: 147:         }
-  1133                           
+  1054 ;;Total ram usage:        0 bytes
+  1055 ;; Hardware stack levels used: 1
+  1056 ;; This function calls:
+  1057 ;;		Nothing
+  1058 ;; This function is called by:
+  1059 ;;		_main
+  1060 ;; This function uses a non-reentrant model
+  1061 ;;
+  1062                           
+  1063     074E                     _Keypad_Check:	
+  1064                           ;psect for function _Keypad_Check
+  1065                           
+  1066     074E                     l708:	
+  1067                           ;incstack = 0
+  1068                           ; Regs used in _Keypad_Check: [wreg]
+  1069                           
+  1070                           
+  1071                           ;C Template.c: 85:     RA0 = 1;
+  1072     074E  0020               	movlb	0	; select bank0
+  1073     074F  140C               	bsf	12,0	;volatile
+  1074                           
+  1075                           ;C Template.c: 86:     if (PORTAbits.RA4 == 1)
+  1076     0750  1E0C               	btfss	12,4	;volatile
+  1077     0751  2F53               	goto	u11
+  1078     0752  2F54               	goto	u10
+  1079     0753                     u11:
+  1080     0753  2F59               	goto	l46
+  1081     0754                     u10:
+  1082     0754                     l710:
+  1083                           
+  1084                           ;C Template.c: 87:     {;C Template.c: 88:         button = 48;
+  1085     0754  3030               	movlw	48
+  1086     0755  00F7               	movwf	_button
+  1087     0756  3000               	movlw	0
+  1088     0757  00F8               	movwf	_button+1
+  1089     0758  2FFA               	goto	l47
+  1090     0759                     l46:	
+  1091                           ;C Template.c: 91:     else if (PORTAbits.RA5 == 1)
+  1092                           
+  1093     0759  1E8C               	btfss	12,5	;volatile
+  1094     075A  2F5C               	goto	u21
+  1095     075B  2F5D               	goto	u20
+  1096     075C                     u21:
+  1097     075C  2F62               	goto	l49
+  1098     075D                     u20:
+  1099     075D                     l716:
+  1100                           
+  1101                           ;C Template.c: 92:     {;C Template.c: 93:         button = 49;
+  1102     075D  3031               	movlw	49
+  1103     075E  00F7               	movwf	_button
+  1104     075F  3000               	movlw	0
+  1105     0760  00F8               	movwf	_button+1
+  1106     0761  2FFA               	goto	l47
+  1107     0762                     l49:	
+  1108                           ;C Template.c: 96:     else if (PORTAbits.RA6 == 1)
+  1109                           
+  1110     0762  1F0C               	btfss	12,6	;volatile
+  1111     0763  2F65               	goto	u31
+  1112     0764  2F66               	goto	u30
+  1113     0765                     u31:
+  1114     0765  2F6B               	goto	l51
+  1115     0766                     u30:
+  1116     0766                     l722:
+  1117                           
+  1118                           ;C Template.c: 97:     {;C Template.c: 98:         button = 50;
+  1119     0766  3032               	movlw	50
+  1120     0767  00F7               	movwf	_button
+  1121     0768  3000               	movlw	0
+  1122     0769  00F8               	movwf	_button+1
+  1123     076A  2FFA               	goto	l47
+  1124     076B                     l51:	
+  1125                           ;C Template.c: 101:     else if (PORTAbits.RA7 == 1)
+  1126                           
+  1127     076B  1F8C               	btfss	12,7	;volatile
+  1128     076C  2F6E               	goto	u41
+  1129     076D  2F6F               	goto	u40
+  1130     076E                     u41:
+  1131     076E  2F74               	goto	l734
+  1132     076F                     u40:
+  1133     076F                     l728:
   1134                           
-  1135                           ;C Template.c: 149:         if (PORTA = 0x13)
-  1136     07E1  3013               	movlw	19
-  1137     07E2  008C               	movwf	12	;volatile
-  1138     07E3                     l743:
-  1139                           
-  1140                           ;C Template.c: 150:         {;C Template.c: 151:             button = 56;
-  1141     07E3  3038               	movlw	56
-  1142     07E4  00F7               	movwf	_button
-  1143     07E5  3000               	movlw	0
-  1144     07E6  00F8               	movwf	_button+1
-  1145     07E7                     l68:	
-  1146                           ;C Template.c: 152:         }
-  1147                           
-  1148                           
-  1149                           ;C Template.c: 170:         if (button = 35)
-  1150     07E7  3023               	movlw	35
-  1151     07E8  00F7               	movwf	_button
-  1152     07E9  3000               	movlw	0
-  1153     07EA  00F8               	movwf	_button+1
-  1154     07EB  018C               	clrf	12	;# 
-  1155     07EC                     l753:
+  1135                           ;C Template.c: 102:     {;C Template.c: 103:         button = 51;
+  1136     076F  3033               	movlw	51
+  1137     0770  00F7               	movwf	_button
+  1138     0771  3000               	movlw	0
+  1139     0772  00F8               	movwf	_button+1
+  1140     0773  2FFA               	goto	l47
+  1141     0774                     l734:
+  1142                           
+  1143                           ;C Template.c: 107:     {;C Template.c: 108:         button = 23;
+  1144     0774  3017               	movlw	23
+  1145     0775  00F7               	movwf	_button
+  1146     0776  3000               	movlw	0
+  1147     0777  00F8               	movwf	_button+1
+  1148     0778                     l48:
+  1149     0778  018C               	clrf	12	;# 
+  1150     0779                     l736:
+  1151                           
+  1152                           ;C Template.c: 112:     RA1 = 1;
+  1153     0779  0020               	movlb	0	; select bank0
+  1154     077A  148C               	bsf	12,1	;volatile
+  1155     077B                     l738:
   1156                           
-  1157                           ;C Template.c: 173:             RA3 = 1;
-  1158     07EC  0020               	movlb	0	; select bank0
-  1159     07ED  158C               	bsf	12,3	;volatile
-  1160     07EE                     l76:	
-  1161                           ;C Template.c: 178:         }
-  1162                           
-  1163                           
-  1164                           ;C Template.c: 180:         if (PORTA = 0x12)
-  1165     07EE  3012               	movlw	18
-  1166     07EF  008C               	movwf	12	;volatile
-  1167     07F0                     l755:
-  1168                           
-  1169                           ;C Template.c: 181:         {;C Template.c: 182:             button = 67;
-  1170     07F0  3043               	movlw	67
-  1171     07F1  00F7               	movwf	_button
-  1172     07F2  3000               	movlw	0
-  1173     07F3  00F8               	movwf	_button+1
-  1174     07F4                     l78:	
-  1175                           ;C Template.c: 183:         }
-  1176                           
-  1177                           
-  1178                           ;C Template.c: 201:         if (button = 35)
-  1179     07F4  3023               	movlw	35
-  1180     07F5  00F7               	movwf	_button
-  1181     07F6  3000               	movlw	0
-  1182     07F7  00F8               	movwf	_button+1
-  1183     07F8  018C               	clrf	12	;# 
-  1184                           
-  1185                           ;C Template.c: 204:         }
-  1186     07F9  2FC5               	goto	l45
-  1187     07FA  0008               	return
-  1188     07FB                     __end_of_Keypad_Check:
-  1189                           
-  1190                           	psect	text4
-  1191     0789                     __ptext4:	
-  1192 ;; *************** function _Convert_To_Chr *****************
-  1193 ;; Defined at:
-  1194 ;;		line 212 in file "C Template.c"
-  1195 ;; Parameters:    Size  Location     Type
-  1196 ;;  temp            2    0[COMMON] int 
-  1197 ;; Auto vars:     Size  Location     Type
-  1198 ;;  Key             1    2[COMMON] unsigned char 
-  1199 ;; Return value:  Size  Location     Type
-  1200 ;;                  1    wreg      unsigned char 
-  1201 ;; Registers used:
-  1202 ;;		wreg
-  1203 ;; Tracked objects:
-  1204 ;;		On entry : 0/0
-  1205 ;;		On exit  : 0/0
-  1206 ;;		Unchanged: 0/0
-  1207 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1157                           ;C Template.c: 115:     if (PORTAbits.RA4 == 1)
+  1158     077B  1E0C               	btfss	12,4	;volatile
+  1159     077C  2F7E               	goto	u51
+  1160     077D  2F7F               	goto	u50
+  1161     077E                     u51:
+  1162     077E  2F84               	goto	l55
+  1163     077F                     u50:
+  1164     077F                     l740:
+  1165                           
+  1166                           ;C Template.c: 116:     {;C Template.c: 117:         button = 52;
+  1167     077F  3034               	movlw	52
+  1168     0780  00F7               	movwf	_button
+  1169     0781  3000               	movlw	0
+  1170     0782  00F8               	movwf	_button+1
+  1171     0783  2FFA               	goto	l47
+  1172     0784                     l55:	
+  1173                           ;C Template.c: 120:     else if (PORTAbits.RA5 == 1)
+  1174                           
+  1175     0784  1E8C               	btfss	12,5	;volatile
+  1176     0785  2F87               	goto	u61
+  1177     0786  2F88               	goto	u60
+  1178     0787                     u61:
+  1179     0787  2F8D               	goto	l57
+  1180     0788                     u60:
+  1181     0788                     l746:
+  1182                           
+  1183                           ;C Template.c: 121:     {;C Template.c: 122:         button = 53;
+  1184     0788  3035               	movlw	53
+  1185     0789  00F7               	movwf	_button
+  1186     078A  3000               	movlw	0
+  1187     078B  00F8               	movwf	_button+1
+  1188     078C  2FFA               	goto	l47
+  1189     078D                     l57:	
+  1190                           ;C Template.c: 125:     else if (PORTAbits.RA6 == 1)
+  1191                           
+  1192     078D  1F0C               	btfss	12,6	;volatile
+  1193     078E  2F90               	goto	u71
+  1194     078F  2F91               	goto	u70
+  1195     0790                     u71:
+  1196     0790  2F96               	goto	l59
+  1197     0791                     u70:
+  1198     0791                     l752:
+  1199                           
+  1200                           ;C Template.c: 126:     {;C Template.c: 127:         button = 54;
+  1201     0791  3036               	movlw	54
+  1202     0792  00F7               	movwf	_button
+  1203     0793  3000               	movlw	0
+  1204     0794  00F8               	movwf	_button+1
+  1205     0795  2FFA               	goto	l47
+  1206     0796                     l59:	
+  1207                           ;C Template.c: 130:     else if (PORTAbits.RA7 == 1)
+  1208                           
+  1209     0796  1F8C               	btfss	12,7	;volatile
+  1210     0797  2F99               	goto	u81
+  1211     0798  2F9A               	goto	u80
+  1212     0799                     u81:
+  1213     0799  2F9F               	goto	l764
+  1214     079A                     u80:
+  1215     079A                     l758:
+  1216                           
+  1217                           ;C Template.c: 131:     {;C Template.c: 132:         button = 55;
+  1218     079A  3037               	movlw	55
+  1219     079B  00F7               	movwf	_button
+  1220     079C  3000               	movlw	0
+  1221     079D  00F8               	movwf	_button+1
+  1222     079E  2FFA               	goto	l47
+  1223     079F                     l764:
+  1224                           
+  1225                           ;C Template.c: 136:     {;C Template.c: 137:         button = 35;
+  1226     079F  3023               	movlw	35
+  1227     07A0  00F7               	movwf	_button
+  1228     07A1  3000               	movlw	0
+  1229     07A2  00F8               	movwf	_button+1
+  1230     07A3                     l56:
+  1231     07A3  018C               	clrf	12	;# 
+  1232     07A4                     l766:
+  1233                           
+  1234                           ;C Template.c: 141:     RA2 = 1;
+  1235     07A4  0020               	movlb	0	; select bank0
+  1236     07A5  150C               	bsf	12,2	;volatile
+  1237     07A6                     l768:
+  1238                           
+  1239                           ;C Template.c: 143:     if (PORTAbits.RA4 == 1)
+  1240     07A6  1E0C               	btfss	12,4	;volatile
+  1241     07A7  2FA9               	goto	u91
+  1242     07A8  2FAA               	goto	u90
+  1243     07A9                     u91:
+  1244     07A9  2FAF               	goto	l63
+  1245     07AA                     u90:
+  1246     07AA                     l770:
+  1247                           
+  1248                           ;C Template.c: 144:     {;C Template.c: 145:         button = 56;
+  1249     07AA  3038               	movlw	56
+  1250     07AB  00F7               	movwf	_button
+  1251     07AC  3000               	movlw	0
+  1252     07AD  00F8               	movwf	_button+1
+  1253     07AE  2FFA               	goto	l47
+  1254     07AF                     l63:	
+  1255                           ;C Template.c: 148:     else if (PORTAbits.RA5 == 1)
+  1256                           
+  1257     07AF  1E8C               	btfss	12,5	;volatile
+  1258     07B0  2FB2               	goto	u101
+  1259     07B1  2FB3               	goto	u100
+  1260     07B2                     u101:
+  1261     07B2  2FB8               	goto	l65
+  1262     07B3                     u100:
+  1263     07B3                     l776:
+  1264                           
+  1265                           ;C Template.c: 149:     {;C Template.c: 150:         button = 57;
+  1266     07B3  3039               	movlw	57
+  1267     07B4  00F7               	movwf	_button
+  1268     07B5  3000               	movlw	0
+  1269     07B6  00F8               	movwf	_button+1
+  1270     07B7  2FFA               	goto	l47
+  1271     07B8                     l65:	
+  1272                           ;C Template.c: 153:     else if (PORTAbits.RA6 == 1)
+  1273                           
+  1274     07B8  1F0C               	btfss	12,6	;volatile
+  1275     07B9  2FBB               	goto	u111
+  1276     07BA  2FBC               	goto	u110
+  1277     07BB                     u111:
+  1278     07BB  2FC1               	goto	l67
+  1279     07BC                     u110:
+  1280     07BC                     l782:
+  1281                           
+  1282                           ;C Template.c: 154:     {;C Template.c: 155:         button = 65;
+  1283     07BC  3041               	movlw	65
+  1284     07BD  00F7               	movwf	_button
+  1285     07BE  3000               	movlw	0
+  1286     07BF  00F8               	movwf	_button+1
+  1287     07C0  2FFA               	goto	l47
+  1288     07C1                     l67:	
+  1289                           ;C Template.c: 158:     else if (PORTAbits.RA7 == 1)
+  1290                           
+  1291     07C1  1F8C               	btfss	12,7	;volatile
+  1292     07C2  2FC4               	goto	u121
+  1293     07C3  2FC5               	goto	u120
+  1294     07C4                     u121:
+  1295     07C4  2FCA               	goto	l794
+  1296     07C5                     u120:
+  1297     07C5                     l788:
+  1298                           
+  1299                           ;C Template.c: 159:     {;C Template.c: 160:         button = 66;
+  1300     07C5  3042               	movlw	66
+  1301     07C6  00F7               	movwf	_button
+  1302     07C7  3000               	movlw	0
+  1303     07C8  00F8               	movwf	_button+1
+  1304     07C9  2FFA               	goto	l47
+  1305     07CA                     l794:
+  1306                           
+  1307                           ;C Template.c: 164:     {;C Template.c: 165:         button = 23;
+  1308     07CA  3017               	movlw	23
+  1309     07CB  00F7               	movwf	_button
+  1310     07CC  3000               	movlw	0
+  1311     07CD  00F8               	movwf	_button+1
+  1312     07CE                     l64:
+  1313     07CE  018C               	clrf	12	;# 
+  1314     07CF                     l796:
+  1315                           
+  1316                           ;C Template.c: 169:     RA3 = 1;
+  1317     07CF  0020               	movlb	0	; select bank0
+  1318     07D0  158C               	bsf	12,3	;volatile
+  1319     07D1                     l798:
+  1320                           
+  1321                           ;C Template.c: 171:     if (PORTAbits.RA4 == 1)
+  1322     07D1  1E0C               	btfss	12,4	;volatile
+  1323     07D2  2FD4               	goto	u131
+  1324     07D3  2FD5               	goto	u130
+  1325     07D4                     u131:
+  1326     07D4  2FDA               	goto	l71
+  1327     07D5                     u130:
+  1328     07D5                     l800:
+  1329                           
+  1330                           ;C Template.c: 172:     {;C Template.c: 173:         button = 67;
+  1331     07D5  3043               	movlw	67
+  1332     07D6  00F7               	movwf	_button
+  1333     07D7  3000               	movlw	0
+  1334     07D8  00F8               	movwf	_button+1
+  1335     07D9  2FFA               	goto	l47
+  1336     07DA                     l71:	
+  1337                           ;C Template.c: 176:     else if (PORTAbits.RA5 == 1)
+  1338                           
+  1339     07DA  1E8C               	btfss	12,5	;volatile
+  1340     07DB  2FDD               	goto	u141
+  1341     07DC  2FDE               	goto	u140
+  1342     07DD                     u141:
+  1343     07DD  2FE3               	goto	l73
+  1344     07DE                     u140:
+  1345     07DE                     l806:
+  1346                           
+  1347                           ;C Template.c: 177:     {;C Template.c: 178:         button = 68;
+  1348     07DE  3044               	movlw	68
+  1349     07DF  00F7               	movwf	_button
+  1350     07E0  3000               	movlw	0
+  1351     07E1  00F8               	movwf	_button+1
+  1352     07E2  2FFA               	goto	l47
+  1353     07E3                     l73:	
+  1354                           ;C Template.c: 181:     else if (PORTAbits.RA6 == 1)
+  1355                           
+  1356     07E3  1F0C               	btfss	12,6	;volatile
+  1357     07E4  2FE6               	goto	u151
+  1358     07E5  2FE7               	goto	u150
+  1359     07E6                     u151:
+  1360     07E6  2FEC               	goto	l75
+  1361     07E7                     u150:
+  1362     07E7                     l812:
+  1363                           
+  1364                           ;C Template.c: 182:     {;C Template.c: 183:         button = 69;
+  1365     07E7  3045               	movlw	69
+  1366     07E8  00F7               	movwf	_button
+  1367     07E9  3000               	movlw	0
+  1368     07EA  00F8               	movwf	_button+1
+  1369     07EB  2FFA               	goto	l47
+  1370     07EC                     l75:	
+  1371                           ;C Template.c: 186:     else if (PORTAbits.RA7 == 1)
+  1372                           
+  1373     07EC  1F8C               	btfss	12,7	;volatile
+  1374     07ED  2FEF               	goto	u161
+  1375     07EE  2FF0               	goto	u160
+  1376     07EF                     u161:
+  1377     07EF  2FF5               	goto	l824
+  1378     07F0                     u160:
+  1379     07F0                     l818:
+  1380                           
+  1381                           ;C Template.c: 187:     {;C Template.c: 188:         button = 70;
+  1382     07F0  3046               	movlw	70
+  1383     07F1  00F7               	movwf	_button
+  1384     07F2  3000               	movlw	0
+  1385     07F3  00F8               	movwf	_button+1
+  1386     07F4  2FFA               	goto	l47
+  1387     07F5                     l824:
+  1388                           
+  1389                           ;C Template.c: 192:     {;C Template.c: 193:         button = 23;
+  1390     07F5  3017               	movlw	23
+  1391     07F6  00F7               	movwf	_button
+  1392     07F7  3000               	movlw	0
+  1393     07F8  00F8               	movwf	_button+1
+  1394     07F9  018C               	clrf	12	;# 
+  1395     07FA                     l47:
+  1396     07FA  0008               	return
+  1397     07FB                     __end_of_Keypad_Check:
+  1398                           
+  1399                           	psect	text4
+  1400     0712                     __ptext4:	
+  1401 ;; *************** function _Convert_To_Chr *****************
+  1402 ;; Defined at:
+  1403 ;;		line 200 in file "C Template.c"
+  1404 ;; Parameters:    Size  Location     Type
+  1405 ;;  temp            2    0[COMMON] int 
+  1406 ;; Auto vars:     Size  Location     Type
+  1407 ;;  Key             1    2[COMMON] unsigned char 
+  1408 ;; Return value:  Size  Location     Type
+  1409 ;;                  1    wreg      unsigned char 
+  1410 ;; Registers used:
+  1411 ;;		wreg
+  1412 ;; Tracked objects:
+  1413 ;;		On entry : 0/0
+  1414 ;;		On exit  : 0/0
+  1415 ;;		Unchanged: 0/0
+  1416 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25
-  1208 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+  1417 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1209 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+  1418 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1210 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1419 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1211 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+  1420 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-  1212 ;;Total ram usage:        3 bytes
-  1213 ;; Hardware stack levels used: 1
-  1214 ;; This function calls:
-  1215 ;;		Nothing
-  1216 ;; This function is called by:
-  1217 ;;		_main
-  1218 ;; This function uses a non-reentrant model
-  1219 ;;
-  1220                           
-  1221     0789                     _Convert_To_Chr:	
-  1222                           ;psect for function _Convert_To_Chr
-  1223                           
-  1224     0789                     l775:	
-  1225                           ;incstack = 0
-  1226                           ; Regs used in _Convert_To_Chr: [wreg]
-  1227                           
-  1228                           
-  1229                           ;C Template.c: 212: char Convert_To_Chr(int temp);C Template.c: 215: {;C Template.c: 216
-      +                          :     char Key;;C Template.c: 217:         Key = (char)temp;
-  1230     0789  0870               	movf	Convert_To_Chr@temp,w
-  1231     078A  00F2               	movwf	Convert_To_Chr@Key
-  1232                           
-  1233                           ;C Template.c: 218:         return Key;
-  1234     078B  0872               	movf	Convert_To_Chr@Key,w
-  1235     078C                     l90:
-  1236     078C  0008               	return
-  1237     078D                     __end_of_Convert_To_Chr:
-  1238     0003                     ___latbits      equ	3
-  1239     007E                     btemp           set	126	;btemp
-  1240     007E                     wtemp0          set	126
-  1241                           
-  1242                           	psect	config
-  1243                           
-  1244                           ;Config register CONFIG1 @ 0x8007
-  1245                           ;	Oscillator Selection
-  1246                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
-  1247                           ;	Watchdog Timer Enable
-  1248                           ;	WDTE = ON, WDT enabled
-  1249                           ;	Power-up Timer Enable
-  1250                           ;	PWRTE = OFF, PWRT disabled
-  1251                           ;	MCLR Pin Function Select
-  1252                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
-  1253                           ;	Flash Program Memory Code Protection
-  1254                           ;	CP = OFF, Program memory code protection is disabled
-  1255                           ;	Data Memory Code Protection
-  1256                           ;	CPD = OFF, Data memory code protection is disabled
-  1257                           ;	Brown-out Reset Enable
-  1258                           ;	BOREN = OFF, Brown-out Reset disabled
-  1259                           ;	Clock Out Enable
-  1260                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+  1421 ;;Total ram usage:        3 bytes
+  1422 ;; Hardware stack levels used: 1
+  1423 ;; This function calls:
+  1424 ;;		Nothing
+  1425 ;; This function is called by:
+  1426 ;;		_main
+  1427 ;; This function uses a non-reentrant model
+  1428 ;;
+  1429                           
+  1430     0712                     _Convert_To_Chr:	
+  1431                           ;psect for function _Convert_To_Chr
+  1432                           
+  1433     0712                     l836:	
+  1434                           ;incstack = 0
+  1435                           ; Regs used in _Convert_To_Chr: [wreg]
+  1436                           
+  1437                           
+  1438                           ;C Template.c: 200: char Convert_To_Chr(int temp);C Template.c: 203: {;C Template.c: 204
+      +                          :     char Key;;C Template.c: 205:         Key = (char)temp;
+  1439     0712  0870               	movf	Convert_To_Chr@temp,w
+  1440     0713  00F2               	movwf	Convert_To_Chr@Key
+  1441                           
+  1442                           ;C Template.c: 206:         return Key;
+  1443     0714  0872               	movf	Convert_To_Chr@Key,w
+  1444     0715                     l81:
+  1445     0715  0008               	return
+  1446     0716                     __end_of_Convert_To_Chr:
+  1447     0003                     ___latbits      equ	3
+  1448     007E                     btemp           set	126	;btemp
+  1449     007E                     wtemp0          set	126
+  1450                           
+  1451                           	psect	config
+  1452                           
+  1453                           ;Config register CONFIG1 @ 0x8007
+  1454                           ;	Oscillator Selection
+  1455                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
+  1456                           ;	Watchdog Timer Enable
+  1457                           ;	WDTE = ON, WDT enabled
+  1458                           ;	Power-up Timer Enable
+  1459                           ;	PWRTE = OFF, PWRT disabled
+  1460                           ;	MCLR Pin Function Select
+  1461                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
+  1462                           ;	Flash Program Memory Code Protection
+  1463                           ;	CP = OFF, Program memory code protection is disabled
+  1464                           ;	Data Memory Code Protection
+  1465                           ;	CPD = OFF, Data memory code protection is disabled
+  1466                           ;	Brown-out Reset Enable
+  1467                           ;	BOREN = OFF, Brown-out Reset disabled
+  1468                           ;	Clock Out Enable
+  1469                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
       +                          pin
-  1261                           ;	Internal/External Switchover
-  1262                           ;	IESO = OFF, Internal/External Switchover mode is disabled
-  1263                           ;	Fail-Safe Clock Monitor Enable
-  1264                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
-  1265     8007                     	org	32775
-  1266     8007  29FC               	dw	10748
-  1267                           
-  1268                           ;Config register CONFIG2 @ 0x8008
-  1269                           ;	Flash Memory Self-Write Protection
-  1270                           ;	WRT = OFF, Write protection off
-  1271                           ;	Voltage Regulator Capacitor Enable bit
-  1272                           ;	VCAPEN = OFF, Vcap functionality is disabled on RA6.
-  1273                           ;	PLL Enable
-  1274                           ;	PLLEN = ON, 4x PLL enabled
-  1275                           ;	Stack Overflow/Underflow Reset Enable
-  1276                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
-  1277                           ;	Brown-out Reset Voltage Selection
-  1278                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
-  1279                           ;	Low Power Brown-Out Reset Enable Bit
-  1280                           ;	LPBOR = OFF, Low power brown-out is disabled
-  1281                           ;	In-Circuit Debugger Mode
-  1282                           ;	DEBUG = 0x1, unprogrammed default
-  1283                           ;	Low-Voltage Programming Enable
-  1284                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
-  1285     8008                     	org	32776
-  1286     8008  1FFF               	dw	8191
+  1470                           ;	Internal/External Switchover
+  1471                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+  1472                           ;	Fail-Safe Clock Monitor Enable
+  1473                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
+  1474     8007                     	org	32775
+  1475     8007  29FC               	dw	10748
+  1476                           
+  1477                           ;Config register CONFIG2 @ 0x8008
+  1478                           ;	Flash Memory Self-Write Protection
+  1479                           ;	WRT = OFF, Write protection off
+  1480                           ;	Voltage Regulator Capacitor Enable bit
+  1481                           ;	VCAPEN = OFF, Vcap functionality is disabled on RA6.
+  1482                           ;	PLL Enable
+  1483                           ;	PLLEN = ON, 4x PLL enabled
+  1484                           ;	Stack Overflow/Underflow Reset Enable
+  1485                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+  1486                           ;	Brown-out Reset Voltage Selection
+  1487                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  1488                           ;	Low Power Brown-Out Reset Enable Bit
+  1489                           ;	LPBOR = OFF, Low power brown-out is disabled
+  1490                           ;	In-Circuit Debugger Mode
+  1491                           ;	DEBUG = 0x1, unprogrammed default
+  1492                           ;	Low-Voltage Programming Enable
+  1493                           ;	LVP = OFF, High-voltage on MCLR/VPP must be used for programming
+  1494     8008                     	org	32776
+  1495     8008  1FFF               	dw	8191
 
 Data Sizes:
     Strings     0
@@ -1572,34 +1781,54 @@ DATA                 0      0       9      0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
-Symbol Table                                                                                   Wed Nov 13 10:54:05 2024
+Symbol Table                                                                                   Thu Nov 14 10:53:26 2024
 
-                     l41 07C4                       l45 07C5                       l55 07D4  
-                     l47 07CD                       l90 078C                       l66 07E1  
-                     l58 07DA                       l76 07EE                       l68 07E7  
-                     l93 0791                       l78 07F4                      l711 07AC  
-                    l713 07AE                      l731 07D6                      l715 07B8  
-                    l741 07DF                      l717 07C5                      l709 07A5  
-                    l743 07E3                      l719 07C9                      l753 07EC  
-                    l729 07D2                      l755 07F0                      l781 0795  
-                    l775 0789                      l769 078E                      l779 0792  
+                     l51 076B                       l43 074D                       l46 0759  
+                     l71 07DA                       l63 07AF                       l55 0784  
+                     l47 07FA                       l64 07CE                       l56 07A3  
+                     l48 0778                       l81 0715                       l73 07E3  
+                     l65 07B8                       l57 078D                       l49 0762  
+                     l75 07EC                       l67 07C1                       l59 0796  
+                     l84 071A                       u10 0754                       u11 0753  
+                     u20 075D                       u21 075C                       u30 0766  
+                     u31 0765                       u40 076F                       u41 076E  
+                     u50 077F                       u51 077E                       u60 0788  
+                     u61 0787                       u70 0791                       u71 0790  
+                     u80 079A                       u81 0799                       u90 07AA  
+                     u91 07A9                      l700 072E                      l710 0754  
+                    l702 0735                      l800 07D5                      l704 0737  
+                    l722 0766                      l706 0741                      l812 07E7  
+                    l740 077F                      l716 075D                      l708 074E  
+                    l806 07DE                      l734 0774                      l830 0717  
+                    l824 07F5                      l752 0791                      l736 0779  
+                    l728 076F                      l840 071B                      l818 07F0  
+                    l770 07AA                      l746 0788                      l738 077B  
+                    l842 071E                      l836 0712                      l764 079F  
+                    l782 07BC                      l766 07A4                      l758 079A  
+                    l776 07B3                      l768 07A6                      l794 07CA  
+                    l796 07CF                      l788 07C5                      l798 07D1  
                     _RA0 0060                      _RA1 0061                      _RA2 0062  
-                    _RA3 0063                     PORTA 000C                     _LATA 010C  
-                   _PIE1 0091                     _PIE2 0092                     _main 0792  
-                   btemp 007E                     start 0002                    ?_main 0073  
-                  _T1CON 0018                    _T2CON 001C                    _PORTA 000C  
-                  _PORTC 000E                    _TRISA 008C                    _TRISC 008E  
-                  _Setup 07A5            ?_Keypad_Check 0070                    wtemp0 007E  
-        __initialization 07FB             __end_of_main 07A5                   ??_main 0077  
-                 ?_Setup 0070                   _ANSELA 018C                   _ANSELC 018E  
-         ??_Keypad_Check 0070         ??_Convert_To_Chr 0072            _Write_To_Port 078D  
-                 _button 0077  __end_of__initialization 07FD           ?_Write_To_Port 0070  
-         __pcstackCOMMON 0070            __end_of_Setup 07C5                  ??_Setup 0070  
-             __pmaintext 0792                  _CCP1CON 0293                  _CCP2CON 029A  
-   __end_of_Keypad_Check 07FB          ??_Write_To_Port 0070                  __ptext1 078D  
-                __ptext2 07A5                  __ptext3 07C5                  __ptext4 0789  
-   end_of_initialization 07FD        Convert_To_Chr@Key 0072       Write_To_Port@write 0070  
-    start_initialization 07FB             _Keypad_Check 07C5              __pbssCOMMON 0077  
-              ___latbits 0003    __end_of_Write_To_Port 0792           _Convert_To_Chr 0789  
-               main@argc 0073   __end_of_Convert_To_Chr 078D                 main@argv 0075  
+                    _RA3 0063                      u100 07B3                      u101 07B2  
+                    u110 07BC                      u111 07BB                      u120 07C5  
+                    u121 07C4                      u130 07D5                      u131 07D4  
+                    u140 07DE                      u141 07DD                      u150 07E7  
+                    u151 07E6                      u160 07F0                      u161 07EF  
+                   PORTA 000C                     _LATA 010C                     _PIE1 0091  
+                   _PIE2 0092                     _main 071B                     btemp 007E  
+                   start 0002                    ?_main 0073                    _T1CON 0018  
+                  _T2CON 001C                    _PORTA 000C                    _PORTC 000E  
+                  _TRISA 008C                    _TRISC 008E                    _Setup 072E  
+          ?_Keypad_Check 0070                    wtemp0 007E          __initialization 07FB  
+           __end_of_main 072E                   ??_main 0077                   ?_Setup 0070  
+                 _ANSELA 018C                   _ANSELC 018E           ??_Keypad_Check 0070  
+       ??_Convert_To_Chr 0072            _Write_To_Port 0716                   _button 0077  
+__end_of__initialization 07FD           ?_Write_To_Port 0070           __pcstackCOMMON 0070  
+          __end_of_Setup 074E                  ??_Setup 0070               __pmaintext 071B  
+                _CCP1CON 0293                  _CCP2CON 029A     __end_of_Keypad_Check 07FB  
+        ??_Write_To_Port 0070                  __ptext1 0716                  __ptext2 072E  
+                __ptext3 074E                  __ptext4 0712     end_of_initialization 07FD  
+      Convert_To_Chr@Key 0072                _PORTAbits 000C       Write_To_Port@write 0070  
+    start_initialization 07FB             _Keypad_Check 074E              __pbssCOMMON 0077  
+              ___latbits 0003    __end_of_Write_To_Port 071B           _Convert_To_Chr 0712  
+               main@argc 0073   __end_of_Convert_To_Chr 0716                 main@argv 0075  
      Convert_To_Chr@temp 0070               _OSCCONbits 0099          ?_Convert_To_Chr 0070  
