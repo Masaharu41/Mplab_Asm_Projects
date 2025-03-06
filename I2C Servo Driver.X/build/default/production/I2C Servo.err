@@ -1,0 +1,166 @@
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 40 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 44 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 71 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 78 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 83 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 85 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 86 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 88 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 96 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 99 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 102 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 104 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 106 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 108 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 110 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 119 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 122 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 124 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 126 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 129 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C1788SETUP.INC 131 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 16 : Found label after column 1. (ADDRESS_W)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 17 : Found label after column 1. (ADDRESS_R)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 18 : Found label after column 1. (DATA_TX_1)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 19 : Found label after column 1. (DATA_TX_2)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 20 : Found label after column 1. (DATA_RECEIVED)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 21 : Found label after column 1. (TWO_BYTES_F)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 22 : Found label after column 1. (I2C_RX_COUNTER)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 23 : Found label after column 1. (I2C_RX_COMPLETE)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 24 : Found label after column 1. (JOY1_UD)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 25 : Found label after column 1. (JOY1_LR)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 26 : Found label after column 1. (JOY2_UD)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 27 : Found label after column 1. (JOY2_LR)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 31 : Found label after column 1. (I2C_CODE)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 33 : Found label after column 1. (I2C_SETUP_SERVER)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 38 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 39 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 42 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 45 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 48 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 57 : Found label after column 1. (I2C_SETUP_PERIPHERAL)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 60 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 64 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 67 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 70 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 73 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 76 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 81 : Found label after column 1. (I2C_WRITE)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 84 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 85 : Found label after column 1. (START_WRITE_DONE)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 86 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 92 : Found label after column 1. (ADDRESS_SENT_W)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 94 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 98 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 103 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 104 : Found label after column 1. (DATA_1_SENT_W)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 106 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 110 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 118 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 119 : Found label after column 1. (DATA_2_SENT)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 121 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 124 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 126 : Found label after column 1. (GOOD_STOP)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 128 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 129 : Found label after column 1. (GOOD_STOP_DONE)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 130 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 138 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 139 : Found label after column 1. (START_READ_DONE_1)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 140 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 145 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 146 : Found label after column 1. (ADDRESS_SENT_R_1)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 148 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 152 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 159 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 160 : Found label after column 1. (DATA_1_SENT_R)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 162 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 166 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 170 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 171 : Found label after column 1. (START_READ_DONE_2)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 172 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 179 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 180 : Found label after column 1. (ADDRESS_SENT_R_2)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 182 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 186 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 189 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 193 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 196 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 197 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 198 : Found label after column 1. (NACK_DONE)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 199 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 202 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 204 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 205 : Found label after column 1. (READ_STOP_DONE_2)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 206 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 209 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 215 : Found label after column 1. (BAD_COND)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 217 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 218 : Found label after column 1. (BAD_STOP_DONE)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 219 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 224 : Found label after column 1. (I2C_IDLE)
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 227 : Using default destination of 1 (file).
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 227 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 231 : Found label after column 1. (CHECK_R_W)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 233 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 240 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 242 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 246 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 278 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 284 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 290 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 296 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 307 : Using default destination of 1 (file).
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\UNV_DRIVE_I2C_SET-UP.INC 310 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 43 : Found label after column 1. (CHECK)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 44 : Found label after column 1. (TEMP)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 45 : Found label after column 1. (PWM)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 48 : Found label after column 1. (ADDRESS_W)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 49 : Found label after column 1. (ADDRESS_R)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 50 : Found label after column 1. (DATA_TX_1)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 51 : Found label after column 1. (DATA_TX_2)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 52 : Found label after column 1. (DATA_RECEIVED)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 53 : Found label after column 1. (TWO_BYTES_F)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 54 : Found label after column 1. (I2C_RX_COUNTER)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 55 : Found label after column 1. (I2C_RX_COMPLETE)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 56 : Found label after column 1. (JOY1_UD)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 57 : Found label after column 1. (JOY1_LR)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 58 : Found label after column 1. (JOY2_UD)
+Warning[207] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 59 : Found label after column 1. (JOY2_LR)
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 72 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 74 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 80 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 82 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 85 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 87 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 90 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 91 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 92 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 93 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 109 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 114 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 115 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 117 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 118 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 125 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 126 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 128 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 129 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 250 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 251 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 253 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 264 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 266 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 268 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 269 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[205] C:\USERS\JACKEL\MPLABXPROJECTS\I2C SERVO DRIVER.X\I2C SERVO.ASM 272 : Found directive in column 1. (END)

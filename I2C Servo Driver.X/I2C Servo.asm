@@ -1,0 +1,272 @@
+;***************************************************************************
+;
+;	    Filename: I2CSlave.ASM
+;	    Date: 09/30/2024
+;	    File Version: 1
+;	    Author: Owen Fujii
+;	    Company: Idaho State University
+;	    Description: A Program for a slave I2C device that controls
+;			 servo motors using PWM 
+;**************************************************************************
+	
+;*************************************************************************
+; 
+;	    Revision History:
+;   
+;	    Modified as listed
+;	    Started 10/23/2024-10/24/2024
+;
+;*************************************************************************
+    
+    ; PIC16F1788 Configuration Bit Settings
+
+; Assembly source line config statements
+
+	#include "p16f1788.inc"
+	#include "I2c1788Setup.inc"
+	#INCLUDE "I2cPOPOUT.inc"
+	#INCLUDE "I2cPUSHin.inc"
+	#INCLUDE "Unv_Drive_I2C_Set-Up.inc"
+
+; CONFIG1
+; __config 0xE9A4
+ __CONFIG _CONFIG1, _FOSC_INTOSC & _WDTE_OFF & _PWRTE_OFF & _MCLRE_OFF & _CP_OFF & _CPD_OFF & _BOREN_OFF & _CLKOUTEN_ON & _IESO_OFF & _FCMEN_ON
+; CONFIG2
+; __config 0xDFFF
+ __CONFIG _CONFIG2, _WRT_OFF & _VCAPEN_OFF & _PLLEN_ON & _STVREN_ON & _BORV_LO & _LPBOR_OFF & _LVP_OFF
+
+ 
+ ;*********************
+ ;Define Constants
+ ;*********************
+ 
+    CHECK    EQU H'031'
+    TEMP     EQU H'032'
+    PWM	     EQU H'033'
+	     
+; From Universal Controller
+    ADDRESS_W			EQU	H'040'	    ;Temp register for storing the peripheral address write (I2C Server)
+    ADDRESS_R			EQU	H'041'	    ;Temp register for storing the peripheral address read (I2C Server)
+    DATA_TX_1			EQU	H'042'	    ;Temp register for storing the first data byte tranmitted (I2C Server)
+    DATA_TX_2			EQU	H'043'	    ;Temp register for storing the second data byte transmitted (I2C Server)
+    DATA_RECEIVED		EQU	H'044'	    ;Temporary Register for Reading (I2C Server)
+    TWO_BYTES_F			EQU	H'045'	    ;Flag for Signalling more than one data byte transmission (I2C Server)
+    I2C_RX_COUNTER		EQU	H'046'	    ;Register to track which data byte was las received (I2C Peripheral)
+    I2C_RX_COMPLETE		EQU	H'047'	    ;Flag to Signal when full data packet has been received (I2C Peripheral)
+    JOY1_UD			EQU	H'048'
+    JOY1_LR			EQU	H'049'
+    JOY2_UD			EQU	H'050'
+    JOY2_LR			EQU	H'051'
+
+    ORG H'000'					
+    GOTO SETUP					;RESET CONDITION GOTO SETUP
+    ORG H'004'
+    GOTO INTER
+    
+    
+
+
+SETUP
+    BANKSEL OSCCON
+    MOVLW H'069'	    ; SET 4MHZ INTERNAL OSSCILATOR
+    MOVWF OSCCON
+    BANKSEL OSCSTAT
+    BTFSC OSCSTAT,OSTS	    ; WAIT FOR OSSCILATOR TO BE READY
+    GOTO $-1
+    CALL START		    ; CALL SETUP INCLUDE
+   ; CALL I2C_SETUP_PERIPHERAL ; CALL UNV_CONTROLLER I2C SETUP
+    ; ADC SETUP
+    BANKSEL ADCON0
+    CLRF ADCON0		; CONFIGURE ANALOG TO DIGITAL REGISTER
+    MOVLW H'B0'		; USE FOSC/8 AND AN12 FOR INPUT
+    MOVWF ADCON0
+    BANKSEL ADCON1
+    MOVLW H'010'
+    MOVWF ADCON1		; SET REFERENCE TO INTERNAL
+    BANKSEL ADCON2
+    CLRF ADCON2
+    ; 
+    BANKSEL PIE1
+    BSF PIE1,ADIE
+    BCF PIE1,3		;MSSP INTERRUPT ENABLE
+    BSF PIE1,TMR2IE
+    BSF PIE1,TMR1IE
+    BANKSEL INTCON
+    CLRF TEMP		    ; CLEAR GPRS
+    BSF INTCON,GIE	    ; ENABLE INTERRUPTS
+    BSF INTCON,PEIE
+    BSF INTCON,IOCIF	    ; ENABLE INTERRUPT ON CHANGE
+    CALL RESTART
+    GOTO MAIN
+
+MAIN
+    NOP
+;    CALL CHANGEOUT	    ; CHECK IF RECIEVED DATA HAS ACTION
+    GOTO MAIN
+    
+TOGGLEADC
+    BANKSEL IOCBF
+    CLRF IOCBF
+    BANKSEL PORTC
+    BTFSC CHECK,4
+    GOTO DISABLEADC
+    BANKSEL PIE1
+    BCF PIE1,3		    ; DISABLE MSSP INTERRUPT
+    BSF PIE1,6		    ; ENABLE ADC INTERRUPT
+    BANKSEL ADCON0
+    BSF ADCON0,0            ; ENABLE ADC
+    BSF ADCON0,1
+    BANKSEL PORTC
+    BSF CHECK,4
+    BSF PORTC,2		    ; ENABLE INDICATOR
+    RETURN
+DISABLEADC
+    BANKSEL PIE1
+    BSF PIE1,3		    ; ENABLE MSSP INTERRUPT
+    BCF PIE1,6		    ; DISABLE ADC INTERRUPT
+    BANKSEL ADCON0
+    BCF ADCON0,0            ; DISABLE ADC
+    BCF ADCON0,1
+    BANKSEL PORTC
+    BCF CHECK,4
+    BCF PORTC,2		    ; DISABLE INDICATOR
+    RETURN
+	
+    
+PWSET
+    BANKSEL PORTC
+    MOVFW JOY1_LR	; CHECK LEFT LIMIT
+    SUBLW H'08C'	; 140 UPPER DEADZONE
+    BTFSS STATUS,C
+    GOTO TURNLEFT	; JUMP TO LEFT SET
+    MOVFW JOY1_LR
+    SUBLW H'06E'	; 110 LOWER DEADZONE
+    BTFSC STATUS,C
+    GOTO TURNRIGHT	; JUMP TO LEFT SET
+    MOVLW H'064'	; SET MIDDLE PULSE WIDTH
+    MOVWF PWM
+SETOUT
+    CALL TMRSTART
+    RETURN
+    
+TURNLEFT
+    MOVFW JOY1_LR
+    SUBLW H'0F0'
+    BTFSS STATUS,C
+    GOTO MINPW
+    MOVWF PWM
+    MOVLW H'032'
+    SUBWF PWM,0	    ; CHECK LIMIT OF 50 FOR MIN PW
+    BTFSS STATUS,C
+    GOTO MINPW
+    GOTO SETOUT
+    
+MINPW
+    MOVLW H'032'	    ; SET MINIMUM PW OF .5 MS
+    MOVWF PWM
+    GOTO SETOUT
+    
+TURNRIGHT
+    MOVFW JOY1_LR
+    SUBLW H'06E'	; IN-DIFF OPPERATION 110 - JOYSTICK R
+    ADDLW H'064'	; ADD IN-DIFF TO 100
+    MOVWF PWM
+    SUBLW H'096'	; VERIFY TOP LIMIT
+    BTFSS STATUS,C
+    GOTO MXPW
+    GOTO SETOUT
+    
+MXPW 
+    MOVLW H'096'
+    MOVWF PWM
+    GOTO SETOUT
+    
+INTER
+    BANKSEL PORTC
+    CLRF INTCON
+    BSF PORTC,1
+    CALL PUSHIN
+    BANKSEL PIR1
+    BTFSS PIR1,SSP1IF	    ; CHECK MSSP INTERRUPT FLAG
+    GOTO SKIP
+    CALL I2C_RECEIVE
+    BSF CHECK,0	
+SKIP
+    BANKSEL PIR1
+    BTFSC PIR1,6		; CHECK ADC
+    CALL CONVERT
+    BANKSEL PIR1
+    BTFSC PIR1,1		; CHECK TMR2
+    CALL PS
+    BANKSEL PIR1
+    BTFSC PIR1,0		; CHECK TMR1
+    CALL RESTART		; FREE RUN TOGGLE BETWEEEN TMR2 AND TMR1
+;    BANKSEL IOCBF
+;    BTFSC IOCBF,1
+;    CALL TOGGLEADC
+    BANKSEL INTCON
+    BSF INTCON,GIE		; REENABLE INTERRUPTS
+    BSF INTCON,PEIE
+    BSF INTCON,IOCIF
+    CALL POPOUT
+    BANKSEL PORTC
+    BCF PORTC,1
+    RETFIE
+    
+
+    
+    
+TMRSTART		; STARTS PULSEWIDTH
+	BANKSEL PR2
+	MOVF PWM,0	;MOVE OFFSET INTO WORKING	
+	MOVWF PR2	; MOVE DELAY VALUE INTO PR2
+	BANKSEL TMR2
+	CLRF TMR2	; CLEAR TMR2
+	MOVLW H'02'     ; CONFIGURE TMR2
+	MOVWF T2CON
+	BSF T2CON,2	; ENABLE TMR2
+	BSF PORTC,0	; SET OUTPUT HIGH
+	RETURN
+	
+PS
+	BANKSEL T2CON
+	CLRF INTCON
+	BCF T2CON,2	    ; DISABLE TMR2  
+	BCF PORTC,0	    ; DISABLE OUTPUT
+	BCF PIR1,1          
+	CLRF T1CON          ; SET T1CON 
+	MOVLW H'B1'	    ; OFFSET TMR1 FOR A COUNT OF 20K FOR ROLLOVER
+	MOVWF TMR1H
+	MOVLW H'E3'
+	MOVWF TMR1L
+	BSF T1CON,0         ; START TMR1
+	RETURN	
+
+; ADC MODULES FOR POTENTIOMETER
+CONVERT
+	BANKSEL PIR1
+	BCF PIR1,6
+	BANKSEL ADCON0
+	BCF ADCON0,0		; DISABLE ADC
+	BCF ADCON0,1
+	BANKSEL ADRESH
+	MOVF ADRESH,0           ; MOVE UPPER BITS TO GPR
+	BANKSEL PORTC
+	MOVWF JOY1_LR
+	GOTO PWSET
+	
+	
+RESTART
+	BANKSEL T1CON
+	BCF T1CON,0	    ; DISABLE TMR1
+	BCF PIR1,0	    ; CLEAR INT FLAG
+	BANKSEL ADRESH
+	CLRF ADRESH	    ; CLEAR UPPER REGISTER ADC
+	BANKSEL ADRESL
+	CLRF ADRESL	    ; CLEAR LOWER REGISTER ADC
+	BANKSEL ADCON0
+	BSF ADCON0,0	    ; RE ENABLE ADC CONVERSION
+	BSF ADCON0,1
+	RETURN
+
+END
